@@ -8,7 +8,7 @@ Consignes:
 Documents requis:
 - Courte description du projet et du problème qu'il résout
 - Réaliser un diagramme des cas d'utilisation et un diagramme de classes
-- Choisir une convention de codage existente ou non
+- Choisir une convention de codage existante ou non
 - Choisir un (ou plusieurs) critères de qualité et les métriques pour les mesurer
 
 Langage utilisé: Java
