@@ -1,6 +1,7 @@
 \documentclass[a4paper,11pt]{article}
 \usepackage[utf8]{inputenc}
-\usepackage[french]{babel}
+\usepackage{french}
+\usepackage{hyperref}
 
 %opening
 \title{Barathon: rapport intermédiaire}
@@ -34,7 +35,20 @@ Blabla
 Blabla
 
 \section{Conventions de codage}
-BLabla
+Pour les conventions de codage, nous allons utiliser les conventions de codage standard de java.
+Cela nous permettra de verifier facilement que notre code respecte celle-ci avec des applications tels que PMD ou Checkstyle.\\
+les conventions de codage standard de java que nous suivont sont celles-ci:
+\begin{itemize}
+  \item Le nom des classes est en camelcase avec la première lettre en majuscule;
+  \item Le nom des variables est en camelcase avec la première lettre en minuscule;
+  \item Les variables d'une seule lettre sont utilisées localement;
+  \item Le nom des constantes est en majuscule avec un underscore pour séparer les mots;
+  \item Le nom des fichiers en minuscule avec des tirets pour séparer les noms;
+  \item L'indentation est 4 espaces;
+  \item Les commentaires se trouvent au dessus des déclarations de classes.
+\end{itemize}
+Pour de plus ample informations, vous pouvez retrouver nos conventions de codage sur le site d'oracle:
+\url{https://www.oracle.com/technetwork/java/codeconvtoc-136057.html}.
 
 \section{Crières de qualité}
 Blabla
