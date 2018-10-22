@@ -16,12 +16,17 @@
 \gdef\HyperFirstAtBeginDocument#1{#1}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
-\csname auxWARNINGi\endcsname {\typeout {-34- this file and other auxiliary files require to use the following}}
-\csname auxWARNINGi\endcsname {\typeout {-34- LaTeX packages: e-french!}}
-\csname auxWARNINGi\endcsname {\typeout {-34- check \protect \usepackage \space or remove these files. Typesetting is aborted!}\stop }
+\catcode `:\active 
+\catcode `;\active 
+\catcode `!\active 
+\catcode `?\active 
+\select@language{french}
+\@writefile{toc}{\select@language{french}}
+\@writefile{lof}{\select@language{french}}
+\@writefile{lot}{\select@language{french}}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Description du projet}{1}{section.1}}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Diagrammes r\IeC {\'e}alis\IeC {\'e}s}{1}{section.2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Diagramme des cas d'utilisation}{1}{subsection.2.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Diagramme de classes}{1}{subsection.2.2}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Conventions de codage}{2}{section.3}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Cri\IeC {\`e}res de qualit\IeC {\'e}}{2}{section.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Crit\IeC {\`e}res de qualit\IeC {\'e}}{2}{section.4}}

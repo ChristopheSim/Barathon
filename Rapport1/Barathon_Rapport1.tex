@@ -1,7 +1,7 @@
 \documentclass[a4paper,11pt]{article}
 \usepackage[utf8]{inputenc}
-\usepackage{french}
 \usepackage{hyperref}
+\usepackage[french]{babel}
 
 %opening
 \title{Barathon: rapport intermédiaire}
@@ -44,13 +44,26 @@ les conventions de codage standard de java que nous suivont sont celles-ci:
   \item Les variables d'une seule lettre sont utilisées localement;
   \item Le nom des constantes est en majuscule avec un underscore pour séparer les mots;
   \item Le nom des fichiers en minuscule avec des tirets pour séparer les noms;
-  \item L'indentation est 4 espaces;
+  \item L'indentation est de 4 espaces;
   \item Les commentaires se trouvent au dessus des déclarations de classes.
 \end{itemize}
+
+
 Pour de plus ample informations, vous pouvez retrouver nos conventions de codage sur le site d'oracle:
 \url{https://www.oracle.com/technetwork/java/codeconvtoc-136057.html}.
 
-\section{Crières de qualité}
-Blabla
+\section{Critères de qualité}
+Comme critères de qualité, nous avons choisis:
+\begin{itemize}
+  \item Une densité de commentaire de 30\%;
+  \item Une couverture de code de 40\%;
+  \item La vitesse d'exécution.
+\end{itemize}
+
+
+Comme c'est un travail qu'il faudra s'échanger, pour facilité la relève,
+nous voulons un programme qui est bien documenté, et qui est composé de fonctions fiables.\\
+Pour notre projet, une application de recherche dans une database, nous voulons que celle-ci s'exécute vite.
+Cette vitesse va dépendre de la requête et du hardware, mais nous voulons optimiser celle-ci le plus possible.
 
 \end{document}
