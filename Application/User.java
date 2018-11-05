@@ -42,4 +42,8 @@ public class User {
     public Preferences getPreferences() {
         return this.preferences;
     }
+
+    public void generate() {
+        //to implement
+    }
 }
