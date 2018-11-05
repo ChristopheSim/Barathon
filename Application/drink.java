@@ -12,7 +12,7 @@ public class Drink extends Component {
 		
 	}
 
-	public IsSoft () {
+	public boolean IsSoft () {
 
 		if ( this.alcohol == 0 ) {
 			return true;
@@ -22,11 +22,11 @@ public class Drink extends Component {
 		}
 	}
 
-	public GetAlcohol () {
+	public double GetAlcohol () {
 		return this.alcohol;
 	}
 
-	public IsSparkling () {
+	public boolean IsSparkling () {
 		return sparkling;
 	}
 }
