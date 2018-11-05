@@ -28,4 +28,23 @@ public class Menu {
 	public void RemoveDrink (Drink d) {
 		drinks.remove(d);
 	}
+
+	private int MeanComponentPrice (HashSet components) {
+		int sum = 0;
+		
+		// Adds the price of each element in the list
+		for (Component c : components ) {
+			sum += c.GetPrice();
+		}
+
+		return sum/components.size();
+	}
+
+	public int MeanFoodPrice () {
+		return MeanComponentPrice(foods);	
+	}
+
+	public int MeanDrinkPrice () {
+		return MeanComponentPrice(drinks);	
+	}
 }
