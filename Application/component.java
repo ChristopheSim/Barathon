@@ -16,4 +16,12 @@ public abstract class Component {
 
 	}
 
+	public String GetName () {
+		return this.name;
+	}
+
+	public int GetPrice () {
+		return this.price;
+	}
+
 }

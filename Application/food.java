@@ -24,5 +24,4 @@ public class Food extends Component {
 	public boolean IsVegetarian () {
 		return this.vegetarian;	
 	}
-
 }
