@@ -12,4 +12,21 @@ public class Drink extends Component {
 		
 	}
 
+	public IsSoft () {
+
+		if ( this.alcohol == 0 ) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	public GetAlcohol () {
+		return this.alcohol;
+	}
+
+	public IsSparkling () {
+		return sparkling;
+	}
 }
