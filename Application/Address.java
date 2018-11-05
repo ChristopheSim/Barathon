@@ -4,21 +4,21 @@ public class Address {
     private String number;
     private Position position;
 
-    public Address(String s, String n, Position p) {
+    public void Address(String s, String n, Position p) {
         this.street = s;
         this.number = n;
         this.Position = p;
     }
 
-    public getStreet() {
+    public String getStreet() {
         return this.street;
     }
 
-    public getPosition() {
+    public Position getPosition() {
         return this.position;
     }
 
-    public getNumber() {
+    public String getNumber() {
         return this.number;
     }
 }
