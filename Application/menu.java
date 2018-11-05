@@ -1,21 +1,31 @@
+import java.util.HashSet;
+
 public class Menu {
 
-	private List foods;
-	private List drinks;
+	private HashSet foods;
+	private HashSet drinks;
 
 
 	public Menu () {
 
-		this.foods = new arrayList ();
-		this.drinks = new arrayList ();
+		this.foods = new HashSet ();
+		this.drinks = new HashSet ();
 
 	}
 
-	public void addFood (Food f) {
-
+	public void AddFood (Food f) {
+		foods.add(f);
 	}
 
-	public void addDrink (Drink d) {
+	public void RemoveFood (Food f) {
+		food.remove(f);
+	}
 
+	public void AddDrink (Drink d) {
+		drinks.add(d);
+	}
+
+	public void RemoveDrink (Drink d) {
+		drinks.remove(d);
 	}
 }
