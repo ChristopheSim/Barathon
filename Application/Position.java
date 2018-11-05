@@ -17,6 +17,6 @@ public class Position {
     }
 
     public Bool isEqually(Position p) {
-        // to implement
+        //to implement
     }
 }
