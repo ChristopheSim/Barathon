@@ -13,4 +13,16 @@ public class Food extends Component {
 
 	}
 
+	public boolean IsVegan () {
+		return this.vegan;	
+	}
+
+	public boolean IsHalal () {
+		return this.halal;	
+	}
+
+	public boolean IsVegetarian () {
+		return this.vegetarian;	
+	}
+
 }
