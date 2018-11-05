@@ -8,15 +8,15 @@ public class Position {
         this.latitude = la;
     }
 
-    public GetLongitude() {
+    public getLongitude() {
         return this.longitude;
     }
 
-    public GetLatitude() {
+    public getLatitude() {
         return this.latitude;
     }
 
-    public IsEqually(Position p) {
+    public isEqually(Position p) {
         // to implement
     }
 }

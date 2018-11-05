@@ -14,11 +14,11 @@ public class Address {
         return this.street;
     }
 
-    public GetPosition() {
+    public getPosition() {
         return this.position;
     }
 
-    public GetNumber() {
+    public getNumber() {
         return this.number;
     }
 }
