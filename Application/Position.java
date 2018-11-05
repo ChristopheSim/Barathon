@@ -3,20 +3,20 @@ public class Position {
     private Double longitude;
     private Double latitude;
 
-    public Position(Double lo, Double la) {
+    public void Position(Double lo, Double la) {
         this.longitude = lo;
         this.latitude = la;
     }
 
-    public getLongitude() {
+    public Double getLongitude() {
         return this.longitude;
     }
 
-    public getLatitude() {
+    public Double getLatitude() {
         return this.latitude;
     }
 
-    public isEqually(Position p) {
+    public Bool isEqually(Position p) {
         // to implement
     }
 }
