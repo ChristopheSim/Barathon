@@ -1,4 +1,5 @@
 import java.util.HashSet;
+import java.util.Iterator;
 
 public class Menu {
 
@@ -32,8 +33,8 @@ public class Menu {
 		int sum = 0;
 		
 		// Adds the price of each element in the list
-		for (Component c : components ) {
-			sum += c.GetPrice();
+		for (Iterator<Component> c = components.iterator(); c.hasNext();) {
+			sum += c.next().GetPrice();
 		}
 
 		return sum/components.size();
