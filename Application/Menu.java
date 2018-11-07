@@ -17,7 +17,7 @@ public class Menu {
 	}
 
 	public void RemoveFood (Food f) {
-		food.remove(f);
+		foods.remove(f);
 	}
 
 	public void AddDrink (Drink d) {
