@@ -3,13 +3,13 @@ import java.util.Iterator;
 
 public class Menu {
 
-	private HashSet foods;
-	private HashSet drinks;
+	private HashSet<Food> foods;
+	private HashSet<Drink> drinks;
 
 	public Menu () {
 
-		this.foods = new HashSet ();
-		this.drinks = new HashSet ();
+		this.foods = new HashSet<Food> ();
+		this.drinks = new HashSet<Drink> ();
 
 	}
 
@@ -29,11 +29,11 @@ public class Menu {
 		drinks.remove(d);
 	}
 
-	private int MeanComponentPrice (HashSet components) {
+	private int MeanComponentPrice (HashSet<? extends Component> components) {
 		int sum = 0;
 		
 		// Adds the price of each element in the list
-		for (Iterator<Component> c = components.iterator(); c.hasNext();) {
+		for (Iterator<? extends Component> c = components.iterator(); c.hasNext();) {
 			sum += c.next().GetPrice();
 		}
 
