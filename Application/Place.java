@@ -4,7 +4,8 @@ public class Place {
     private Menu menu;
     private Caracteristics caracteristics;
 
-    Place(String name, Address address, Menu menu, Caracteristics caracteristics)
+    Place(String name, Address address, Menu menu,
+        Caracteristics caracteristics)
     {
         this.name = name;
         this.address = address;
