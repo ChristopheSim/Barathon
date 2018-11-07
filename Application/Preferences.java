@@ -1,12 +1,14 @@
+import java.util.LinkedList;
+
 public class Preferences {
-    private List<Caracteristics> caracteristics;
+    private LinkedList<Caracteristics> caracteristics;
     private int nbBar;
     private int radius; // En m
 
     // TODO: add trip variable
 
     Preferences() {
-        caracteristics = new List<Caracteristics>();
+        caracteristics = new LinkedList<Caracteristics>();
         this.nbBar = 1;
         this.radius = 1000;
     }
