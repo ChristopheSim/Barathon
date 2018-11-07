@@ -11,9 +11,7 @@ public abstract class Component {
 	}
 	
 	public boolean IsEqual (Component c) {
-
 		return true;
-
 	}
 
 	public String GetName () {

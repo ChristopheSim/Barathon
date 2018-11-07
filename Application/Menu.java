@@ -84,4 +84,12 @@ public class Menu {
 			return this.MeanDrinkPrice();
 		}
 	}
+
+	public HashSet<Food> GetFoods () {
+		return this.foods;
+	}
+
+	public HashSet<Drink> GetDrinks () {
+		return this.drinks;
+	}
 }
