@@ -40,7 +40,7 @@ public class Caracteristics {
         return this.food;
     }
 
-    public boolean getFoodNb() {
+    public int getFoodNb() {
         return this.foodNb;
     }
 
@@ -60,7 +60,7 @@ public class Caracteristics {
         return this.alcohol;
     }
 
-    public setCheap(boolean cheap) {
-        this.cheap = cheap();
+    public void setCheap(boolean cheap) {
+        this.cheap = cheap;
     }
 }
