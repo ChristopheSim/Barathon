@@ -11,9 +11,10 @@ public class Drink extends Component {
 		this.sparkling = s;
 		
 	}
-
+	
 	public boolean IsSoft () {
 
+		// A drink is soft is it contains no alcohol
 		if ( this.alcohol == 0 ) {
 			return true;
 		}
