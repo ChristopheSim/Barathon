@@ -14,7 +14,6 @@ public class Position {
 
     public void setLongitude(Double lo) {
         this.longitude  = lo;
-        return;
     }
 
     public Double getLatitude() {
@@ -23,11 +22,10 @@ public class Position {
 
     public void setLatitude(Double la) {
         this.latitude = la;
-        return;
     }
 
-    public Bool isEqually(Position p) {
+    public boolean isEqually(Position p) {
         //to implement
-        return this.longitude == p.getLongitude && this.latitude == p.getLatitude
+        return this.longitude == p.getLongitude() && this.latitude == p.getLatitude();
     }
 }

@@ -7,7 +7,7 @@ public class Address {
     public void Address(String s, String n, Position p) {
         this.street = s;
         this.number = n;
-        this.Position = p;
+        this.position = p;
     }
 
     public String getStreet() {
@@ -16,7 +16,6 @@ public class Address {
 
     public void setStreet(String s) {
         this.street = s;
-        return
     }
 
     public Position getPosition() {
@@ -25,7 +24,6 @@ public class Address {
 
     public void setPosition(Position p) {
         this.position = p;
-        return;
     }
 
     public String getNumber() {
@@ -34,6 +32,5 @@ public class Address {
 
     public void setNumber(String n) {
         this.number = n;
-        return;
     }
 }

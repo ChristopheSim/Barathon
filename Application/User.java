@@ -26,8 +26,7 @@ public class User {
     }
 
     public void setTrips(ArrayList<Place> t) {
-        this.Trips = t;
-        return;
+        this.trips = t;
     }
 
     public Position getPosition() {
@@ -36,7 +35,6 @@ public class User {
 
     public void setPosition(Position p) {
         this.position = p;
-        return;
     }
 
     public Preferences getPreferences() {
@@ -52,15 +50,12 @@ public class User {
         //to implement
         this.clearList();
         if (this.preferences.getTrip) {
-            Strategy st = new StrategyTrip();
+            StrategyTrip st = new StrategyTrip();
             this.trips = st.solve();
         }
         else if (!this.preferences.getTrip) {
-            Strategy st = new StrategyBars();
-            this.bars = st.solve();
-        }
-        else () {
-            return null;
+            StrategyBars sb = new StrategyBars();
+            this.bars = sb.solve();
         }
     }
 }
