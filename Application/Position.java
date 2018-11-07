@@ -18,5 +18,6 @@ public class Position {
 
     public Bool isEqually(Position p) {
         //to implement
+        return this.longitude == p.getLongitude && this.latitude == p.getLatitude
     }
 }
