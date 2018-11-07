@@ -43,7 +43,24 @@ public class User {
         return this.preferences;
     }
 
+    private void clearList() {
+        this.bars = new ArrayList<Place>();
+        this.trips = new ArrayList<Place>();
+    }
+
     public void generate() {
         //to implement
+        this.clearList();
+        if (this.preferences.getTrip) {
+            Strategy st = new StrategyTrip();
+            this.trips = st.solve();
+        }
+        else if (!this.preferences.getTrip) {
+            Strategy st = new StrategyBars();
+            this.bars = st.solve();
+        }
+        else () {
+            return null;
+        }
     }
 }
