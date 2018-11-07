@@ -4,6 +4,7 @@ public class Preferences {
     private LinkedList<Caracteristics> caracteristics;
     private int nbBar;
     private int radius; // En m
+    private boolean trip;
 
     // TODO: add trip variable
 
@@ -35,5 +36,9 @@ public class Preferences {
         if (radius > 0) {
             this.radius = radius;
         }
+    }
+
+    public boolean getTrip() {
+        return this.trip;
     }
 }

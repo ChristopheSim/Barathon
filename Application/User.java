@@ -49,13 +49,13 @@ public class User {
     public void generate() {
         //to implement
         this.clearList();
-        if (this.preferences.getTrip) {
+        if (this.preferences.getTrip()) {
             StrategyTrip st = new StrategyTrip();
-            this.trips = st.solve();
+            this.trips = st.solve(); //ERROR
         }
-        else if (!this.preferences.getTrip) {
+        else if (!this.preferences.getTrip()) {
             StrategyBars sb = new StrategyBars();
-            this.bars = sb.solve();
+            this.bars = sb.solve(); //ERROR
         }
     }
 }
