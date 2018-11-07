@@ -14,11 +14,26 @@ public class Address {
         return this.street;
     }
 
+    public void setStreet(String s) {
+        this.street = s;
+        return
+    }
+
     public Position getPosition() {
         return this.position;
     }
 
+    public void setPosition(Position p) {
+        this.position = p;
+        return;
+    }
+
     public String getNumber() {
         return this.number;
+    }
+
+    public void setNumber(String n) {
+        this.number = n;
+        return;
     }
 }
