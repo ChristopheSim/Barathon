@@ -12,8 +12,18 @@ public class Position {
         return this.longitude;
     }
 
+    public void setLongitude(Double lo) {
+        this.longitude  = lo;
+        return;
+    }
+
     public Double getLatitude() {
         return this.latitude;
+    }
+
+    public void setLatitude(Double la) {
+        this.latitude = la;
+        return;
     }
 
     public Bool isEqually(Position p) {
