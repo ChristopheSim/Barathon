@@ -7,7 +7,7 @@ public class Place {
     Place(String name, Address address, Menu menu, Caracteristics caracteristics)
     {
         this.name = name;
-        this.address = Address;
+        this.address = address;
         this.menu = menu;
         this.caracteristics = caracteristics;
     }
@@ -20,8 +20,7 @@ public class Place {
         this.name = name;
     }
 
-    public void getAddress()
-    {
-        this.address.getAddress();
+    public Address getAddress(){
+        return this.address;
     }
 }
