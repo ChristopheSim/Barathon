@@ -6,6 +6,7 @@ public class User {
     private ArrayList<Place> trips = new ArrayList<Place>();
     private Position position;
     private Preferences preferences;
+    private String pseudo;
 
     public void User(Position po, Preferences pr) {
         this.position = po;
@@ -39,6 +40,14 @@ public class User {
 
     public Preferences getPreferences() {
         return this.preferences;
+    }
+
+    public void setPseudo(String p) {
+        this.pseudo = p;
+    }
+
+    public String getPseudo() {
+        return this.pseudo();
     }
 
     private void clearList() {
