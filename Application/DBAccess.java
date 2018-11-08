@@ -65,7 +65,7 @@ public final class DBAccess {
 	}
 
 
-// To complete to use with Activity, Place and User, type of relation !!!
+// To complete to use with Place to Caracteristic, Place to Place and User to Caracteristic, type of relation !!!
   public static void createRelation(Place place1) {
     Driver driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
     try (Session session = driver.session()) {
