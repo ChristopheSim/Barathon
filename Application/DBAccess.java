@@ -76,8 +76,8 @@ public final class DBAccess {
 	}
 
 
-// To complete to use with Place to Caracteristic, Place to Place and User to Caracteristic, type of relation !!!
   public static void createP2CRelationship(Place place, Caracteristics carac) {
+    /*
     for (String field : fields) {
       Driver driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
       try (Session session = driver.session()) {
@@ -90,10 +90,100 @@ public final class DBAccess {
       }
       driver.close();
     }
+    */
+
+    Driver driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
+    try (Session session = driver.session()) {
+      StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d})", place.getId()));
+      rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "cheap"));
+      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getCheap()));
+    }
+    catch(Exception e) {
+      System.out.println("An error occured during the relationship creation !");
+    }
+    driver.close();
+
+    driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
+    try (Session session = driver.session()) {
+      StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d})", place.getId()));
+      rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "music"));
+      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getMusic()));
+    }
+    catch(Exception e) {
+      System.out.println("An error occured during the relationship creation !");
+    }
+    driver.close();
+
+    driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
+    try (Session session = driver.session()) {
+      StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d})", place.getId()));
+      rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "famousPlace"));
+      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getFamousPlace()));
+    }
+    catch(Exception e) {
+      System.out.println("An error occured during the relationship creation !");
+    }
+    driver.close();
+
+    driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
+    try (Session session = driver.session()) {
+      StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d})", place.getId()));
+      rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "food"));
+      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getFood()));
+    }
+    catch(Exception e) {
+      System.out.println("An error occured during the relationship creation !");
+    }
+    driver.close();
+
+    driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
+    try (Session session = driver.session()) {
+      StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d})", place.getId()));
+      rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "vegetarian"));
+      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getVegetarian()));
+    }
+    catch(Exception e) {
+      System.out.println("An error occured during the relationship creation !");
+    }
+    driver.close();
+
+    driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
+    try (Session session = driver.session()) {
+      StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d})", place.getId()));
+      rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "halal"));
+      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getHalal()));
+    }
+    catch(Exception e) {
+      System.out.println("An error occured during the relationship creation !");
+    }
+    driver.close();
+
+    driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
+    try (Session session = driver.session()) {
+      StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d})", place.getId()));
+      rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "vegan"));
+      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getVegan()));
+    }
+    catch(Exception e) {
+      System.out.println("An error occured during the relationship creation !");
+    }
+    driver.close();
+
+    driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
+    try (Session session = driver.session()) {
+      StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d})", place.getId()));
+      rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "alcohol"));
+      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getAlcohol()));
+    }
+    catch(Exception e) {
+      System.out.println("An error occured during the relationship creation !");
+    }
+    driver.close();
 	}
 
 
   public static void createU2CRelationship(User user, Caracteristics carac) {
+    /*
     for (String field : fields) {
       Driver driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
       try (Session session = driver.session()) {
@@ -106,6 +196,95 @@ public final class DBAccess {
       }
       driver.close();
     }
+    */
+
+    Driver driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
+    try (Session session = driver.session()) {
+      StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})", user.getPseudo()));
+      rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "cheap"));
+      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getCheap()));
+    }
+    catch(Exception e) {
+      System.out.println("An error occured during the relationship creation !");
+    }
+    driver.close();
+
+    driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
+    try (Session session = driver.session()) {
+      StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})", user.getPseudo()));
+      rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "music"));
+      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getMusic()));
+    }
+    catch(Exception e) {
+      System.out.println("An error occured during the relationship creation !");
+    }
+    driver.close();
+
+    driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
+    try (Session session = driver.session()) {
+      StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})", user.getPseudo()));
+      rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "famousPlace"));
+      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getFamousPlace()));
+    }
+    catch(Exception e) {
+      System.out.println("An error occured during the relationship creation !");
+    }
+    driver.close();
+
+    driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
+    try (Session session = driver.session()) {
+      StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})", user.getPseudo()));
+      rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "food"));
+      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getFood()));
+    }
+    catch(Exception e) {
+      System.out.println("An error occured during the relationship creation !");
+    }
+    driver.close();
+
+    driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
+    try (Session session = driver.session()) {
+      StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})", user.getPseudo()));
+      rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "vegetarian"));
+      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getVegetarian()));
+    }
+    catch(Exception e) {
+      System.out.println("An error occured during the relationship creation !");
+    }
+    driver.close();
+
+    driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
+    try (Session session = driver.session()) {
+      StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})", user.getPseudo()));
+      rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "halal"));
+      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getHalal()));
+    }
+    catch(Exception e) {
+      System.out.println("An error occured during the relationship creation !");
+    }
+    driver.close();
+
+    driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
+    try (Session session = driver.session()) {
+      StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})", user.getPseudo()));
+      rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "vegan"));
+      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getVegan()));
+    }
+    catch(Exception e) {
+      System.out.println("An error occured during the relationship creation !");
+    }
+    driver.close();
+
+    driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
+    try (Session session = driver.session()) {
+      StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})", user.getPseudo()));
+      rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "alcohol"));
+      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getAlcohol()));
+    }
+    catch(Exception e) {
+      System.out.println("An error occured during the relationship creation !");
+    }
+    driver.close();
 	}
 
 
