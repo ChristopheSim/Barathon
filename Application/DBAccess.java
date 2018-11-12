@@ -140,7 +140,7 @@ public final class DBAccess {
       else {
         rs = session.run(String.format("MATCH (p:Place {id: %d})", place.getId()));
         rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "cheap"));
-        rs = session.run("CREATE (p) -[r:%CONTAINS]-> (c)");
+        rs = session.run("CREATE (p) -[r:FOLLOWS]-> (c)");
         rs = session.run(String.format("SET r.status=%b", carac.getCheap()));
       }
     }
@@ -158,7 +158,7 @@ public final class DBAccess {
       else {
         rs = session.run(String.format("MATCH (p:Place {id: %d})", place.getId()));
         rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "music"));
-        rs = session.run("CREATE (p) -[r:%CONTAINS]-> (c)");
+        rs = session.run("CREATE (p) -[r:FOLLOWS]-> (c)");
         rs = session.run(String.format("SET r.status=%b", carac.getMusic()));
       }
     }
@@ -176,7 +176,7 @@ public final class DBAccess {
       else {
         rs = session.run(String.format("MATCH (p:Place {id: %d})", place.getId()));
         rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "famousPlace"));
-        rs = session.run("CREATE (p) -[r:%IS]-> (c)");
+        rs = session.run("CREATE (p) -[r:IS]-> (c)");
         rs = session.run(String.format("SET r.status=%b", carac.getFamousPlace()));
       }
     }
@@ -194,7 +194,7 @@ public final class DBAccess {
       else {
         rs = session.run(String.format("MATCH (p:Place {id: %d})", place.getId()));
         rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "food"));
-        rs = session.run("CREATE (p) -[r:%CONTAINS]-> (c)");
+        rs = session.run("CREATE (p) -[r:FOLLOWS]-> (c)");
         rs = session.run(String.format("SET r.status=%b", carac.getFood()));
       }
     }
@@ -212,7 +212,7 @@ public final class DBAccess {
       else {
         rs = session.run(String.format("MATCH (p:Place {id: %d})", place.getId()));
         rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "vegetarian"));
-        rs = session.run("CREATE (p) -[r:%CONTAINS]-> (c)");
+        rs = session.run("CREATE (p) -[r:FOLLOWS]-> (c)");
         rs = session.run(String.format("SET r.status=%b", carac.getVegetarian()));
       }
     }
@@ -230,7 +230,7 @@ public final class DBAccess {
       else {
         rs = session.run(String.format("MATCH (p:Place {id: %d})", place.getId()));
         rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "halal"));
-        rs = session.run("CREATE (p) -[r:%CONTAINS]-> (c)");
+        rs = session.run("CREATE (p) -[r:FOLLOWS]-> (c)");
         rs = session.run(String.format("SET r.status=%b", carac.getHalal()));
       }
     }
@@ -248,7 +248,7 @@ public final class DBAccess {
       else {
         rs = session.run(String.format("MATCH (p:Place {id: %d})", place.getId()));
         rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "vegan"));
-        rs = session.run("CREATE (p) -[r:%CONTAINS]-> (c)");
+        rs = session.run("CREATE (p) -[r:FOLLOWS]-> (c)");
         rs = session.run(String.format("SET r.status=%b", carac.getVegan()));
       }
     }
@@ -266,7 +266,7 @@ public final class DBAccess {
       else {
         rs = session.run(String.format("MATCH (p:Place {id: %d})", place.getId()));
         rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "alcohol"));
-        rs = session.run("CREATE (p) -[r:%CONTAINS]-> (c)");
+        rs = session.run("CREATE (p) -[r:FOLLOWS]-> (c)");
         rs = session.run(String.format("SET r.status=%b", carac.getAlcohol()));
       }
     }
@@ -306,7 +306,7 @@ public final class DBAccess {
       else {
         rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})", user.getPseudo()));
         rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "cheap"));
-        rs = session.run("CREATE (u) -[r:%WANTS]-> (c)");
+        rs = session.run("CREATE (u) -[r:WANTS]-> (c)");
         rs = session.run(String.format("SET r.status=%b", carac.getCheap()));
       }
     }
@@ -324,7 +324,7 @@ public final class DBAccess {
       else {
         rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})", user.getPseudo()));
         rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "music"));
-        rs = session.run("CREATE (u) -[r:%WANTS]-> (c)");
+        rs = session.run("CREATE (u) -[r:WANTS]-> (c)");
         rs = session.run(String.format("SET r.status=%b", carac.getMusic()));
       }
     }
@@ -342,7 +342,7 @@ public final class DBAccess {
       else {
         rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})", user.getPseudo()));
         rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "famousPlace"));
-        rs = session.run("CREATE (u) -[r:%WANTS]-> (c)");
+        rs = session.run("CREATE (u) -[r:WANTS]-> (c)");
         rs = session.run(String.format("SET r.status=%b", carac.getFamousPlace()));
       }
     }
@@ -360,7 +360,7 @@ public final class DBAccess {
       else {
         rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})", user.getPseudo()));
         rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "food"));
-        rs = session.run("CREATE (u) -[r:%WANTS]-> (c)");
+        rs = session.run("CREATE (u) -[r:WANTS]-> (c)");
         rs = session.run(String.format("SET r.status=%b", carac.getFood()));
       }
     }
@@ -378,7 +378,7 @@ public final class DBAccess {
       else {
         rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})", user.getPseudo()));
         rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "vegetarian"));
-        rs = session.run("CREATE (u) -[r:%WANTS]-> (c)");
+        rs = session.run("CREATE (u) -[r:WANTS]-> (c)");
         rs = session.run(String.format("SET r.status=%b", carac.getVegetarian()));
       }
     }
@@ -396,7 +396,7 @@ public final class DBAccess {
       else {
         rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})", user.getPseudo()));
         rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "halal"));
-        rs = session.run("CREATE (u) -[r:%WANTS]-> (c)");
+        rs = session.run("CREATE (u) -[r:WANTS]-> (c)");
         rs = session.run(String.format("SET r.status=%b", carac.getHalal()));
       }
     }
@@ -414,7 +414,7 @@ public final class DBAccess {
       else {
         rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})", user.getPseudo()));
         rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "vegan"));
-        rs = session.run("CREATE (u) -[r:%WANTS]-> (c)");
+        rs = session.run("CREATE (u) -[r:WANTS]-> (c)");
         rs = session.run(String.format("SET r.status=%b", carac.getVegan()));
       }
     }
@@ -432,7 +432,7 @@ public final class DBAccess {
       else {
         rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})", user.getPseudo()));
         rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "alcohol"));
-        rs = session.run("CREATE (u) -[r:%WANTS]-> (c)");
+        rs = session.run("CREATE (u) -[r:WANTS]-> (c)");
         rs = session.run(String.format("SET r.status=%b", carac.getAlcohol()));
       }
     }
