@@ -8,6 +8,7 @@ public final class DB {
 
     // Create the sample of drinks
     Drink coca = new Drink();
+    Drink ice_tea = new Drink();
     Drink duvel = new Drink();
 
     // Create the sample of food
