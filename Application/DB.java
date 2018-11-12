@@ -1,5 +1,5 @@
-public final class CreateDB {
-  public static void db() {
+public final class DB {
+  public static void CreateDB() {
     // Create the constraints of the graph
     DBAccess.createUniqueConstraints();
 
@@ -84,5 +84,20 @@ public final class CreateDB {
     User u2 = new User();
     users.add(u1);
     users.add(u2);
+  }
+
+
+  public static void NearestBar() {
+
+  }
+
+
+  public static void BarsToEat(int Y) {
+
+  }
+
+
+  public static NearbyBars(int X, int Y) {
+
   }
 }
