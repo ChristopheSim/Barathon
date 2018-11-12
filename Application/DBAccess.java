@@ -8,6 +8,13 @@ import java.util.*;
 
 public final class DBAccess {
   public static void createUniqueConstraints() {
+    /*
+    This function creates the unique constraints on the following nodes:
+    - Place: id;
+    - User: pseudo;
+    - Caracteristic: name.
+    */
+
     Driver driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
     try (Session session = driver.session()) {
       StatementResult rs = session.run("CREATE CONSTRAINT ON (place:Place) ASSERT place.id IS UNIQUE");
@@ -25,10 +32,27 @@ public final class DBAccess {
       System.out.println("An error occured during the unique pseudo constraint creation!");
     }
     driver.close();
+
+    driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
+    try (Session session = driver.session()) {
+      StatementResult rs = session.run("CREATE CONSTRAINT ON (carac:Caracteristic) ASSERT carac.name IS UNIQUE");
+    }
+    catch(Exception e) {
+      System.out.println("An error occured during the unique name constraint creation!");
+    }
+    driver.close();
 	}
 
 
   public static void createPlace(Place place) {
+    /*
+    This function takes a parameter of type Place and creates a node of this type in the graph.
+    The parameters are:
+    - id (unique);
+    - name;
+    - position (longitude, latitude).
+    */
+
     Driver driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("CREATE (:Place {id: %d, name: '%s', position: '%d, %d'})", place.getId(), place.getName(), place.getAddress().getPosition().getLongitude(), place.getAddress().getPosition().getLatitude()));
@@ -41,6 +65,13 @@ public final class DBAccess {
 
 
   public static void createUser(User user) {
+    /*
+    This function takes a parameter of type User and creates a node of this type in the graph.
+    The parameters are:
+    - pseudo (unique);
+    - position (longitude, latitude).
+    */
+
     Driver driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("CREATE (:User {pseudo: '%s', position: '%d, %d'})", user.getPseudo(), user.getPosition().getLongitude(), user.getPosition().getLatitude()));
@@ -53,6 +84,10 @@ public final class DBAccess {
 
 
   public static void createCaracteristics() {
+    /*
+    This function creates one node for each caracteristics (cheap, music, famousPlace, food, vegetarian, halal, vegan, alcohol).
+    */
+
     List<String> fields = new ArrayList<String>();
     fields.add("cheap");
     fields.add("music");
@@ -69,7 +104,7 @@ public final class DBAccess {
         StatementResult rs = session.run(String.format("CREATE (:Caracteristic {name: '%s'})", field));
       }
       catch(Exception e) {
-        System.out.println("An error occured during the labels creation !");
+        System.out.println("An error occured during the caracteristics creation !");
       }
       driver.close();
     }
@@ -77,6 +112,10 @@ public final class DBAccess {
 
 
   public static void createP2CRelationship(Place place, Caracteristics carac) {
+    /*
+    This function creates a relationship between a place and the caracteristics.
+    */
+
     /*
     for (String field : fields) {
       Driver driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
@@ -96,10 +135,11 @@ public final class DBAccess {
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d})", place.getId()));
       rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "cheap"));
-      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getCheap()));
+      rs = session.run("CREATE (p) -[r:%CONTAINS]-> (c)");
+      rs = session.run(String.format("SET r.status=%b", carac.getCheap()));
     }
     catch(Exception e) {
-      System.out.println("An error occured during the relationship creation !");
+      System.out.println("An error occured during the cheap relationship creation !");
     }
     driver.close();
 
@@ -107,10 +147,11 @@ public final class DBAccess {
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d})", place.getId()));
       rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "music"));
-      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getMusic()));
+      rs = session.run("CREATE (p) -[r:%CONTAINS]-> (c)");
+      rs = session.run(String.format("SET r.status=%b", carac.getMusic()));
     }
     catch(Exception e) {
-      System.out.println("An error occured during the relationship creation !");
+      System.out.println("An error occured during the music relationship creation !");
     }
     driver.close();
 
@@ -118,10 +159,11 @@ public final class DBAccess {
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d})", place.getId()));
       rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "famousPlace"));
-      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getFamousPlace()));
+      rs = session.run("CREATE (p) -[r:%IS]-> (c)");
+      rs = session.run(String.format("SET r.status=%b", carac.getFamous()));
     }
     catch(Exception e) {
-      System.out.println("An error occured during the relationship creation !");
+      System.out.println("An error occured during the famous place relationship creation !");
     }
     driver.close();
 
@@ -129,10 +171,11 @@ public final class DBAccess {
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d})", place.getId()));
       rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "food"));
-      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getFood()));
+      rs = session.run("CREATE (p) -[r:%CONTAINS]-> (c)");
+      rs = session.run(String.format("SET r.status=%b", carac.getFood()));
     }
     catch(Exception e) {
-      System.out.println("An error occured during the relationship creation !");
+      System.out.println("An error occured during the food relationship creation !");
     }
     driver.close();
 
@@ -140,10 +183,11 @@ public final class DBAccess {
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d})", place.getId()));
       rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "vegetarian"));
-      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getVegetarian()));
+      rs = session.run("CREATE (p) -[r:%CONTAINS]-> (c)");
+      rs = session.run(String.format("SET r.status=%b", carac.getVegetarian()));
     }
     catch(Exception e) {
-      System.out.println("An error occured during the relationship creation !");
+      System.out.println("An error occured during the vegetarian relationship creation !");
     }
     driver.close();
 
@@ -151,10 +195,11 @@ public final class DBAccess {
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d})", place.getId()));
       rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "halal"));
-      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getHalal()));
+      rs = session.run("CREATE (p) -[r:%CONTAINS]-> (c)");
+      rs = session.run(String.format("SET r.status=%b", carac.getHalal()));
     }
     catch(Exception e) {
-      System.out.println("An error occured during the relationship creation !");
+      System.out.println("An error occured during the halal relationship creation !");
     }
     driver.close();
 
@@ -162,10 +207,11 @@ public final class DBAccess {
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d})", place.getId()));
       rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "vegan"));
-      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getVegan()));
+      rs = session.run("CREATE (p) -[r:%CONTAINS]-> (c)");
+      rs = session.run(String.format("SET r.status=%b", carac.getVegan()));
     }
     catch(Exception e) {
-      System.out.println("An error occured during the relationship creation !");
+      System.out.println("An error occured during the vegan relationship creation !");
     }
     driver.close();
 
@@ -173,16 +219,21 @@ public final class DBAccess {
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d})", place.getId()));
       rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "alcohol"));
-      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getAlcohol()));
+      rs = session.run("CREATE (p) -[r:%CONTAINS]-> (c)");
+      rs = session.run(String.format("SET r.status=%b", carac.getAlcohol()));
     }
     catch(Exception e) {
-      System.out.println("An error occured during the relationship creation !");
+      System.out.println("An error occured during the alcohol relationship creation !");
     }
     driver.close();
 	}
 
 
   public static void createU2CRelationship(User user, Caracteristics carac) {
+    /*
+    This function creates a relationship between a place and the caracteristics.
+    */
+
     /*
     for (String field : fields) {
       Driver driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
@@ -202,10 +253,11 @@ public final class DBAccess {
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})", user.getPseudo()));
       rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "cheap"));
-      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getCheap()));
+      rs = session.run("CREATE (u) -[r:%WANTS]-> (c)");
+      rs = session.run(String.format("SET r.status=%b", carac.getCheap()));
     }
     catch(Exception e) {
-      System.out.println("An error occured during the relationship creation !");
+      System.out.println("An error occured during the cheap relationship creation !");
     }
     driver.close();
 
@@ -213,10 +265,11 @@ public final class DBAccess {
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})", user.getPseudo()));
       rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "music"));
-      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getMusic()));
+      rs = session.run("CREATE (u) -[r:%WANTS]-> (c)");
+      rs = session.run(String.format("SET r.status=%b", carac.getMusic()));
     }
     catch(Exception e) {
-      System.out.println("An error occured during the relationship creation !");
+      System.out.println("An error occured during the music relationship creation !");
     }
     driver.close();
 
@@ -224,10 +277,11 @@ public final class DBAccess {
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})", user.getPseudo()));
       rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "famousPlace"));
-      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getFamousPlace()));
+      rs = session.run("CREATE (u) -[r:%WANTS]-> (c)");
+      rs = session.run(String.format("SET r.status=%b", carac.getFamousPlace()));
     }
     catch(Exception e) {
-      System.out.println("An error occured during the relationship creation !");
+      System.out.println("An error occured during the famous place relationship creation !");
     }
     driver.close();
 
@@ -235,10 +289,11 @@ public final class DBAccess {
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})", user.getPseudo()));
       rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "food"));
-      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getFood()));
+      rs = session.run("CREATE (u) -[r:%WANTS]-> (c)");
+      rs = session.run(String.format("SET r.status=%b", carac.getFood()));
     }
     catch(Exception e) {
-      System.out.println("An error occured during the relationship creation !");
+      System.out.println("An error occured during the food relationship creation !");
     }
     driver.close();
 
@@ -246,10 +301,11 @@ public final class DBAccess {
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})", user.getPseudo()));
       rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "vegetarian"));
-      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getVegetarian()));
+      rs = session.run("CREATE (u) -[r:%WANTS]-> (c)");
+      rs = session.run(String.format("SET r.status=%b", carac.getVegetarian()));
     }
     catch(Exception e) {
-      System.out.println("An error occured during the relationship creation !");
+      System.out.println("An error occured during the vegetarian relationship creation !");
     }
     driver.close();
 
@@ -257,10 +313,11 @@ public final class DBAccess {
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})", user.getPseudo()));
       rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "halal"));
-      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getHalal()));
+      rs = session.run("CREATE (u) -[r:%WANTS]-> (c)");
+      rs = session.run(String.format("SET r.status=%b", carac.getHalal()));
     }
     catch(Exception e) {
-      System.out.println("An error occured during the relationship creation !");
+      System.out.println("An error occured during the halal relationship creation !");
     }
     driver.close();
 
@@ -268,10 +325,11 @@ public final class DBAccess {
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})", user.getPseudo()));
       rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "vegan"));
-      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getVegan()));
+      rs = session.run("CREATE (u) -[r:%WANTS]-> (c)");
+      rs = session.run(String.format("SET r.status=%b", carac.getVegan()));
     }
     catch(Exception e) {
-      System.out.println("An error occured during the relationship creation !");
+      System.out.println("An error occured during the vegan relationship creation !");
     }
     driver.close();
 
@@ -279,16 +337,21 @@ public final class DBAccess {
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})", user.getPseudo()));
       rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", "alcohol"));
-      rs = session.run(String.format("CREATE (p) -[r:%s]-> (c)", carac.getAlcohol()));
+      rs = session.run("CREATE (u) -[r:%WANTS]-> (c)");
+      rs = session.run(String.format("SET r.status=%b", carac.getAlcohol()));
     }
     catch(Exception e) {
-      System.out.println("An error occured during the relationship creation !");
+      System.out.println("An error occured during the alcohol relationship creation !");
     }
     driver.close();
 	}
 
 
   public static void createP2PRelationship(Place place1, Place place2) {
+    /*
+    This function creates a relationship AWAY between two places. This relationship contains one property, the distance.
+    */
+
     double distance = Math.sqrt(Math.pow(place1.getLongitude() - place2.getLongitude(), 2) + Math.pow(place1.getLatitude() - place2.getLatitude(), 2));
     Driver driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
     try (Session session = driver.session()) {
