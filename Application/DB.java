@@ -88,8 +88,24 @@ public final class DB {
   }
 
 
-  public static void NearestBar() {
-
+  public static void NearestBar(User user) {
+    Driver driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
+    try (Session session = driver.session()) {
+      StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[AWAY]-(p:Place RETURN r)", user.getPseudo(), place2.getId()));
+      if (rs != null) {
+        rs = session.run(String.format("SET r.distance=%d", distance));
+      }
+      else {
+        rs = session.run(String.format("MATCH (p1:Place {id: %d})", place1.getId()));
+        rs = session.run(String.format("MATCH (p2:Place {id: %d})", place2.getId()));
+        rs = session.run("CREATE (p1) -[r:AWAY]-> (p2)");
+        rs = session.run(String.format("SET r.distance=%d", distance));
+      }
+    }
+    catch(Exception e) {
+      System.out.println("An error occured during the Place-Place relationship creation !");
+    }
+    driver.close();
   }
 
 
