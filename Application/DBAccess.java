@@ -85,6 +85,26 @@ public final class DBAccess {
 	}
 
 
+  public static void findPlaces() {
+    /*
+    This function searches all places in the graph.
+    */
+
+    Driver driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
+    try (Session session = driver.session()) {
+      StatementResult rs = session.run("MATCH (p:Place) RETURN p");
+      if (rs != null) { }
+      else {
+        System.out.println("There is no place in the database !");
+      }
+    }
+    catch(Exception e) {
+      System.out.println("An error occured during the user creation !");
+    }
+    driver.close();
+	}
+
+
   public static void createUser(User user) {
     /*
     This function takes a parameter of type User and creates a node of this type in the graph.
