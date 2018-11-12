@@ -64,6 +64,27 @@ public final class DBAccess {
 	}
 
 
+  public static void matchPlace(Place place) {
+    /*
+    This function takes a parameter of type Place and searches a node of this type in the graph.
+    If no node is found, it will be created.
+    */
+
+    Driver driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
+    try (Session session = driver.session()) {
+      StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d}) RETURN p", place.getId()));
+      if (rs != null) { }
+      else {
+        createPlace(place);
+      }
+    }
+    catch(Exception e) {
+      System.out.println("An error occured during the user creation !");
+    }
+    driver.close();
+	}
+
+
   public static void createUser(User user) {
     /*
     This function takes a parameter of type User and creates a node of this type in the graph.
@@ -78,6 +99,29 @@ public final class DBAccess {
     }
     catch(Exception e) {
       System.out.println("An error occured during the user creation !");
+    }
+    driver.close();
+	}
+
+
+  public static void matchUser(User user) {
+    /*
+    This function takes a parameter of type User and searches a node of this type in the graph.
+    If no node is found, it will be created.
+    */
+
+    Driver driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
+    try (Session session = driver.session()) {
+      StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'}) RETURN u", user.getPseudo()));
+      if (rs != null) {
+        rs = session.run(String.format("SET u.position='%d, %d'", user.getPosition().getLongitude(), user.getPosition().getLatitude()));
+      }
+      else {
+        createUser(user);
+      }
+    }
+    catch(Exception e) {
+      System.out.println("An error occured during the user matching !");
     }
     driver.close();
 	}
