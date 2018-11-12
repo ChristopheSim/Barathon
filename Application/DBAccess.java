@@ -512,7 +512,7 @@ public final class DBAccess {
     This function creates a relationship AWAY between two places. This relationship contains one property, the distance.
     */
 
-    double distance = Math.sqrt(Math.pow(place1.getLongitude() - place2.getLongitude(), 2) + Math.pow(place1.getLatitude() - place2.getLatitude(), 2));
+    double distance = Math.sqrt(Math.pow(place1.getAddress().getPosition().getLongitude() - place2.getAddress().getPosition().getLongitude(), 2) + Math.pow(place1.getAddress().getPosition().getLatitude() - place2.getAddress().getPosition().getLatitude(), 2));
     Driver driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (p1:Place {id: %d})-[r]-(p2:Place {id: %d} RETURN r)", place1.getId(), place2.getId()));
@@ -527,8 +527,34 @@ public final class DBAccess {
       }
     }
     catch(Exception e) {
-      System.out.println("An error occured during the relationship creation !");
+      System.out.println("An error occured during the Place-Place relationship creation !");
     }
     driver.close();
 	}
+
+
+  public static void createU2PRelationship(User user, Place place) {
+    /*
+    This function creates a relationship AWAY between two places. This relationship contains one property, the distance.
+    */
+
+    double distance = Math.sqrt(Math.pow(user.getLongitude() - place.getAddress().getPosition().getLongitude(), 2) + Math.pow(user.getLatitude() - place.getAddress().getPosition().getLatitude(), 2));
+    Driver driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
+    try (Session session = driver.session()) {
+      StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r]-(p:Place {id: %d} RETURN r)", user.getPseudo(), place.getId()));
+      if (rs != null) {
+        rs = session.run(String.format("SET r.distance=%d", distance));
+      }
+      else {
+        rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})", user.getPseudo()));
+        rs = session.run(String.format("MATCH (p:Place {id: %d})", place.getId()));
+        rs = session.run("CREATE (u) -[r:AWAY]-> (p)");
+        rs = session.run(String.format("SET r.distance=%d", distance));
+      }
+    }
+    catch(Exception e) {
+      System.out.println("An error occured during the User-Place relationship creation !");
+    }
+    driver.close();
+  }
 }
