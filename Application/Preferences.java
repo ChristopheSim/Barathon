@@ -41,4 +41,8 @@ public class Preferences {
     public boolean getTrip() {
         return this.trip;
     }
+
+    public int getNbCaracteristic() {
+        return this.caracteristics.size();
+    }
 }

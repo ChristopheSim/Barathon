@@ -1,3 +1,4 @@
+import java.io.Console;
 import java.util.ArrayList;
 
 public class User {
@@ -7,6 +8,7 @@ public class User {
     private Position position;
     private Preferences preferences;
     private String pseudo;
+    private Int choice;
 
     public void User(Position po, Preferences pr) {
         this.position = po;
@@ -47,7 +49,15 @@ public class User {
     }
 
     public String getPseudo() {
-        return this.pseudo();
+        return this.pseudo;
+    }
+
+    public void setChoice(Int c) {
+        this.choice = c;
+    }
+
+    public Int getChoice() {
+        return this.choice;
     }
 
     private void clearList() {
@@ -60,11 +70,22 @@ public class User {
         this.clearList();
         if (this.preferences.getTrip()) {
             StrategyTrip st = new StrategyTrip();
-            this.trips = st.solve(); //ERROR
+            this.trips = st.solve(this.position, this.preferences); //ERROR
         }
         else if (!this.preferences.getTrip()) {
             StrategyBars sb = new StrategyBars();
-            this.bars = sb.solve(); //ERROR
+            this.bars = sb.solve(this.position, this.preferences); //ERROR
         }
+    }
+
+    public Int ChooseCaracterictics() {
+        Console console = System.Console();
+
+        String msg = String.format()"Choose Caracteristic [0-%01d]", this.preferences.getNbCaracteristic());
+        System.out.println(msg);
+        Int input = Integer.parseInt(console.readLine());
+        //TO REMOVE
+        this.choice = input;
+        return input;
     }
 }
