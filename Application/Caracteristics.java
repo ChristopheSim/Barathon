@@ -57,4 +57,32 @@ public class Caracteristics {
     public void setCheap(boolean cheap) {
         this.cheap = cheap;
     }
+
+    public void setMusic(boolean music) {
+        this.music = music;
+    }
+
+    public void setFamousPlace(boolean fp) {
+        this.famousPlace = fp;
+    }
+
+    public void setFood(boolean food) {
+      this.food = food;
+    }
+
+    public void setVegetarian(boolean vegetarian) {
+      this.vegetarian = vegetarian;
+    }
+
+    public void setHalal(boolean halal) {
+      this.halal = halal;
+    }
+
+    public void setVegan(boolean vegan) {
+      this.vegan = vegan;
+    }
+
+    public void setAlcohol(boolean alcohol) {
+      this.alcohol = alcohol;
+    }
 }
