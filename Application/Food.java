@@ -24,4 +24,16 @@ public class Food extends Component {
 	public boolean GetVegetarian () {
 		return this.vegetarian;
 	}
+
+	public void setVegan (boolean vegan) {
+		this.vegan = vegan;
+	}
+
+	public void setHalal (boolean halal) {
+		this.halal = halal;
+	}
+
+	public void setVegetarian (boolean vegetarian) {
+		this.vegetarian = vegetarian;
+	}
 }
