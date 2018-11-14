@@ -24,4 +24,24 @@ public class Place {
     public Address getAddress(){
         return this.address;
     }
+
+    public void setAddress(Address address) {
+  		this.address = address;
+  	}
+
+    public Menu getMenu() {
+      return this.menu;
+    }
+
+    public void setMenu(Menu menu) {
+  		this.menu = menu;
+  	}
+
+    public Caracteristics getCaracteristics() {
+      return this.caracteristics;
+    }
+
+    public void setCaracteristics(Caracteristics carac) {
+  		this.caracteristics = carac;
+  	}
 }
