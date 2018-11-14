@@ -28,7 +28,7 @@ public class Drink extends Component {
 			}
 		}
 		catch (Exception e) {
-			System.out.println("Alcohol Comparison Error: Doucble.compare exception");
+			System.out.println("Alcohol Comparison Error: Double.compare exception");
 		}
 	}
 

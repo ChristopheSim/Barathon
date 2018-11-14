@@ -1,3 +1,5 @@
+import java.lang.*;
+
 public class Position {
 
     private Double longitude;
@@ -24,8 +26,14 @@ public class Position {
         this.latitude = la;
     }
 
-    public boolean isEqually(Position p) {
-        //to implement
-        return this.longitude == p.getLongitude() && this.latitude == p.getLatitude();
+    public boolean isEqual(Position p) {
+      try {
+  			int result = Double.compare(this.longitude, p.longitude);
+        int result2 = Double.compare(this.latitude, p.latitude);
+        return result == 0 && result2 == 0;
+  		}
+  		catch (Exception e) {
+  			System.out.println("Position Comparison Error: Double.compare exception");
+  		}
     }
 }
