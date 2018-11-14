@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<project name="Barathon" basedir=".">
+	<description>
+    		Build file for Barathon
+  	</description>
+	
+	<!-- Sets variables which can later be used. -->
+	<!-- The value of a property is accessed via ${} -->
+    	<property name="application" location="Application" />
+	<property name="ressources" location="Application/Ressources" />
+	<property name="build" location="build" />
+
+	<target name="init">
+    	<!-- Create the time stamp -->
+    		<tstamp/>
+    		<!-- Create the build directory structure used by compile -->
+    		<mkdir dir="${build}"/>
+  	</target>
+
+    	<target name="compile" depends="init" description="compile the source">
+    	<!-- Compile the Java code from ${application} into ${build} -->
+    		<javac srcdir="${application}" destdir="${build}"/>
+	</target>
+
+	<target name="clean" description="clean up">
+    	<!-- Delete the ${build} directory tree -->
+    		<delete dir="${build}"/>
+	</target>
+
+	<path id="build.classpath">
+        	<fileset dir="${ressources}">
+            		<include name="neo4j-java-driver-1.4.4.jar" />
+        	</fileset>
+    	</path>
+
+</project>
+
