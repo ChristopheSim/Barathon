@@ -7,7 +7,7 @@ public class Preferences {
     private boolean trip;
 
     Preferences() {
-        caracteristics = new ArrayList<Caracteristics>();
+        this.caracteristics = new ArrayList<Caracteristics>();
         this.nbBar = 1;
         this.radius = 1000;
         this.trip = false;

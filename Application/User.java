@@ -3,14 +3,16 @@ import java.util.ArrayList;
 
 public class User {
 
-    private ArrayList<Place> bars = new ArrayList<Place>();
-    private ArrayList<Place> trips = new ArrayList<Place>();
+    private ArrayList<Place> bars;
+    private ArrayList<Place> trips;
     private Position position;
     private Preferences preferences;
     private String pseudo;
     private Int choice;
 
     public void User(Position po, Preferences pr) {
+        this.bars = new ArrayList<Place>();
+        this.trips = new ArrayList<Place>();
         this.position = po;
         this.preferences = pr;
     }
@@ -24,12 +26,37 @@ public class User {
         return;
     }
 
+    public void AddBar(Place b) {
+        this.bars.add(b);
+        return;
+    }
+
+    public void RemoveBar(Place b) {
+      if (this.bars.contains(b)) {
+        this.bars.remove(b);
+      } else {
+        System.out.println("Place not deleted (not found)");
+      }
+    }
+
     public ArrayList<Place> getTrips() {
         return this.trips;
     }
 
     public void setTrips(ArrayList<Place> t) {
         this.trips = t;
+    }
+
+    public void AddTrip(ArrayList<Place> t) {
+      this.trips.add(t);
+    }
+
+    public void RemoveTrip(ArrayList<Place> t) {
+      if (this.trips.contains(t)) {
+        this.trips.remove(t);
+      } else {
+        System.out.println("Trip not deleted (not found)");
+      }
     }
 
     public Position getPosition() {
@@ -42,6 +69,10 @@ public class User {
 
     public Preferences getPreferences() {
         return this.preferences;
+    }
+
+    public void setPreferences(Preferences pr) {
+      this.preferences = pr;
     }
 
     public void setPseudo(String p) {
