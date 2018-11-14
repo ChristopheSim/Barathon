@@ -12,7 +12,7 @@ public abstract class Component {
 
 	public boolean IsEqual (Component c) {
 
-		return true;
+		return this.name == c.getName();
 
 	}
 
