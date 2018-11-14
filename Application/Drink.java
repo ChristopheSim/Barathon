@@ -39,4 +39,12 @@ public class Drink extends Component {
 	public boolean GetSparkling () {
 		return this.sparkling;
 	}
+
+	public void setAlcohol(double alcohol) {
+		this.alcohol = alcohol;
+	}
+
+	public void setSparkling (boolean sparkling) {
+		this.sparkling = sparkling;
+	}
 }
