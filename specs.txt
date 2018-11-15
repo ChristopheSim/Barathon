@@ -30,4 +30,3 @@ Métriques pour mesurer la qualité de code:
 ... ?
 
 Utilisation de(s) design pattern(s): strategy
-

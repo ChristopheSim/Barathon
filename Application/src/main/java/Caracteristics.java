@@ -3,21 +3,19 @@ public class Caracteristics {
     private boolean music;
     private boolean famousPlace;
     private boolean food;
-    private int foodNb;
     private boolean vegetarian;
     private boolean halal;
     private boolean vegan;
     private boolean alcohol;
 
     Caracteristics(boolean cheap, boolean music, boolean famousPlace,
-        boolean food, int foodNb, boolean vegetarian, boolean halal,
+        boolean food, boolean vegetarian, boolean halal,
         boolean vegan, boolean alcohol)
         {
             this.cheap = cheap;
             this.music = music;
             this.famousPlace = famousPlace;
             this.food = food;
-            this.foodNb = foodNb;
             this.vegetarian = vegetarian;
             this.halal = halal;
             this.vegan = vegan;
@@ -40,10 +38,6 @@ public class Caracteristics {
         return this.food;
     }
 
-    public int getFoodNb() {
-        return this.foodNb;
-    }
-
     public boolean getVegetarian() {
         return this.vegetarian;
     }
@@ -62,5 +56,33 @@ public class Caracteristics {
 
     public void setCheap(boolean cheap) {
         this.cheap = cheap;
+    }
+
+    public void setMusic(boolean music) {
+        this.music = music;
+    }
+
+    public void setFamousPlace(boolean fp) {
+        this.famousPlace = fp;
+    }
+
+    public void setFood(boolean food) {
+      this.food = food;
+    }
+
+    public void setVegetarian(boolean vegetarian) {
+      this.vegetarian = vegetarian;
+    }
+
+    public void setHalal(boolean halal) {
+      this.halal = halal;
+    }
+
+    public void setVegan(boolean vegan) {
+      this.vegan = vegan;
+    }
+
+    public void setAlcohol(boolean alcohol) {
+      this.alcohol = alcohol;
     }
 }
