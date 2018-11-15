@@ -10,17 +10,17 @@ public abstract class Component {
 
 	}
 
-	public boolean IsEqual (Component c) {
+	public boolean isEqual (Component c) {
 
 		return this.name == c.getName();
 
 	}
 
-	public String GetName () {
+	public String getName () {
 		return this.name;
 	}
 
-	public int GetPrice () {
+	public int getPrice () {
 		return this.price;
 	}
 
