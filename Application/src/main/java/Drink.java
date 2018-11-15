@@ -14,7 +14,7 @@ public class Drink extends Component {
 
 	}
 
-	public boolean GetSoft () {
+	public boolean getSoft () {
 		// A drink is soft is it contains no alcohol
 		try {
 			double zero = 0.0;
@@ -32,11 +32,11 @@ public class Drink extends Component {
 		}
 	}
 
-	public double GetAlcohol () {
+	public double getAlcohol () {
 		return this.alcohol;
 	}
 
-	public boolean GetSparkling () {
+	public boolean getSparkling () {
 		return this.sparkling;
 	}
 
