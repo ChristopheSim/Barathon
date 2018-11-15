@@ -26,12 +26,12 @@ public class User {
         return;
     }
 
-    public void AddBar(Place b) {
+    public void addBar(Place b) {
         this.bars.add(b);
         return;
     }
 
-    public void RemoveBar(Place b) {
+    public void removeBar(Place b) {
       if (this.bars.contains(b)) {
         this.bars.remove(b);
       } else {
@@ -47,11 +47,11 @@ public class User {
         this.trips = t;
     }
 
-    public void AddTrip(ArrayList<Place> t) {
+    public void addTrip(ArrayList<Place> t) {
       this.trips.add(t);
     }
 
-    public void RemoveTrip(ArrayList<Place> t) {
+    public void removeTrip(ArrayList<Place> t) {
       if (this.trips.contains(t)) {
         this.trips.remove(t);
       } else {
@@ -109,7 +109,7 @@ public class User {
         }
     }
 
-    public Int ChooseCaracterictics() {
+    public Int chooseCaracterictics() {
         Console console = System.Console();
 
         String msg = String.format()"Choose Caracteristic [0-%01d]", this.preferences.getNbCaracteristic());
