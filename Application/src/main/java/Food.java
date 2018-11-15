@@ -13,15 +13,15 @@ public class Food extends Component {
 
 	}
 
-	public boolean GetVegan () {
+	public boolean getVegan () {
 		return this.vegan;
 	}
 
-	public boolean GetHalal () {
+	public boolean getHalal () {
 		return this.halal;
 	}
 
-	public boolean GetVegetarian () {
+	public boolean getVegetarian () {
 		return this.vegetarian;
 	}
 
