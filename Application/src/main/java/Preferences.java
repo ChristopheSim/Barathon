@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Preferences {
     private ArrayList<Caracteristics> caracteristics;
-    private int radius; // In meters
+    private int radius;
     private boolean trip;
 
     Preferences() {
