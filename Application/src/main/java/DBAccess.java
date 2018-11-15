@@ -85,7 +85,7 @@ public final class DBAccess {
       StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d}) RETURN p", place.getId()));
       if (rs != null) { }
       else {
-        createPlace(place);
+        this.createPlace(place);
       }
     }
     catch(Exception e) {
@@ -95,21 +95,27 @@ public final class DBAccess {
 	}
 
 
-  public static void findPlaces() {
+  public static ArrayList<Place> findPlaces() {
     /*
     This function searches all places in the graph.
     */
 
+    ArrayList<Place> places= new ArrayList<Place>();
     Driver driver = this.connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run("MATCH (p:Place) RETURN p");
-      if (rs != null) { }
+      if (rs != null) {
+        places.addAll(rs.get("p"));
+        return places;
+      }
       else {
         System.out.println("There is no place in the database !");
+        return places;
       }
     }
     catch(Exception e) {
-      System.out.println("An error occured during the user creation !");
+      System.out.println("An error occured during the places searching !");
+      return places;
     }
     driver.close();
 	}
@@ -564,6 +570,17 @@ public final class DBAccess {
     }
     catch(Exception e) {
       System.out.println("An error occured during the User-Place relationship creation !");
+    }
+    driver.close();
+  }
+
+
+  public static void dropDatabase() {
+    Driver driver = this.connect();
+    try (Session session = driver.session()) {
+      StatementResult rs = session.run("MATCH (n) DETACH DELETE n");
+    catch(Exception e) {
+      System.out.println("An error occured during the databse erasing");
     }
     driver.close();
   }
