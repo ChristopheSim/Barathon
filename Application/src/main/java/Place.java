@@ -1,16 +1,26 @@
 public class Place {
+    private int id;
     private String name;
     private Address address;
     private Menu menu;
     private Caracteristics caracteristics;
 
-    Place(String name, Address address, Menu menu,
+    public Place(int id, String name, Address address, Menu menu,
         Caracteristics caracteristics)
     {
+        this.id = id;
         this.name = name;
         this.address = address;
         this.menu = menu;
         this.caracteristics = caracteristics;
+    }
+
+    public int getId(){
+        return this.id;
+    }
+
+    public void setId(int id){
+        this.id = id;
     }
 
     public String getName(){
