@@ -4,7 +4,7 @@ public class Address {
     private String number;
     private Position position;
 
-    public void Address(String s, String n, Position p) {
+    public Address(String s, String n, Position p) {
         this.street = s;
         this.number = n;
         this.position = p;
