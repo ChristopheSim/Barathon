@@ -89,7 +89,7 @@ public final class DBAccess {
       }
     }
     catch(Exception e) {
-      System.out.println("An error occured during the user creation !");
+      System.out.println("An error occured during the place matching !");
     }
     driver.close();
 	}
@@ -103,9 +103,12 @@ public final class DBAccess {
     ArrayList<Place> places= new ArrayList<Place>();
     Driver driver = connect();
     try (Session session = driver.session()) {
-      StatementResult rs = session.run("MATCH (p:Place) RETURN p");
+      StatementResult rs = session.run("MATCH (p:Place) RETURN p.name AS name");
       if (rs != null) {
-        places.addAll(rs.get("p"));
+        while (rs.hasNext()) {
+          Record record = rs.next();
+          places.add(record.get("name"));
+        }
         return places;
       }
       else {
@@ -528,7 +531,7 @@ public final class DBAccess {
     This function creates a relationship AWAY between two places. This relationship contains one property, the distance.
     */
 
-    double distance = Math.sqrt(Math.pow(place1.getAddress().getPosition().getLongitude() - place2.getAddress().getPosition().getLongitude(), 2) + Math.pow(place1.getAddress().getPosition().getLatitude() - place2.getAddress().getPosition().getLatitude(), 2));
+    double distance = 111.03 * Math.sqrt(Math.pow(place1.getAddress().getPosition().getLongitude() - place2.getAddress().getPosition().getLongitude(), 2) + Math.pow(place1.getAddress().getPosition().getLatitude() - place2.getAddress().getPosition().getLatitude(), 2));
     Driver driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (p1:Place {id: %d})-[r]-(p2:Place {id: %d} RETURN r)", place1.getId(), place2.getId()));
