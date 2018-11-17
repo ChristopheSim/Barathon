@@ -135,7 +135,8 @@ public final class DB {
       // To continue the query
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[AWAY]-(p:Place RETURN p)", user.getPseudo()));
       if (rs != null) {
-        return rs;
+        //return rs.get("p.name");
+        // Add the JSON component to find the place
       }
       else {
         System.out.println("Impossible to find the nearest bar.\nNo relationship AWAY in this graph.");
@@ -145,6 +146,7 @@ public final class DB {
       System.out.println("An error occured during the search of the nearest bar !");
     }
     driver.close();
+    return new Place(11, "Le bouche trou", new Address("Test", "Test", new Position(1.1, 2.2)), new Menu(), new Caracteristics(false, false, false, false, false, false, false, false));
   }
 
 
@@ -154,6 +156,6 @@ public final class DB {
 
 
   public static ArrayList<Place> NearbyBars(int X, int Y) {
-
+    return new ArrayList<Place>();
   }
 }
