@@ -7,13 +7,13 @@ import java.util.*;
 
 
 public final class DBAccess {
-  private String ip = "localhost:7687";
-  private String login = "neo4j";
-  private String password = "NEO4J";
+  private static String ip = "localhost:7687";
+  private static String login = "neo4j";
+  private static String password = "NEO4J";
 
 
   public static Driver connect() {
-    return GraphDatabase.driver(String.format("bolt://%s", this.ip), AuthTokens.basic(this.login, this.password));
+    return GraphDatabase.driver(String.format("bolt://%s", ip), AuthTokens.basic(login, password));
   }
 
 
@@ -25,7 +25,7 @@ public final class DBAccess {
     - Caracteristic: name.
     */
 
-    Driver driver = this.connect();
+    Driver driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run("CREATE CONSTRAINT ON (place:Place) ASSERT place.id IS UNIQUE");
     }
@@ -34,7 +34,7 @@ public final class DBAccess {
     }
     driver.close();
 
-    driver = this.connect();
+    driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run("CREATE CONSTRAINT ON (user:User) ASSERT user.pseudo IS UNIQUE");
     }
@@ -43,7 +43,7 @@ public final class DBAccess {
     }
     driver.close();
 
-    driver = this.connect();
+    driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run("CREATE CONSTRAINT ON (carac:Caracteristic) ASSERT carac.name IS UNIQUE");
     }
@@ -63,7 +63,7 @@ public final class DBAccess {
     - position (longitude, latitude).
     */
 
-    Driver driver = this.connect();
+    Driver driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("CREATE (:Place {id: %d, name: '%s', position: '%d, %d'})", place.getId(), place.getName(), place.getAddress().getPosition().getLongitude(), place.getAddress().getPosition().getLatitude()));
     }
@@ -80,12 +80,12 @@ public final class DBAccess {
     If no node is found, it will be created.
     */
 
-    Driver driver = this.connect();
+    Driver driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d}) RETURN p", place.getId()));
       if (rs != null) { }
       else {
-        this.createPlace(place);
+        createPlace(place);
       }
     }
     catch(Exception e) {
@@ -101,7 +101,7 @@ public final class DBAccess {
     */
 
     ArrayList<Place> places= new ArrayList<Place>();
-    Driver driver = this.connect();
+    Driver driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run("MATCH (p:Place) RETURN p");
       if (rs != null) {
@@ -129,7 +129,7 @@ public final class DBAccess {
     - position (longitude, latitude).
     */
 
-    Driver driver = this.connect();
+    Driver driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("CREATE (:User {pseudo: '%s', position: '%d, %d'})", user.getPseudo(), user.getPosition().getLongitude(), user.getPosition().getLatitude()));
     }
@@ -146,7 +146,7 @@ public final class DBAccess {
     If no node is found, it will be created.
     */
 
-    Driver driver = this.connect();
+    Driver driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'}) RETURN u", user.getPseudo()));
       if (rs != null) {
@@ -179,7 +179,7 @@ public final class DBAccess {
     fields.add("alcohol");
 
     for (String field : fields) {
-      Driver driver = this.connect();
+      Driver driver = connect();
       try (Session session = driver.session()) {
         StatementResult rs = session.run(String.format("CREATE (:Caracteristic {name: '%s'})", field));
       }
@@ -198,7 +198,7 @@ public final class DBAccess {
 
     /*
     for (String field : fields) {
-      Driver driver = this.connect();
+      Driver driver = connect();
       try (Session session = driver.session()) {
         StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d})", place.getId()));
         rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", field));
@@ -211,7 +211,7 @@ public final class DBAccess {
     }
     */
 
-    Driver driver = this.connect();
+    Driver driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d})-[r]-(c:Caracteristic {name: '%s'} RETURN r)", place.getId(), "cheap"));
       if (rs != null) {
@@ -229,7 +229,7 @@ public final class DBAccess {
     }
     driver.close();
 
-    driver = this.connect();
+    driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d})-[r]-(c:Caracteristic {name: '%s'} RETURN r)", place.getId(), "music"));
       if (rs != null) {
@@ -247,7 +247,7 @@ public final class DBAccess {
     }
     driver.close();
 
-    driver = this.connect();
+    driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d})-[r]-(c:Caracteristic {name: '%s'} RETURN r)", place.getId(), "famousPlace"));
       if (rs != null) {
@@ -265,7 +265,7 @@ public final class DBAccess {
     }
     driver.close();
 
-    driver = this.connect();
+    driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d})-[r]-(c:Caracteristic {name: '%s'} RETURN r)", place.getId(), "food"));
       if (rs != null) {
@@ -283,7 +283,7 @@ public final class DBAccess {
     }
     driver.close();
 
-    driver = this.connect();
+    driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d})-[r]-(c:Caracteristic {name: '%s'} RETURN r)", place.getId(), "vegetarian"));
       if (rs != null) {
@@ -301,7 +301,7 @@ public final class DBAccess {
     }
     driver.close();
 
-    driver = this.connect();
+    driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d})-[r]-(c:Caracteristic {name: '%s'} RETURN r)", place.getId(), "halal"));
       if (rs != null) {
@@ -319,7 +319,7 @@ public final class DBAccess {
     }
     driver.close();
 
-    driver = this.connect();
+    driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d})-[r]-(c:Caracteristic {name: '%s'} RETURN r)", place.getId(), "vegan"));
       if (rs != null) {
@@ -337,7 +337,7 @@ public final class DBAccess {
     }
     driver.close();
 
-    driver = this.connect();
+    driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d})-[r]-(c:Caracteristic {name: '%s'} RETURN r)", place.getId(), "alcohol"));
       if (rs != null) {
@@ -364,7 +364,7 @@ public final class DBAccess {
 
     /*
     for (String field : fields) {
-      Driver driver = this.connect();
+      Driver driver = connect();
       try (Session session = driver.session()) {
         StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})", user.getPseudo()));
         rs = session.run(String.format("MATCH (c:Caracteristic {name: '%s'})", field));
@@ -377,7 +377,7 @@ public final class DBAccess {
     }
     */
 
-    Driver driver = this.connect();
+    Driver driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r]-(c:Caracteristic {name: '%s'} RETURN r)", user.getPseudo(), "cheap"));
       if (rs != null) {
@@ -395,7 +395,7 @@ public final class DBAccess {
     }
     driver.close();
 
-    driver = this.connect();
+    driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r]-(c:Caracteristic {name: '%s'} RETURN r)", user.getPseudo(), "music"));
       if (rs != null) {
@@ -413,7 +413,7 @@ public final class DBAccess {
     }
     driver.close();
 
-    driver = this.connect();
+    driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r]-(c:Caracteristic {name: '%s'} RETURN r)", user.getPseudo(), "famousPlace"));
       if (rs != null) {
@@ -431,7 +431,7 @@ public final class DBAccess {
     }
     driver.close();
 
-    driver = this.connect();
+    driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r]-(c:Caracteristic {name: '%s'} RETURN r)", user.getPseudo(), "food"));
       if (rs != null) {
@@ -449,7 +449,7 @@ public final class DBAccess {
     }
     driver.close();
 
-    driver = this.connect();
+    driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r]-(c:Caracteristic {name: '%s'} RETURN r)", user.getPseudo(), "vegetarian"));
       if (rs != null) {
@@ -467,7 +467,7 @@ public final class DBAccess {
     }
     driver.close();
 
-    driver = this.connect();
+    driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r]-(c:Caracteristic {name: '%s'} RETURN r)", user.getPseudo(), "halal"));
       if (rs != null) {
@@ -485,7 +485,7 @@ public final class DBAccess {
     }
     driver.close();
 
-    driver = this.connect();
+    driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r]-(c:Caracteristic {name: '%s'} RETURN r)", user.getPseudo(), "vegan"));
       if (rs != null) {
@@ -503,7 +503,7 @@ public final class DBAccess {
     }
     driver.close();
 
-    driver = this.connect();
+    driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r]-(c:Caracteristic {name: '%s'} RETURN r)", user.getPseudo(), "alcohol"));
       if (rs != null) {
@@ -529,7 +529,7 @@ public final class DBAccess {
     */
 
     double distance = Math.sqrt(Math.pow(place1.getAddress().getPosition().getLongitude() - place2.getAddress().getPosition().getLongitude(), 2) + Math.pow(place1.getAddress().getPosition().getLatitude() - place2.getAddress().getPosition().getLatitude(), 2));
-    Driver driver = this.connect();
+    Driver driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (p1:Place {id: %d})-[r]-(p2:Place {id: %d} RETURN r)", place1.getId(), place2.getId()));
       if (rs != null) {
@@ -555,7 +555,7 @@ public final class DBAccess {
     */
 
     double distance = Math.sqrt(Math.pow(user.getPosition().getLongitude() - place.getAddress().getPosition().getLongitude(), 2) + Math.pow(user.getPosition().getLatitude() - place.getAddress().getPosition().getLatitude(), 2));
-    Driver driver = this.connect();
+    Driver driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r]-(p:Place {id: %d} RETURN r)", user.getPseudo(), place.getId()));
       if (rs != null) {
@@ -576,7 +576,7 @@ public final class DBAccess {
 
 
   public static void dropDatabase() {
-    Driver driver = this.connect();
+    Driver driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run("MATCH (n) DETACH DELETE n");
     }
