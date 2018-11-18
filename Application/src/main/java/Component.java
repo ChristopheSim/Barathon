@@ -29,6 +29,6 @@ public abstract class Component {
 	}
 
 	public void setPrice(int price) {
-		tgis.price = price;
+		this.price = price;
 	}
 }

@@ -8,14 +8,22 @@ public class Drink extends Component {
 	public Drink (String n, int p, double a, boolean s) {
 
 		super(n, p);
+		
+		double zero = 0.0;
+		int result = Double.compare(a, zero);
+		if (result >= 0) {
+			this.alcohol = a;
+		}
+		else {
+			this.alcohol = 0.0;
+		}
 
-		this.alcohol = a;
 		this.sparkling = s;
 
 	}
 
 	public boolean getSoft () {
-		// A drink is soft is it contains no alcohol
+		// A drink is soft if it contains no alcohol
 		try {
 			double zero = 0.0;
 			int result = Double.compare(this.alcohol, zero);
@@ -23,6 +31,7 @@ public class Drink extends Component {
 				return false;
 			} else if (result < 0) {
 				System.out.println("Alcohol Comparison Error: alcohol < 0.0");
+				return true;
 			} else {
 				return true;
 			}
