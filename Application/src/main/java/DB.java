@@ -102,6 +102,7 @@ public final class DB {
     for (Place place : places) {
       DBAccess.createPlace(place);
       DBAccess.createP2CRelationship(place, place.getCaracteristics());
+      // Method findPlaces not working
       List<Place> db_places = DBAccess.findPlaces();
       for (Place db_place : db_places) {
         DBAccess.createP2PRelationship(place, db_place);
@@ -151,11 +152,13 @@ public final class DB {
 
 
   public static void BarsToEat(int Y) {
+    // Radius Y
 
   }
 
 
   public static ArrayList<Place> NearbyBars(int X, int Y) {
+    // X bars and radius Y
     return new ArrayList<Place>();
   }
 }

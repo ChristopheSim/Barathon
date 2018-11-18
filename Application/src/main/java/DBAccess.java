@@ -110,6 +110,7 @@ public final class DBAccess {
           places.add(record.get("name"));
         }
         return places;
+        // Not working (return a list of name and not objects places)
       }
       else {
         System.out.println("There is no place in the database !");
