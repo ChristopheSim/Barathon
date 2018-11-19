@@ -126,36 +126,10 @@ public final class DB {
   }
 
 
-  public static Place NearestBar(User user) {
+  public static ArrayList<Place> BarsToEat() {
     /*
-    This function takes a parameter of type User and finds the nearest bar around him.
-    */
-
-    Place place = new Place(0, "", new Address("", "", new Position(0.0, 0.0)), new Menu(), new Caracteristics(false, false, false, false, false, false, false, false));
-    Driver driver = DBAccess.connect();
-    try (Session session = driver.session()) {
-      // To verrify the query
-      StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r:AWAY]-(p:Place WITH MIN(r.distance) RETURN p.id AS id)", user.getPseudo()));
-      if (rs.single() != null) {
-        Record record = rs.single();
-        // To find the places in the JSON with record.get("id")
-      }
-      else {
-        System.out.println("Impossible to find the nearest bar.\nNo relationship AWAY in this graph.");
-      }
-    }
-    catch(Exception e) {
-      System.out.println("An error occured during the search of the nearest bar !");
-    }
-    driver.close();
-    return place;
-  }
-
-
-  public static ArrayList<Place> BarsToEat(int Y) {
-    /*
-    This function returns a list of places where it's possible to eat
-    in a radius Y.
+    This function returns a list of places where it's possible to eat.
+    Difficulty: easy query.
     */
 
     ArrayList<Place> places = new ArrayList<Place>();
@@ -163,7 +137,7 @@ public final class DB {
     try (Session session = driver.session()) {
       // To complete the query
       StatementResult rs = session.run("MATCH (p:Place)-[r:FOLLOWS]-(c:Caracteristic {name: 'food'} WHERE r.status='true') RETURN p.id AS id)");
-      if (rs != null) {
+      if (!rs.list().isEmpry()) {
         while (rs.hasNext()) {
           Record record = rs.next();
           // find the places in the JSON with record.get("id")
@@ -183,10 +157,40 @@ public final class DB {
   }
 
 
+  public static Place NearestBar(User user) {
+    /*
+    This function takes a parameter of type User and finds the nearest bar around him.
+    Difficulty: medium query.
+    */
+
+    Driver driver = DBAccess.connect();
+    try (Session session = driver.session()) {
+      // To verrify the query
+      StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r:AWAY]-(p:Place) RETURN min(r.distance) AS distance", user.getPseudo()));
+      if (!rs.list().isEmpty()) {
+        double distance = rs.list().isEmpty().get(0).get("distance");
+        rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r:AWAY]-(p:Place) WHERE r.distance = %s RETURN p.id AS id", user.getPseudo(), distance));
+        // To find the places in the JSON with record.get("id")
+        Array<list> places = JSONAccess.readPlacesJSON("./../data/places.json");
+        Place place = Place.findPlace(places, record.get("id").asInt());
+      }
+      else {
+        System.out.println("Impossible to find the nearest bar.\nNo relationship AWAY in this graph.");
+      }
+    }
+    catch(Exception e) {
+      System.out.println("An error occured during the search of the nearest bar !");
+    }
+    driver.close();
+    return place;
+  }
+
+
   public static ArrayList<Place> NearbyBars(User user, int X, int Y) {
     /*
     This function takes three parameters and returns an ordered list of X
     places in a radius Y. This list is ordered by the proximity of the user.
+    Difficulty: complex query.
     */
 
     return new ArrayList<Place>();
