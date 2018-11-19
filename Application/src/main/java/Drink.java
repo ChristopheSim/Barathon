@@ -20,15 +20,13 @@ public class Drink extends Component {
 			double zero = 0.0;
 			int result = Double.compare(this.alcohol, zero);
 			if (result > 0) {
-				return false;
-			} else if (result < 0) {
-				System.out.println("Alcohol Comparison Error: alcohol < 0.0");
-			} else {
 				return true;
 			}
+			return false;
 		}
 		catch (Exception e) {
 			System.out.println("Alcohol Comparison Error: Double.compare exception");
+			return false;
 		}
 	}
 

@@ -1,7 +1,7 @@
 public class Test_DBAccess {
   public static void main(String[] args) {
     // Creation of the database
-    DB.CreateDB();
+    DB.createDB();
 
 
     /*

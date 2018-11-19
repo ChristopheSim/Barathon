@@ -3,7 +3,7 @@ import org.neo4j.driver.v1.*;
 import java.util.*;
 
 public final class DB {
-  public static void CreateDB() {
+  public static void createDB() {
     // Create the constraints of the graph
     DBAccess.createUniqueConstraints();
 
@@ -83,7 +83,7 @@ public final class DB {
     Place p3 = new Place(3, "Ballodrome", addp3, menu3, carac3);
     Place p4 = new Place(4, "Brasse-temps", addp4, menu2, carac2);
     Place p5 = new Place(5, "Beer Bar", addp5, menu1, carac1);
-    Place p6 = new Place(6, "Bucket's food", addp6, menu2, carac2);
+    Place p6 = new Place(6, "Bucket food", addp6, menu2, carac2);
     Place p7 = new Place(7, "My tannour", addp7, menu3, carac3);
     Place p8 = new Place(8, "Tutti pizza", addp8, menu2, carac2);
     Place p9 = new Place(9, "El greco", addp9, menu1, carac1);
@@ -100,7 +100,7 @@ public final class DB {
     places.add(p10);
 
     for (Place place : places) {
-      DBAccess.createPlace(place);
+      DBAccess.matchPlace(place);
       DBAccess.createP2CRelationship(place, place.getCaracteristics());
       // Method findPlaces not working
       List<Place> db_places = DBAccess.findPlaces();
@@ -117,7 +117,7 @@ public final class DB {
     users.add(u2);
 
     for (User user : users) {
-      DBAccess.createUser(user);
+      DBAccess.matchUser(user);
       DBAccess.createU2CRelationship(user, user.getPreferences().getCaracteristics().get(0));
       for (Place place : places) {
         DBAccess.createU2PRelationship(user, place);
@@ -131,13 +131,14 @@ public final class DB {
     This function takes a parameter of type User and finds the nearest bar around him.
     */
 
+    Place place = new Place(0, "", new Address("", "", new Position(0.0, 0.0)), new Menu(), new Caracteristics(false, false, false, false, false, false, false, false));
     Driver driver = DBAccess.connect();
     try (Session session = driver.session()) {
-      // To continue the query
-      StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[AWAY]-(p:Place RETURN p)", user.getPseudo()));
-      if (rs != null) {
-        //return rs.get("p.name");
-        // Add the JSON component to find the place
+      // To verrify the query
+      StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r:AWAY]-(p:Place WITH MIN(r.distance) RETURN p.id AS id)", user.getPseudo()));
+      if (rs.single() != null) {
+        Record record = rs.single();
+        // To find the places in the JSON with record.get("id")
       }
       else {
         System.out.println("Impossible to find the nearest bar.\nNo relationship AWAY in this graph.");
@@ -147,18 +148,47 @@ public final class DB {
       System.out.println("An error occured during the search of the nearest bar !");
     }
     driver.close();
-    return new Place(11, "Le bouche trou", new Address("Test", "Test", new Position(1.1, 2.2)), new Menu(), new Caracteristics(false, false, false, false, false, false, false, false));
+    return place;
   }
 
 
-  public static void BarsToEat(int Y) {
-    // Radius Y
+  public static ArrayList<Place> BarsToEat(int Y) {
+    /*
+    This function returns a list of places where it's possible to eat
+    in a radius Y.
+    */
 
+    ArrayList<Place> places = new ArrayList<Place>();
+    Driver driver = DBAccess.connect();
+    try (Session session = driver.session()) {
+      // To complete the query
+      StatementResult rs = session.run("MATCH (p:Place)-[r:FOLLOWS]-(c:Caracteristic {name: 'food'} WHERE r.status='true') RETURN p.id AS id)");
+      if (rs != null) {
+        while (rs.hasNext()) {
+          Record record = rs.next();
+          // find the places in the JSON with record.get("id")
+          Place place = new Place(12, "Le bouche trou 2", new Address("Test", "Test", new Position(1.1, 2.2)), new Menu(), new Caracteristics(false, false, false, false, false, false, false, false));
+          places.add(place);
+        }
+      }
+      else {
+        System.out.println("There is no place where it is possible to eat in the database !");
+      }
+    }
+    catch(Exception e) {
+      System.out.println("An error occured during the places where it is possible to eat searching !");
+    }
+    driver.close();
+    return places;
   }
 
 
-  public static ArrayList<Place> NearbyBars(int X, int Y) {
-    // X bars and radius Y
+  public static ArrayList<Place> NearbyBars(User user, int X, int Y) {
+    /*
+    This function takes three parameters and returns an ordered list of X
+    places in a radius Y. This list is ordered by the proximity of the user.
+    */
+
     return new ArrayList<Place>();
   }
 }
