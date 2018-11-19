@@ -119,4 +119,14 @@ public class User {
         this.choice = input;
         return input;
     }
+
+	public static User findUser(ArrayList<User> users, String pseudo) {
+		for(User u: users) {
+			if (u.getPseudo().equals(pseudo)) {
+				return u;
+			}
+		}
+
+		return null;
+	}
 }

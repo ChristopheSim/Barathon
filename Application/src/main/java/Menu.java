@@ -46,7 +46,7 @@ public class Menu {
 	* @return ArrayList<Drink> Drink from the menu
 	*/
 	public ArrayList<Drink> getDrinks() {
-		return this.drinkss;
+		return this.drinks;
 	}
 
 	/**

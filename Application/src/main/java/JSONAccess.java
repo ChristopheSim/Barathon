@@ -1,12 +1,13 @@
-import java.lang.*
-import java.utils.FileUtils
+import java.lang.*;
+import java.util.*;
+import java.io.*;
 
 /**
 *	Class used to save objects to JSON files and to extract objects from such files
 */
 public final class JSONAccess {
 
-	private Gson gson = new Gson();
+	private static Gson gson = new Gson();
 	
 	/**
 	* This method is used to convert an object into a JSON string
@@ -15,7 +16,7 @@ public final class JSONAccess {
 	* @return String This is the string containing the JSON formatted object
 	*/
 	public static String serialize(Object obj) {
-		return this.gson.toJson(obj);
+		return JSONAccess.gson.toJson(obj);
 	}
 
 	/**
@@ -26,7 +27,7 @@ public final class JSONAccess {
 	* @return Object This is the parsed object
 	*/
 	public static Object deserialize(String json, Type t) {
-		return this.gson.fromJson(json, t)
+		return JSONAccess.gson.fromJson(json, t);
 	}
 
 	/**
@@ -37,7 +38,7 @@ public final class JSONAccess {
 	*/
 	public static Object ReadJSON(String path, Type t) {
 		String str = FileUtils.readFileToString(path, "utf-8");
-		return this.deserialize(str, t);
+		return JSONAccess.deserialize(str, t);
 	}
 
 	/**
@@ -48,7 +49,7 @@ public final class JSONAccess {
 	*/
 	public static ArrayList<Place> ReadPlacesJSON(String path) {
 		Type t = new TypeToken<ArrayList<Place>>(){}.getType();
-		return this.ReadJSON(path, t);
+		return JSONAccess.ReadJSON(path, t);
 	}
 
 	/**
@@ -59,7 +60,7 @@ public final class JSONAccess {
 	*/
 	public static ArrayList<User> ReadUsersJSON(String path) {
 		Type t = new TypeToken<ArrayList<User>>(){}.getType();
-		return this.ReadJSON(path, t);
+		return JSONAccess.ReadJSON(path, t);
 	}
 
 	/**
@@ -71,7 +72,7 @@ public final class JSONAccess {
 	public static void WriteJSON(String path, Object obj) {
 		//try-with-resources
 		try (FileWriter file = new FileWriter(path)) {
-			file.write(this.serialize(obj));
+			file.write(JSONAccess.serialize(obj));
 		}
 	}
 
