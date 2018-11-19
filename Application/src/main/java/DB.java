@@ -136,7 +136,7 @@ public final class DB {
     Driver driver = DBAccess.connect();
     try (Session session = driver.session()) {
       // To complete the query
-      StatementResult rs = session.run("MATCH (p:Place)-[r:FOLLOWS]-(c:Caracteristic {name: 'food'} WHERE r.status='true') RETURN p.id AS id)");
+      StatementResult rs = session.run("MATCH (p:Place)-[r:FOLLOWS]-(c:Caracteristic {name: 'food'}) WHERE r.status='true' RETURN p.id AS id");
       if (!rs.list().isEmpty()) {
         ArrayList<Place> db_places = JSONAccess.readPlacesJSON("./../data/places.json");
         while (rs.hasNext()) {

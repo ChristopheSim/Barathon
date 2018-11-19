@@ -221,7 +221,7 @@ public final class DBAccess {
 
     Driver driver = connect();
     try (Session session = driver.session()) {
-      StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d})-[r]-(c:Caracteristic {name: '%s'}) RETURN r.status AS status", place.getId(), "cheap"));
+      StatementResult rs = session.run(String.format("MATCH (p:Place {id: %d})-[r]-(c:Caracteristic {name: '%s'}) RETURN r", place.getId(), "cheap"));
       if (rs.list().isEmpty()) {
         rs = session.run(String.format("MATCH (p:Place {id: %d}), (c:Caracteristic {name: '%s'}) CREATE (p) -[r:FOLLOWS]-> (c) SET r.status = '%b'", place.getId(), "cheap", carac.getCheap()));
       }
