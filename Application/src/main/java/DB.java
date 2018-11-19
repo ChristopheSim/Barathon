@@ -138,11 +138,12 @@ public final class DB {
       // To complete the query
       StatementResult rs = session.run("MATCH (p:Place)-[r:FOLLOWS]-(c:Caracteristic {name: 'food'} WHERE r.status='true') RETURN p.id AS id)");
       if (!rs.list().isEmpty()) {
+        ArrayList<Place> db_places = JSONAccess.readPlacesJSON("./../data/places.json");
         while (rs.hasNext()) {
-          Record record = rs.next();
-          // find the places in the JSON with record.get("id")
-          Place place = new Place(12, "Le bouche trou 2", new Address("Test", "Test", new Position(1.1, 2.2)), new Menu(), new Caracteristics(false, false, false, false, false, false, false, false));
+          // To find the places in the JSON with record.get("id")
+          Place place = Place.findPlace(db_places, record.get("id").asInt());
           places.add(place);
+          Record record = rs.next();
         }
       }
       else {
@@ -164,6 +165,7 @@ public final class DB {
     */
 
     Driver driver = DBAccess.connect();
+    Place place = new Place(0, "Le bouche trou", new Address("Test", "Test", new Position(0.0, 20.0)), new Menu(), new Caracteristics(false, false, false, false, false, false, false, false));
     try (Session session = driver.session()) {
       // To verrify the query
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r:AWAY]-(p:Place) RETURN min(r.distance) AS distance", user.getPseudo()));
@@ -172,7 +174,7 @@ public final class DB {
         rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r:AWAY]-(p:Place) WHERE r.distance = %s RETURN p.id AS id", user.getPseudo(), distance));
         // To find the places in the JSON with record.get("id")
         ArrayList<Place> places = JSONAccess.readPlacesJSON("./../data/places.json");
-        Place place = Place.findPlace(places, rs.list().get(0).get("id").asInt());
+        place = Place.findPlace(places, rs.list().get(0).get("id").asInt());
       }
       else {
         System.out.println("Impossible to find the nearest bar.\nNo relationship AWAY in this graph.");
