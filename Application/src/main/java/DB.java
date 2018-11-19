@@ -141,9 +141,9 @@ public final class DB {
         ArrayList<Place> db_places = JSONAccess.readPlacesJSON("./../data/places.json");
         while (rs.hasNext()) {
           // To find the places in the JSON with record.get("id")
+          Record record = rs.next();
           Place place = Place.findPlace(db_places, record.get("id").asInt());
           places.add(place);
-          Record record = rs.next();
         }
       }
       else {
@@ -195,6 +195,28 @@ public final class DB {
     Difficulty: complex query.
     */
 
-    return new ArrayList<Place>();
+    ArrayList<Place> places = new ArrayList<Place>();
+    Driver driver = DBAccess.connect();
+    try (Session session = driver.session()) {
+      // To complete the query
+      StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r:AWAY]-(p:Place) WHERE r.distance <= %d RETURN p.id AS id, r.distance AS distance ORDER BY r.distance LIMIT %d", user.getPseudo(), Y, X));
+      if (!rs.list().isEmpty()) {
+        ArrayList<Place> db_places = JSONAccess.readPlacesJSON("./../data/places.json");
+        while (rs.hasNext()) {
+          // To find the places in the JSON with record.get("id")
+          Record record = rs.next();
+          Place place = Place.findPlace(db_places, record.get("id").asInt());
+          places.add(place);
+        }
+      }
+      else {
+        System.out.println("There is no place where it is possible to eat in the database !");
+      }
+    }
+    catch(Exception e) {
+      System.out.println("An error occured during the places where it is possible to eat searching !");
+    }
+    driver.close();
+    return places;
   }
 }
