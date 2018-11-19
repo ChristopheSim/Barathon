@@ -5,13 +5,13 @@ public class Preferences {
     private int radius;
     private boolean trip;
 
-    Preferences() {
+    public Preferences() {
         this.caracteristics = new ArrayList<Caracteristics>();
         this.radius = 1000;
         this.trip = false;
     }
 
-    public Caracteristics getCaracteristics() {
+    public ArrayList<Caracteristics> getCaracteristics() {
       return this.caracteristics;
     }
 

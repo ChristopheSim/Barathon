@@ -8,7 +8,7 @@ public class Caracteristics {
     private boolean vegan;
     private boolean alcohol;
 
-    Caracteristics(boolean cheap, boolean music, boolean famousPlace,
+    public Caracteristics(boolean cheap, boolean music, boolean famousPlace,
         boolean food, boolean vegetarian, boolean halal,
         boolean vegan, boolean alcohol)
         {

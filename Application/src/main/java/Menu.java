@@ -56,6 +56,7 @@ public class Menu {
 	*/
 	public void addFood (Food f) {
 		this.foods.add(f);
+		this.setMeanFoodPrice();
 	}
 
 	/**
@@ -65,6 +66,7 @@ public class Menu {
 	*/
 	public void removeFood (Food f) {
 		this.foods.remove(f);
+		this.setMeanFoodPrice();
 	}
 
 
@@ -75,6 +77,7 @@ public class Menu {
 	*/
 	public void addDrink (Drink d) {
 		this.drinks.add(d);
+		this.setMeanDrinkPrice();
 	}
 
 	/**
@@ -84,14 +87,22 @@ public class Menu {
 	*/
 	public void removeDrink (Drink d) {
 		this.drinks.remove(d);
+		this.setMeanDrinkPrice();
 	}
-
 	
 	/**
 	*	Compute the price of the foods
 	*/
+
 	public void setMeanFoodPrice() {
-		this.meanFoodPrice = computeMeanPrice(this.foods);
+		int sum = 0;
+
+		// Adds the price of each element in the list
+		for (Food f : this.foods) {
+			sum += f.getPrice();
+		}
+
+		this.meanFoodPrice = sum/this.foods.size();
 	}
 	
 
@@ -99,7 +110,14 @@ public class Menu {
 	*	Compute the price of the drinks
 	*/
 	public void setMeanDrinkPrice() {
-		this.meanDrinkPrice = computeMeanPrice(this.drink);
+		int sum = 0;
+
+		// Adds the price of each element in the list
+		for (Drink d : this.drinks) {
+			sum += d.getPrice();
+		}
+
+		this.meanDrinkPrice = sum/this.drinks.size();;
 	}
 	
 	/**
@@ -109,11 +127,11 @@ public class Menu {
 	*
 	* @return int mean price of the components
 	*/
-	private int compiteMeanPrice (ArrayList<Component> components) {
+	private int computeMeanPrice (ArrayList<Component> components) {
 		int sum = 0;
 
 		// Adds the price of each element in the list
-		foreach (Component c in components) {
+		for (Component c : components) {
 			sum += c.getPrice();
 		}
 		return sum/components.size();

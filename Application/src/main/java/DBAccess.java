@@ -554,7 +554,7 @@ public final class DBAccess {
     This function creates a relationship AWAY between two places. This relationship contains one property, the distance.
     */
 
-    double distance = Math.sqrt(Math.pow(user.getLongitude() - place.getAddress().getPosition().getLongitude(), 2) + Math.pow(user.getLatitude() - place.getAddress().getPosition().getLatitude(), 2));
+    double distance = Math.sqrt(Math.pow(user.getPosition().getLongitude() - place.getAddress().getPosition().getLongitude(), 2) + Math.pow(user.getPosition().getLatitude() - place.getAddress().getPosition().getLatitude(), 2));
     Driver driver = this.connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r]-(p:Place {id: %d} RETURN r)", user.getPseudo(), place.getId()));
@@ -579,6 +579,7 @@ public final class DBAccess {
     Driver driver = this.connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run("MATCH (n) DETACH DELETE n");
+    }
     catch(Exception e) {
       System.out.println("An error occured during the databse erasing");
     }

@@ -1,4 +1,5 @@
 // imports
+import org.neo4j.driver.v1.*;
 import java.util.*;
 
 public final class DB {
@@ -77,16 +78,16 @@ public final class DB {
 
     // Create some places in the graph
     List<Place> places = new ArrayList<Place>();
-    Place p1 = new Place("La soeur du patron", addp1, menu1, carac1);
-    Place p2 = new Place("Café de Paris", addp2, menu2, carac2);
-    Place p3 = new Place("Ballodrome", addp3, menu3, carac3);
-    Place p4 = new Place("Brasse-temps", addp4, menu2, carac2);
-    Place p5 = new Place("Beer Bar", addp5, menu1, carac1);
-    Place p6 = new Place("Bucket's food", addp6, menu2, carac2);
-    Place p7 = new Place("My tannour", addp7, menu3, carac3);
-    Place p8 = new Place("Tutti pizza", addp8, menu2, carac2);
-    Place p9 = new Place("El greco", addp9, menu1, carac1);
-    Place p10 = new Place("Chez Fernand", addp10, menu3, carac3);
+    Place p1 = new Place(1, "La soeur du patron", addp1, menu1, carac1);
+    Place p2 = new Place(2, "Café de Paris", addp2, menu2, carac2);
+    Place p3 = new Place(3, "Ballodrome", addp3, menu3, carac3);
+    Place p4 = new Place(4, "Brasse-temps", addp4, menu2, carac2);
+    Place p5 = new Place(5, "Beer Bar", addp5, menu1, carac1);
+    Place p6 = new Place(6, "Bucket's food", addp6, menu2, carac2);
+    Place p7 = new Place(7, "My tannour", addp7, menu3, carac3);
+    Place p8 = new Place(8, "Tutti pizza", addp8, menu2, carac2);
+    Place p9 = new Place(9, "El greco", addp9, menu1, carac1);
+    Place p10 = new Place(10, "Chez Fernand", addp10, menu3, carac3);
     places.add(p1);
     places.add(p2);
     places.add(p3);
@@ -102,21 +103,21 @@ public final class DB {
       DBAccess.createPlace(place);
       DBAccess.createP2CRelationship(place, place.getCaracteristics());
       List<Place> db_places = DBAccess.findPlaces();
-      for (db_place : db_places) {
+      for (Place db_place : db_places) {
         DBAccess.createP2PRelationship(place, db_place);
       }
     }
 
     // Create some users in the graph
     List<User> users = new ArrayList<User>();
-    User u1 = new User();
-    User u2 = new User();
+    User u1 = new User("user1", posu1, pref1);
+    User u2 = new User("user2", posu2, pref2);
     users.add(u1);
     users.add(u2);
 
     for (User user : users) {
       DBAccess.createUser(user);
-      DBAccess.createU2CRelationship(user, user.getPreferences().get(0));
+      DBAccess.createU2CRelationship(user, user.getPreferences().getCaracteristics().get(0));
       for (Place place : places) {
         DBAccess.createU2PRelationship(user, place);
       }
@@ -129,7 +130,7 @@ public final class DB {
     This function takes a parameter of type User and finds the nearest bar around him.
     */
 
-    Driver driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "NEO4J"));
+    Driver driver = DBAccess.connect();
     try (Session session = driver.session()) {
       // To continue the query
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[AWAY]-(p:Place RETURN p)", user.getPseudo()));
@@ -152,7 +153,7 @@ public final class DB {
   }
 
 
-  public static NearbyBars(int X, int Y) {
+  public static ArrayList<Place> NearbyBars(int X, int Y) {
 
   }
 }

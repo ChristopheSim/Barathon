@@ -2,19 +2,27 @@ import java.io.Console;
 import java.util.ArrayList;
 
 public class User {
-
+    private String pseudo;
     private ArrayList<Place> bars;
     private ArrayList<Place> trips;
     private Position position;
     private Preferences preferences;
-    private String pseudo;
-    private Int choice;
+    private int choice;
 
-    public void User(Position po, Preferences pr) {
+    public User(String pseudo, Position po, Preferences pr) {
+        this.pseudo = pseudo;
         this.bars = new ArrayList<Place>();
         this.trips = new ArrayList<Place>();
         this.position = po;
         this.preferences = pr;
+    }
+
+    public String getPseudo() {
+        return this.pseudo;
+    }
+
+    public void setPseudo(String p) {
+        this.pseudo = p;
     }
 
     public ArrayList<Place> getBars() {
@@ -48,7 +56,7 @@ public class User {
     }
 
     public void addTrip(ArrayList<Place> t) {
-      this.trips.add(t);
+      this.trips.addAll(t);
     }
 
     public void removeTrip(ArrayList<Place> t) {
@@ -75,19 +83,11 @@ public class User {
       this.preferences = pr;
     }
 
-    public void setPseudo(String p) {
-        this.pseudo = p;
-    }
-
-    public String getPseudo() {
-        return this.pseudo;
-    }
-
-    public void setChoice(Int c) {
+    public void setChoice(int c) {
         this.choice = c;
     }
 
-    public Int getChoice() {
+    public int getChoice() {
         return this.choice;
     }
 
@@ -101,20 +101,20 @@ public class User {
         this.clearList();
         if (this.preferences.getTrip()) {
             StrategyTrip st = new StrategyTrip();
-            this.trips = st.solve(this.position, this.preferences); //ERROR
+            this.trips = st.solve(this.position, this.preferences.getCaracteristics().get(0)); //ERROR
         }
         else if (!this.preferences.getTrip()) {
             StrategyBars sb = new StrategyBars();
-            this.bars = sb.solve(this.position, this.preferences); //ERROR
+            this.bars = sb.solve(this.position, this.preferences.getCaracteristics().get(0)); //ERROR
         }
     }
 
-    public Int chooseCaracterictics() {
-        Console console = System.Console();
+    public int chooseCaracterictics() {
+        Console console = System.console();
 
-        String msg = String.format()"Choose Caracteristic [0-%01d]", this.preferences.getNbCaracteristic());
+        String msg = String.format("Choose Caracteristic [0-%01d]", this.preferences.getNbCaracteristic());
         System.out.println(msg);
-        Int input = Integer.parseInt(console.readLine());
+        int input = Integer.parseInt(console.readLine());
         //TO REMOVE
         this.choice = input;
         return input;
