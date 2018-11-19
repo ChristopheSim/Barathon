@@ -8,18 +8,16 @@ public class Caracteristics {
     private boolean vegan;
     private boolean alcohol;
 
-    public Caracteristics(boolean cheap, boolean music, boolean famousPlace,
-        boolean food, boolean vegetarian, boolean halal,
-        boolean vegan, boolean alcohol)
+    public Caracteristics()
         {
-            this.cheap = cheap;
-            this.music = music;
-            this.famousPlace = famousPlace;
-            this.food = food;
-            this.vegetarian = vegetarian;
-            this.halal = halal;
-            this.vegan = vegan;
-            this.alcohol = alcohol;
+            this.cheap = false;
+            this.music = false;
+            this.famousPlace = false;
+            this.food = false;
+            this.vegetarian = false;
+            this.halal = false;
+            this.vegan = false;
+            this.alcohol = false;
         }
 
     public boolean getCheap() {

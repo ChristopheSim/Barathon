@@ -15,6 +15,7 @@ public class User {
         this.trips = new ArrayList<Place>();
         this.position = po;
         this.preferences = pr;
+        this.choice = 0;
     }
 
     public String getPseudo() {
