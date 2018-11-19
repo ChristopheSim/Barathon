@@ -110,6 +110,15 @@ public class User {
         }
     }
 
+    public void show() {
+        if (this.preferences.getTrip()) {
+            System.out.println(this.trips);
+        }
+        else if (!this.preferences.getTrip()) {
+            System.out.println(this.bars);
+        }
+    }
+
     public int chooseCaracterictics() {
         Console console = System.console();
 

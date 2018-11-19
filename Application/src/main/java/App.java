@@ -63,6 +63,9 @@ public class App {
         User user = new User(pseudo, pos, pref);
 
         //TODO: run Search
+        user.generate();
+
         //TODO: show result
+        user.show();
     }
 }
