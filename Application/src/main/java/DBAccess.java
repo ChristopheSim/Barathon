@@ -115,14 +115,11 @@ public final class DBAccess {
     Driver driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run("MATCH (p:Place) RETURN p.id AS id");
-      if (!rs.list.isEmpty()) {
+      if (!rs.list().isEmpty()) {
         while (rs.hasNext()) {
           Record record = rs.next();
-          // To find the places in the JSON with record.get("id")
-          //JSONObject obj = JSONAccess.ReadJSON("places.json");
-          //Place place = obj.getJSONObject(record.get("id").asInt());
-          Place place = new Place(12, "Le bouche trou 2", new Address("Test", "Test", new Position(1.1, 2.2)), new Menu(), new Caracteristics(false, false, false, false, false, false, false, false));
-          places.add(place);
+          // To find the places in the JSON
+          places = JSONAccess.readPlacesJSON("./../data/places.json");
         }
       }
       else {
