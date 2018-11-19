@@ -19,7 +19,7 @@ public class Drink extends Component {
 	public Drink (String n, int p, double a, boolean s) {
 
 		super(n, p);
-		
+
 		double zero = 0.0;
 		int result = Double.compare(a, zero);
 		if (result >= 0) {
@@ -32,7 +32,7 @@ public class Drink extends Component {
 		this.sparkling = s;
 
 	}
-	
+
 	//GETTERS
 	public double getAlcohol () {
 		return this.alcohol;
@@ -50,7 +50,7 @@ public class Drink extends Component {
 	public void setSparkling (boolean sparkling) {
 		this.sparkling = sparkling;
 	}
-	
+
 	/**
 	* This method checks if the drink is alcohol-free
 	*
@@ -61,17 +61,14 @@ public class Drink extends Component {
 		try {
 			double zero = 0.0;
 			int result = Double.compare(this.alcohol, zero);
-			if (result > 0) {
-				return false;
-			} else if (result < 0) {
-				System.out.println("Alcohol Comparison Error: alcohol < 0.0");
-				return true;
-			} else {
+			if (result = 0) {
 				return true;
 			}
+			return false;
 		}
 		catch (Exception e) {
 			System.out.println("Alcohol Comparison Error: Double.compare exception");
+			return false;
 		}
 	}
 }

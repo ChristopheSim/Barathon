@@ -1,18 +1,28 @@
+//imports
+import org.neo4j.driver.v1.*;
+import java.util.*;
+
+
 public class Test_DBAccess {
   public static void main(String[] args) {
     // Creation of the database
-    DB.CreateDB();
+    DB.createDB();
 
 
     /*
     Test the different functions:
-    - The nearest bar;
-    - The list of bars where it is possible to eat in a range of Y kms;
+    - The list of bars where it is possible to eat;
+    - The nearest bar of the user;
     - The list of the X nearest bar in a range of Y kms;
     */
-    //DB.NeraestBar();
-    //DB.BarsToEat(int Y);
-    //DB.NearbyBars(int X, int Y);
+    ArrayList<Place> barsToEat = DB.BarsToEat();
 
+
+    ArrayList<User> users = JSONAccess.readUsersJSON("./../data/users.json");
+    User user1 = User.findUser(users, "user1");
+    Place myPlace = DB.NearestBar(user1);
+
+
+    ArrayList<Place> nearbyBars = DB.NearbyBars(user1, 3, 2000);
   }
 }

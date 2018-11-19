@@ -34,6 +34,7 @@ public class Position {
   		}
   		catch (Exception e) {
   			System.out.println("Position Comparison Error: Double.compare exception");
+        return false;
   		}
     }
 }
