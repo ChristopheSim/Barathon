@@ -137,7 +137,7 @@ public final class DB {
     try (Session session = driver.session()) {
       // To complete the query
       StatementResult rs = session.run("MATCH (p:Place)-[r:FOLLOWS]-(c:Caracteristic {name: 'food'} WHERE r.status='true') RETURN p.id AS id)");
-      if (!rs.list().isEmpry()) {
+      if (!rs.list().isEmpty()) {
         while (rs.hasNext()) {
           Record record = rs.next();
           // find the places in the JSON with record.get("id")
@@ -168,11 +168,11 @@ public final class DB {
       // To verrify the query
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r:AWAY]-(p:Place) RETURN min(r.distance) AS distance", user.getPseudo()));
       if (!rs.list().isEmpty()) {
-        double distance = rs.list().isEmpty().get(0).get("distance");
+        double distance = rs.list().get(0).get("distance").asDouble();
         rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r:AWAY]-(p:Place) WHERE r.distance = %s RETURN p.id AS id", user.getPseudo(), distance));
         // To find the places in the JSON with record.get("id")
-        Array<list> places = JSONAccess.readPlacesJSON("./../data/places.json");
-        Place place = Place.findPlace(places, record.get("id").asInt());
+        ArrayList<Place> places = JSONAccess.readPlacesJSON("./../data/places.json");
+        Place place = Place.findPlace(places, rs.list().get(0).get("id").asInt());
       }
       else {
         System.out.println("Impossible to find the nearest bar.\nNo relationship AWAY in this graph.");

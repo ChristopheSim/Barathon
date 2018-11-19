@@ -1,3 +1,8 @@
+//imports
+import org.neo4j.driver.v1.*;
+import java.util.*;
+
+
 public class Test_DBAccess {
   public static void main(String[] args) {
     // Creation of the database
@@ -14,10 +19,10 @@ public class Test_DBAccess {
 
 
     ArrayList<User> users = JSONAccess.readUsersJSON("./../data/users.json");
-    User user1 = User.findUser(users, "user1")
+    User user1 = User.findUser(users, "user1");
     Place myPlace = DB.NearestBar(user1);
 
 
-    ArrayList<Place> nearbyBars = DB.NearbyBars(user1, 3, 110);
+    ArrayList<Place> nearbyBars = DB.NearbyBars(user1, 3, 2000);
   }
 }
