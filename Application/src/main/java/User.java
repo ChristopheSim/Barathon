@@ -15,6 +15,7 @@ public class User {
         this.trips = new ArrayList<Place>();
         this.position = po;
         this.preferences = pr;
+        this.choice = 0;
     }
 
     public String getPseudo() {
@@ -109,6 +110,15 @@ public class User {
         }
     }
 
+    public void show() {
+        if (this.preferences.getTrip()) {
+            System.out.println(this.trips);
+        }
+        else if (!this.preferences.getTrip()) {
+            System.out.println(this.bars);
+        }
+    }
+
     public int chooseCaracterictics() {
         Console console = System.console();
 
@@ -119,4 +129,14 @@ public class User {
         this.choice = input;
         return input;
     }
+
+	public static User findUser(ArrayList<User> users, String pseudo) {
+		for(User u: users) {
+			if (u.getPseudo().equals(pseudo)) {
+				return u;
+			}
+		}
+
+		return null;
+	}
 }

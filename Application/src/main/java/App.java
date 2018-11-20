@@ -13,8 +13,8 @@ public class App {
 
         System.out.print("  ! Can we use your actual position ? [Y/n] :");
         boolean bpos = "Yy ".indexOf(c.readLine()) >= 0;
-        double x = 0;
-        double y = 0;
+        Double x = 0.0;
+        Double y = 0.0;
         if (bpos) {
             System.out.print("  Position (x) : ");
             x = new Double(c.readLine());
@@ -22,12 +22,11 @@ public class App {
             y = new Double(c.readLine());
         }
         else {
-            x = 666;
-            y = 666;
+            x = 666.0;
+            y = 666.0;
         }
         System.out.println(String.format("\n  Your position : %f %f \n", x, y));
-
-        //TODO: generate user with $pseudo and position $x and $y
+        Position pos = new Position(x, y);
 
         System.out.println("\n --- Choose Preferencies --- \n");
         System.out.print("  - Cheap [Y/n]: ");
@@ -41,17 +40,32 @@ public class App {
         boolean alcohol = "Yy ".indexOf(c.readLine()) >= 0;
 
         System.out.println(String.format("\n  You choosed : %s %s %s \n", cheap, music, alcohol));
-
-        //TODO: generate preferencies with $cheap, $music and $alcohol
+        Caracteristics car = new Caracteristics();
+        car.setCheap(cheap);
+        car.setMusic(music);
+        car.setAlcohol(alcohol);
 
         System.out.println("\n --- Choose Type of Search --- \n");
         System.out.print("  - Trip [Y/n]: ");
         //String trip = c.readLine();
         boolean trip = "Yy ".indexOf(c.readLine()) >= 0;
+        System.out.print("  - Radius: ");
+        //String trip = c.readLine();
+        int radius = Integer.parseInt(c.readLine());
 
-        System.out.println(String.format("\n  You choosed : %s \n", trip));
+        System.out.println(String.format("\n  You choosed : %s %d\n", trip, radius));
+        Preferences pref = new Preferences();
+        pref.addCaracteristics(car);
+        pref.setTrip(trip);
+        pref.setRadius(radius);
+
+        // Create user
+        User user = new User(pseudo, pos, pref);
 
         //TODO: run Search
+        user.generate();
+
         //TODO: show result
+        user.show();
     }
 }
