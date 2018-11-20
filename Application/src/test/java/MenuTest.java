@@ -27,10 +27,10 @@ public class MenuTest {
 		Assert.assertEquals(0, m.getDrinks().size());
 		m.addDrink(d1);
 		Assert.assertEquals(1, m.getDrinks().size());
-		m.addDrink(d1);
-		Assert.assertEquals(1, m.getDrinks().size());
 		m.addDrink(d2);
 		Assert.assertEquals(2, m.getDrinks().size());
+		m.addDrink(d3);
+		Assert.assertEquals(3, m.getDrinks().size());
 	}
 
 	@Test
@@ -56,10 +56,10 @@ public class MenuTest {
 		Assert.assertEquals(0, m.getFoods().size());
 		m.addFood(f1);
 		Assert.assertEquals(1, m.getFoods().size());
-		m.addFood(f1);
-		Assert.assertEquals(1, m.getFoods().size());
 		m.addFood(f2);
 		Assert.assertEquals(2, m.getFoods().size());
+		m.addFood(f3);
+		Assert.assertEquals(3, m.getFoods().size());
 	}
 
 	@Test
