@@ -102,7 +102,7 @@ public class Menu {
 			sum += f.getPrice();
 		}
 
-		if (this.foods.size() > 0)
+		if (this.foods.size() > 0) {
 			this.meanFoodPrice = sum/this.foods.size();
 		}
 		else {
@@ -122,7 +122,7 @@ public class Menu {
 			sum += d.getPrice();
 		}
 
-		if (this.drinks.size() > 0)
+		if (this.drinks.size() > 0) {
 			this.meanDrinkPrice = sum/this.drinks.size();
 		}
 		else {
