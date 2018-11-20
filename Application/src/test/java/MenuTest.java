@@ -1,10 +1,10 @@
-import org.junit.*
+import org.junit.*;
 
 public class DrinkTest {
 
 	@Before
 	public void InitClasses() {
-		
+
 		Drink d1 = new Drink("Drink", 100, 0, false);
 		Drink d2 = new Drink("Drink", 200, 0, false);
 		Drink d3 = new Drink("Drink", 300, 0, false);
@@ -30,7 +30,7 @@ public class DrinkTest {
 	}
 
 	@Test
-	public void TestRemoveDrink() {		
+	public void TestRemoveDrink() {
 		Menu m = new Menu();
 
 		m.addDrink(d1);
@@ -44,9 +44,9 @@ public class DrinkTest {
 		m.removeDrink(d2);
 		assertEquals(0, m.getDrinks().size);
 	}
-	
+
 	@Test
-	public void TestAddFood() {		
+	public void TestAddFood() {
 		Menu m = new Menu();
 
 		assertEquals(0, m.getFoods().size);
@@ -57,9 +57,9 @@ public class DrinkTest {
 		m.addFood(f2);
 		assertEquals(2, m.getFoods().size);
 	}
-	
+
 	@Test
-	public void TestRemoveFood() {		
+	public void TestRemoveFood() {
 		Menu m = new Menu();
 
 		m.addFood(f1);
@@ -73,11 +73,11 @@ public class DrinkTest {
 		m.removeFood(f2);
 		assertEquals(0, m.getFoods().size);
 	}
-	
+
 	@Test
-	public void TestGetMeanDrinkPrice() {		
+	public void TestGetMeanDrinkPrice() {
 		Menu m = new Menu();
-		
+
 		assertEquals(0, m.getMeanDrinkPrice());
 		m.addDrink(d1);
 		assertEquals(100, m.getMeanDrinkPrice());
@@ -90,9 +90,9 @@ public class DrinkTest {
 		m.removeDrink(d4);
 		assertEquals(200, m.getMeanDrinkPrice());
 	}
-	
+
 	@Test
-	public void TestGetMeanFoodPrice() {		
+	public void TestGetMeanFoodPrice() {
 		Menu m = new Menu();
 
 		assertEquals(0, m.getMeanFoodPrice());

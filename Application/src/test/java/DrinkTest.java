@@ -1,9 +1,9 @@
-import org.junit.*
+import org.junit.*;
 
 public class DrinkTest {
 
 	@Test
-	public void TestGetSoft() {		
+	public void TestGetSoft() {
 
 		assertFalse((new Drink("Drink", 10, 9.7, false)).getSoft());
 		assertFalse((new Drink("Drink", 10, 9.7, true)).getSoft());
