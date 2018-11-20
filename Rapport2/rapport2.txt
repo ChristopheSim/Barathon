@@ -1,0 +1,11 @@
+Edit since 1st report :
+
+JSON Acces :
+We added another DB to store program data as neo4j is only used to store the useful nodes (places, users & caracteristics) & to compute the answer.
+JSON files are used to store all the program data (including sub-classes : menus, foods, drinks, locations, etc).
+
+Strategy :
+Question about the relevancy of the strategy design pattern. We kept it as the algorithm always returns a list of Places, but these places are sorted differently.
+
+Class diagram :
+Added missing operations to classes
