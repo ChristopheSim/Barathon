@@ -46,7 +46,7 @@ public class Menu {
 	* @return ArrayList<Drink> Drink from the menu
 	*/
 	public ArrayList<Drink> getDrinks() {
-		return this.drinkss;
+		return this.drinks;
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class Menu {
 		this.drinks.remove(d);
 		this.setMeanDrinkPrice();
 	}
-	
+
 	/**
 	*	Compute the price of the foods
 	*/
@@ -104,7 +104,7 @@ public class Menu {
 
 		this.meanFoodPrice = sum/this.foods.size();
 	}
-	
+
 
 	/**
 	*	Compute the price of the drinks
@@ -119,7 +119,7 @@ public class Menu {
 
 		this.meanDrinkPrice = sum/this.drinks.size();;
 	}
-	
+
 	/**
 	* Compute the mean price of a list of components - drinks or foods
 	*

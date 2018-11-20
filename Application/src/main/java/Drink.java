@@ -20,15 +20,7 @@ public class Drink extends Component {
 
 		super(n, p);
 
-		double zero = 0.0;
-		int result = Double.compare(a, zero);
-		if (result >= 0) {
-			this.alcohol = a;
-		}
-		else {
-			this.alcohol = 0.0;
-		}
-
+		this.alcohol = a;
 		this.sparkling = s;
 
 	}
@@ -61,7 +53,7 @@ public class Drink extends Component {
 		try {
 			double zero = 0.0;
 			int result = Double.compare(this.alcohol, zero);
-			if (result = 0) {
+			if (result == 0) {
 				return true;
 			}
 			return false;
