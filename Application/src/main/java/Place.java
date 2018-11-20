@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Place {
     private int id;
     private String name;
@@ -26,7 +28,6 @@ public class Place {
     public String getName(){
         return this.name;
     }
-
     public void setName(String name){
         this.name = name;
     }
@@ -54,4 +55,14 @@ public class Place {
     public void setCaracteristics(Caracteristics carac) {
   		this.caracteristics = carac;
   	}
+
+	public static Place findPlace(ArrayList<Place> places, int id) {
+		for(Place p: places) {
+			if (p.getId() == id) {
+				return p;
+			}
+		}
+
+		return null;
+	}
 }
