@@ -1,9 +1,9 @@
-import org.junit.*
+import org.junit.*;
 
 public class ComponentTest {
 
 	@Test
-	public void TestIsEqual() {		
+	public void TestIsEqual() {
 
 		assertTrue((new Drink("Drink", 10, 5.2, true)).isEqual((new Drink("Drink", 10, 5.2, true))));
 		assertFalse((new Drink("Drink", 10, 5.2, true)).isEqual((new Drink("Beer", 10, 5.2, true))));
