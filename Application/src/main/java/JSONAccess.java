@@ -43,7 +43,7 @@ public final class JSONAccess {
 	* @return Object The object from the JSON file
 	*/
 	public static JSONObject readJSON(String path, Type t) {
-		String str = FileUtils.readFileToString(path, "utf-8");
+		String str = FileUtils.readFileToString(new File(path), "utf-8");
 		return JSONAccess.deserialize(str, t);
 	}
 
