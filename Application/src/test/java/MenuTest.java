@@ -1,6 +1,6 @@
 import org.junit.*;
 
-public class DrinkTest {
+public class MenuTest {
 
 	@Before
 	public void InitClasses() {
