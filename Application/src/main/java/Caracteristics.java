@@ -8,17 +8,16 @@ public class Caracteristics {
     private boolean vegan;
     private boolean alcohol;
 
-    public Caracteristics()
-        {
-            this.cheap = false;
-            this.music = false;
-            this.famousPlace = false;
-            this.food = false;
-            this.vegetarian = false;
-            this.halal = false;
-            this.vegan = false;
-            this.alcohol = false;
-        }
+    public Caracteristics() {
+        this.cheap = false;
+        this.music = false;
+        this.famousPlace = false;
+        this.food = false;
+        this.vegetarian = false;
+        this.halal = false;
+        this.vegan = false;
+        this.alcohol = false;
+    }
 
     public boolean getCheap() {
         return this.cheap;
@@ -65,33 +64,33 @@ public class Caracteristics {
     }
 
     public void setFood(boolean food) {
-      this.food = food;
+        this.food = food;
     }
 
     public void setVegetarian(boolean vegetarian) {
-      this.vegetarian = vegetarian;
+        this.vegetarian = vegetarian;
     }
 
     public void setHalal(boolean halal) {
-      this.halal = halal;
+        this.halal = halal;
     }
 
     public void setVegan(boolean vegan) {
-      this.vegan = vegan;
+        this.vegan = vegan;
     }
 
     public void setAlcohol(boolean alcohol) {
-      this.alcohol = alcohol;
+        this.alcohol = alcohol;
     }
 
     public void set(boolean c, boolean m, boolean fP, boolean f, boolean vg, boolean h, boolean vn, boolean a) {
-      this.cheap = c;
-      this.music = m;
-      this.famousPlace = fP;
-      this.food = f;
-      this.vegetarian = vg;
-      this.halal = h;
-      this.vegan = vn;
-      this.alcohol = a;
+        this.cheap = c;
+        this.music = m;
+        this.famousPlace = fP;
+        this.food = f;
+        this.vegetarian = vg;
+        this.halal = h;
+        this.vegan = vn;
+        this.alcohol = a;
     }
 }
