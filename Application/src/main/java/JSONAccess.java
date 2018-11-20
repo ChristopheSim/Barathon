@@ -21,8 +21,8 @@ public final class JSONAccess {
 	* @param obj This is the object to convert into JSON
 	* @return String This is the string containing the JSON formatted object
 	*/
-	public static String serialize(Object obj) {
-		return JSONAccess.gson.toJson(obj);
+	public static String serialize(Object obj, Type t) {
+		return JSONAccess.gson.toJson(obj, t);
 	}
 
 	/**
@@ -32,7 +32,7 @@ public final class JSONAccess {
 	* @param t This is the type of the object
 	* @return Object This is the parsed object
 	*/
-	public static JSONObject deserialize(String json, Type t) {
+	public static Object deserialize(String json, Type t) {
 		return JSONAccess.gson.fromJson(json, t);
 	}
 
@@ -42,9 +42,15 @@ public final class JSONAccess {
 	* @param path The path of the file to be read
 	* @return Object The object from the JSON file
 	*/
-	public static JSONObject readJSON(String path, Type t) {
-		String str = FileUtils.readFileToString(new File(path), "utf-8");
-		return JSONAccess.deserialize(str, t);
+	public static Object readJSON(String path, Type t) {
+		try {
+			String str = FileUtils.readFileToString(new File(path), "utf-8");
+			return JSONAccess.deserialize(str, t);
+		}
+		catch (Exception e) {
+			System.out.println(e);
+			return null;
+		}
 	}
 
 	/**
@@ -55,7 +61,7 @@ public final class JSONAccess {
 	*/
 	public static ArrayList<Place> readPlacesJSON(String path) {
 		Type t = new TypeToken<ArrayList<Place>>(){}.getType();
-		return JSONAccess.readJSON(path, t);
+		return JSONAccess.gson.fromJson(path, t);
 	}
 
 	/**
@@ -66,7 +72,7 @@ public final class JSONAccess {
 	*/
 	public static ArrayList<User> readUsersJSON(String path) {
 		Type t = new TypeToken<ArrayList<User>>(){}.getType();
-		return JSONAccess.readJSON(path, t);
+		return JSONAccess.gson.fromJson(path, t);
 	}
 
 	/**
@@ -75,10 +81,25 @@ public final class JSONAccess {
 	* @param path Path of the file to be written
 	* @param obj This is the object to convert into JSON
 	*/
-	public static void writeJSON(String path, Object obj) {
+	public static void writePlacesJSON(String path, ArrayList<Place> obj) {
+		Type t = new TypeToken<ArrayList<Place>>(){}.getType();
 		//try-with-resources
 		try (FileWriter file = new FileWriter(path)) {
-			file.write(JSONAccess.serialize(obj));
+			file.write(JSONAccess.gson.toJson(obj, t));
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+
+	public static void writeUsersJSON(String path, ArrayList<User> obj) {
+		Type t = new TypeToken<ArrayList<User>>(){}.getType();
+		//try-with-resources
+		try (FileWriter file = new FileWriter(path)) {
+			file.write(JSONAccess.gson.toJson(obj, t));
+		}
+		catch (Exception e) {
+			System.out.println(e);
 		}
 	}
 
