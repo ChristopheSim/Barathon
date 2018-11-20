@@ -79,24 +79,6 @@
                 ${project.basedir}/Application/src/main/resources/neo4j-java-driver-1.4.4.jar
             </systemPath>
         </dependency>
-        <dependency>
-            <groupId>apache.commons.io</groupId>
-            <artifactId>apache.commons.io</artifactId>
-            <version></version>
-            <scope>system</scope>
-            <systemPath>
-                ${project.basedir}/Application/src/main/resources/org.apache.commons.io.jar
-            </systemPath>
-        </dependency>
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version></version>
-            <scope>system</scope>
-            <systemPath>
-                ${project.basedir}/Application/src/main/resourcers/org.json.jar
-            </systemPath>
-        </dependency>
 
     </dependencies>
     <reporting>
