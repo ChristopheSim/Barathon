@@ -79,6 +79,7 @@
                 ${project.basedir}/Application/src/main/resources/neo4j-java-driver-1.4.4.jar
             </systemPath>
         </dependency>
+<<<<<<< HEAD
         <dependency>
             <groupId>json</groupId>
             <artifactId>json</artifactId>
@@ -88,6 +89,9 @@
                 ${project.basedir}/Application/src/main/resources/org.json.jar
             </systemPath>
         </dependency>
+=======
+
+>>>>>>> 7ca0f4d773a1d6a6ba232861ff9690283933c5ba
     </dependencies>
     <reporting>
         <plugins>
