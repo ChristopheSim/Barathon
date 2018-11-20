@@ -36,7 +36,7 @@ public final class JSONAccess {
 	* @param path The path of the file to be read
 	* @return Object The object from the JSON file
 	*/
-	public static Object ReadJSON(String path, Type t) {
+	public static Object readJSON(String path, Type t) {
 		String str = FileUtils.readFileToString(path, "utf-8");
 		return JSONAccess.deserialize(str, t);
 	}
@@ -47,7 +47,7 @@ public final class JSONAccess {
 	* @param path The path of the fileto be read
 	* @return ArrayList<Place> List of places from the JSON file
 	*/
-	public static ArrayList<Place> ReadPlacesJSON(String path) {
+	public static ArrayList<Place> readPlacesJSON(String path) {
 		Type t = new TypeToken<ArrayList<Place>>(){}.getType();
 		return JSONAccess.ReadJSON(path, t);
 	}
@@ -58,7 +58,7 @@ public final class JSONAccess {
 	* @param path The path of the fileto be read
 	* @return ArrayList<User> List of users from the JSON file
 	*/
-	public static ArrayList<User> ReadUsersJSON(String path) {
+	public static ArrayList<User> readUsersJSON(String path) {
 		Type t = new TypeToken<ArrayList<User>>(){}.getType();
 		return JSONAccess.ReadJSON(path, t);
 	}
@@ -69,7 +69,7 @@ public final class JSONAccess {
 	* @param path Path of the file to be written 
 	* @param obj This is the object to convert into JSON
 	*/
-	public static void WriteJSON(String path, Object obj) {
+	public static void writeJSON(String path, Object obj) {
 		//try-with-resources
 		try (FileWriter file = new FileWriter(path)) {
 			file.write(JSONAccess.serialize(obj));
