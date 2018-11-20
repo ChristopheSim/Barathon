@@ -102,7 +102,7 @@ public final class DB {
     places.add(p9);
     places.add(p10);
 
-    JSONAccess.writeJSON(."/../data/places.json", places);
+    JSONAccess.writeJSON("./../data/places.json", places);
 
     for (Place place : places) {
       DBAccess.matchPlace(place);
@@ -120,7 +120,7 @@ public final class DB {
     users.add(u1);
     users.add(u2);
 
-    JSONAccess.writeJSON(."/../data/users.json", users);
+    JSONAccess.writeJSON("./../data/users.json", users);
 
     for (User user : users) {
       DBAccess.matchUser(user);
