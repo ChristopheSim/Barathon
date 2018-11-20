@@ -80,24 +80,14 @@
             </systemPath>
         </dependency>
         <dependency>
-            <groupId>apache.commons.io</groupId>
-            <artifactId>apache.commons.io</artifactId>
-            <version></version>
-            <scope>system</scope>
-            <systemPath>
-                ${project.basedir}/Application/src/main/resources/org.apache.commons.io.jar
-            </systemPath>
-        </dependency>
-        <dependency>
-            <groupId>org.json</groupId>
+            <groupId>json</groupId>
             <artifactId>json</artifactId>
-            <version></version>
+            <version>1</version>
             <scope>system</scope>
             <systemPath>
-                ${project.basedir}/Application/src/main/resourcers/org.json.jar
+                ${project.basedir}/Application/src/main/resources/org.json.jar
             </systemPath>
         </dependency>
-
     </dependencies>
     <reporting>
         <plugins>
