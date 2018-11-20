@@ -52,6 +52,51 @@
             <artifactId>junit</artifactId>
             <version>4.8.2</version>
         </dependency>
+        <dependency>
+            <groupeId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
+            <scope>system</scope>
+            <systemPath>
+                ${project.basedir}/Application/src/main/resources/commons-io-2.6.jar
+            </systemPath>
+        </dependency>
+        <dependency>
+            <groupeId>gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.5</version>
+            <scope>system</scope>
+            <systemPath>
+                ${project.basedir}/Application/src/main/resources/gson-2.8.5.jar
+            </systemPath>
+        </dependency>
+        <dependency>
+            <groupeId>neo4j</groupId>
+            <artifactId>neo4j</artifactId>
+            <version>1.4.4</version>
+            <scope>system</scope>
+            <systemPath>
+                ${project.basedir}/Application/src/main/resources/neo4j-java-driver-1.4.4.jar
+            </systemPath>
+        </dependency>
+        <dependency>
+            <groupeId>apache.commons.io</groupId>
+            <artifactId>apache.commons.io</artifactId>
+            <version></version>
+            <scope>system</scope>
+            <systemPath>
+                ${project.basedir}/Application/src/main/resources/org.apache.commons.io.jar
+            </systemPath>
+        </dependency>
+        <dependency>
+            <groupeId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version></version>
+            <scope>system</scope>
+            <systemPath>
+                ${project.basedir}/Application/src/main/resourcers/org.json.jar
+            </systemPath>
+        </dependency>
 
     </dependencies>
     <reporting>
