@@ -80,7 +80,7 @@ public final class DB {
     Address addp10 = new Address("Chaussée de Waterloo", "265", posp10);
 
     // Create some places in the graph
-    List<Place> places = new ArrayList<Place>();
+    ArrayList<Place> places = new ArrayList<Place>();
     Place p1 = new Place(1, "La soeur du patron", addp1, menu1, carac1);
     Place p2 = new Place(2, "Café de Paris", addp2, menu2, carac2);
     Place p3 = new Place(3, "Ballodrome", addp3, menu3, carac3);
@@ -102,25 +102,25 @@ public final class DB {
     places.add(p9);
     places.add(p10);
 
-    JSONAccess.writeJSON("./../data/places.json", places);
+    JSONAccess.writePlacesJSON("./../data/places.json", places);
 
     for (Place place : places) {
       DBAccess.matchPlace(place);
       DBAccess.createP2CRelationship(place, place.getCaracteristics());
-      List<Place> db_places = DBAccess.findPlaces();
+      ArrayList<Place> db_places = DBAccess.findPlaces();
       for (Place db_place : db_places) {
         DBAccess.createP2PRelationship(place, db_place);
       }
     }
 
     // Create some users in the graph
-    List<User> users = new ArrayList<User>();
+    ArrayList<User> users = new ArrayList<User>();
     User u1 = new User("user1", posu1, pref1);
     User u2 = new User("user2", posu2, pref2);
     users.add(u1);
     users.add(u2);
 
-    JSONAccess.writeJSON("./../data/users.json", users);
+    JSONAccess.writeUsersJSON("./../data/users.json", users);
 
     for (User user : users) {
       DBAccess.matchUser(user);
@@ -148,6 +148,7 @@ public final class DB {
         while (rs.hasNext()) {
           // To find the places in the JSON with record.get("id")
           Record record = rs.next();
+          System.out.println(record);
           Place place = Place.findPlace(db_places, record.get("id").asInt());
           places.add(place);
         }
@@ -160,6 +161,7 @@ public final class DB {
       System.out.println("An error occured during the places where it is possible to eat searching !");
     }
     driver.close();
+    System.out.println(places);
     return places;
   }
 
@@ -188,6 +190,7 @@ public final class DB {
     }
     catch(Exception e) {
       System.out.println("An error occured during the search of the nearest bar !");
+      System.out.println(e.getMessage());
     }
     driver.close();
     return place;

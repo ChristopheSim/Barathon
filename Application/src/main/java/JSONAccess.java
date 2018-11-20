@@ -61,7 +61,13 @@ public final class JSONAccess {
 	*/
 	public static ArrayList<Place> readPlacesJSON(String path) {
 		Type t = new TypeToken<ArrayList<Place>>(){}.getType();
-		return JSONAccess.gson.fromJson(path, t);
+		try (FileReader file = new FileReader(path)) {
+			return JSONAccess.gson.fromJson(file, t);
+		}
+		catch (Exception e) {
+			System.out.println(e);
+			return new ArrayList<Place>();
+		}
 	}
 
 	/**
@@ -72,7 +78,13 @@ public final class JSONAccess {
 	*/
 	public static ArrayList<User> readUsersJSON(String path) {
 		Type t = new TypeToken<ArrayList<User>>(){}.getType();
-		return JSONAccess.gson.fromJson(path, t);
+		try (FileReader file = new FileReader(path)) {
+			return JSONAccess.gson.fromJson(file, t);
+		}
+		catch (Exception e) {
+			System.out.println(e);
+			return new ArrayList<User>();
+		}
 	}
 
 	/**
@@ -85,7 +97,7 @@ public final class JSONAccess {
 		Type t = new TypeToken<ArrayList<Place>>(){}.getType();
 		//try-with-resources
 		try (FileWriter file = new FileWriter(path)) {
-			file.write(JSONAccess.gson.toJson(obj, t));
+			JSONAccess.gson.toJson(obj, t, file);
 		}
 		catch (Exception e) {
 			System.out.println(e);
@@ -96,7 +108,7 @@ public final class JSONAccess {
 		Type t = new TypeToken<ArrayList<User>>(){}.getType();
 		//try-with-resources
 		try (FileWriter file = new FileWriter(path)) {
-			file.write(JSONAccess.gson.toJson(obj, t));
+			JSONAccess.gson.toJson(obj, t, file);
 		}
 		catch (Exception e) {
 			System.out.println(e);
