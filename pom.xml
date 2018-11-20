@@ -53,7 +53,7 @@
             <version>4.8.2</version>
         </dependency>
         <dependency>
-            <groupeId>commons-io</groupId>
+            <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.6</version>
             <scope>system</scope>
@@ -62,7 +62,7 @@
             </systemPath>
         </dependency>
         <dependency>
-            <groupeId>gson</groupId>
+            <groupId>gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.8.5</version>
             <scope>system</scope>
@@ -71,7 +71,7 @@
             </systemPath>
         </dependency>
         <dependency>
-            <groupeId>neo4j</groupId>
+            <groupId>neo4j</groupId>
             <artifactId>neo4j</artifactId>
             <version>1.4.4</version>
             <scope>system</scope>
@@ -80,7 +80,7 @@
             </systemPath>
         </dependency>
         <dependency>
-            <groupeId>apache.commons.io</groupId>
+            <groupId>apache.commons.io</groupId>
             <artifactId>apache.commons.io</artifactId>
             <version></version>
             <scope>system</scope>
@@ -89,7 +89,7 @@
             </systemPath>
         </dependency>
         <dependency>
-            <groupeId>org.json</groupId>
+            <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version></version>
             <scope>system</scope>
