@@ -1,4 +1,4 @@
-import org.junit.*;
+import org.junit.Assert.*;
 
 public class MenuTest {
 
@@ -9,15 +9,15 @@ public class MenuTest {
 	@Before
 	public void InitClasses() {
 
-	 	d1 = new Drink("Drink", 100, 0, false);
+		d1 = new Drink("Drink", 100, 0, false);
 		d2 = new Drink("Drink", 200, 0, false);
-		 d3 = new Drink("Drink", 300, 0, false);
-		 d4 = new Drink("Drink", 400, 0, false);
+		d3 = new Drink("Drink", 300, 0, false);
+		d4 = new Drink("Drink", 400, 0, false);
 
-		 f1 = new Food("Food", 100, false, false, false);
-		 f2 = new Food("Food", 200, false, false, false);
-		 f3 = new Food("Food", 300, false, false, false);
-		 f4 = new Food("Food", 400, false, false, false);
+		f1 = new Food("Food", 100, false, false, false);
+		f2 = new Food("Food", 200, false, false, false);
+		f3 = new Food("Food", 300, false, false, false);
+		f4 = new Food("Food", 400, false, false, false);
 	}
 
 	@Test
