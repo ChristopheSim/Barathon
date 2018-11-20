@@ -1,4 +1,3 @@
-import org.junit.Assert.*;
 import org.junit.*;
 
 public class MenuTest {
@@ -25,13 +24,13 @@ public class MenuTest {
 	public void TestAddDrink() {
 		Menu m = new Menu();
 
-		assertEquals(0, m.getDrinks().size());
+		Assert.assertEquals(0, m.getDrinks().size());
 		m.addDrink(d1);
-		assertEquals(1, m.getDrinks().size());
+		Assert.assertEquals(1, m.getDrinks().size());
 		m.addDrink(d1);
-		assertEquals(1, m.getDrinks().size());
+		Assert.assertEquals(1, m.getDrinks().size());
 		m.addDrink(d2);
-		assertEquals(2, m.getDrinks().size());
+		Assert.assertEquals(2, m.getDrinks().size());
 	}
 
 	@Test
@@ -41,26 +40,26 @@ public class MenuTest {
 		m.addDrink(d1);
 		m.addDrink(d2);
 
-		assertEquals(2, m.getDrinks().size());
+		Assert.assertEquals(2, m.getDrinks().size());
 		m.removeDrink(d1);
-		assertEquals(1, m.getDrinks().size());
+		Assert.assertEquals(1, m.getDrinks().size());
 		m.removeDrink(d1);
-		assertEquals(1, m.getDrinks().size());
+		Assert.assertEquals(1, m.getDrinks().size());
 		m.removeDrink(d2);
-		assertEquals(0, m.getDrinks().size());
+		Assert.assertEquals(0, m.getDrinks().size());
 	}
 
 	@Test
 	public void TestAddFood() {
 		Menu m = new Menu();
 
-		assertEquals(0, m.getFoods().size());
+		Assert.assertEquals(0, m.getFoods().size());
 		m.addFood(f1);
-		assertEquals(1, m.getFoods().size());
+		Assert.assertEquals(1, m.getFoods().size());
 		m.addFood(f1);
-		assertEquals(1, m.getFoods().size());
+		Assert.assertEquals(1, m.getFoods().size());
 		m.addFood(f2);
-		assertEquals(2, m.getFoods().size());
+		Assert.assertEquals(2, m.getFoods().size());
 	}
 
 	@Test
@@ -70,46 +69,46 @@ public class MenuTest {
 		m.addFood(f1);
 		m.addFood(f2);
 
-		assertEquals(2, m.getFoods().size());
+		Assert.assertEquals(2, m.getFoods().size());
 		m.removeFood(f1);
-		assertEquals(1, m.getFoods().size());
+		Assert.assertEquals(1, m.getFoods().size());
 		m.removeFood(f1);
-		assertEquals(1, m.getFoods().size());
+		Assert.assertEquals(1, m.getFoods().size());
 		m.removeFood(f2);
-		assertEquals(0, m.getFoods().size());
+		Assert.assertEquals(0, m.getFoods().size());
 	}
 
 	@Test
 	public void TestGetMeanDrinkPrice() {
 		Menu m = new Menu();
 
-		assertEquals(0, m.getMeanDrinkPrice());
+		Assert.assertEquals(0, m.getMeanDrinkPrice());
 		m.addDrink(d1);
-		assertEquals(100, m.getMeanDrinkPrice());
+		Assert.assertEquals(100, m.getMeanDrinkPrice());
 		m.addDrink(d2);
-		assertEquals(150, m.getMeanDrinkPrice());
+		Assert.assertEquals(150, m.getMeanDrinkPrice());
 		m.addDrink(d3);
-		assertEquals(200, m.getMeanDrinkPrice());
+		Assert.assertEquals(200, m.getMeanDrinkPrice());
 		m.addDrink(d4);
-		assertEquals(250, m.getMeanDrinkPrice());
+		Assert.assertEquals(250, m.getMeanDrinkPrice());
 		m.removeDrink(d4);
-		assertEquals(200, m.getMeanDrinkPrice());
+		Assert.assertEquals(200, m.getMeanDrinkPrice());
 	}
 
 	@Test
 	public void TestGetMeanFoodPrice() {
 		Menu m = new Menu();
 
-		assertEquals(0, m.getMeanFoodPrice());
+		Assert.assertEquals(0, m.getMeanFoodPrice());
 		m.addFood(f1);
-		assertEquals(100, m.getMeanFoodPrice());
+		Assert.assertEquals(100, m.getMeanFoodPrice());
 		m.addFood(f2);
-		assertEquals(150, m.getMeanFoodPrice());
+		Assert.assertEquals(150, m.getMeanFoodPrice());
 		m.addFood(f3);
-		assertEquals(200, m.getMeanFoodPrice());
+		Assert.assertEquals(200, m.getMeanFoodPrice());
 		m.addFood(f4);
-		assertEquals(250, m.getMeanFoodPrice());
+		Assert.assertEquals(250, m.getMeanFoodPrice());
 		m.removeFood(f4);
-		assertEquals(200, m.getMeanFoodPrice());
+		Assert.assertEquals(200, m.getMeanFoodPrice());
 	}
 }
