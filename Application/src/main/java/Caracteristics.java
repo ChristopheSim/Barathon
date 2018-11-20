@@ -83,4 +83,15 @@ public class Caracteristics {
     public void setAlcohol(boolean alcohol) {
       this.alcohol = alcohol;
     }
+
+    public void set(boolean c, boolean m, boolean fP, boolean f, boolean vg, boolean h, boolean vn, boolean a) {
+      this.cheap = c;
+      this.music = m;
+      this.famousPlace = fP;
+      this.food = f;
+      this.vegetarian = vg;
+      this.halal = h;
+      this.vegan = vn;
+      this.alcohol = a;
+    }
 }
