@@ -35,9 +35,12 @@ public final class DB {
     menu3.addFood(wafel);
 
     // Create the caracteristics
-    Caracteristics carac1 = new Caracteristics(true, false, false, false, false, false, false, false);
-    Caracteristics carac2 = new Caracteristics(true, true, true, true, true, true, false, true);
-    Caracteristics carac3 = new Caracteristics(false, true, true, true, true, true, true, true);
+    Caracteristics carac1 = new Caracteristics();
+    carac1.set(true, false, false, false, false, false, false, false);
+    Caracteristics carac2 = new Caracteristics();
+    carac2.set(true, true, true, true, true, true, false, true);
+    Caracteristics carac3 = new Caracteristics();
+    carac3.set(false, true, true, true, true, true, true, true);
 
     // Create the preferences
     Preferences pref1 = new Preferences();
@@ -165,7 +168,7 @@ public final class DB {
     */
 
     Driver driver = DBAccess.connect();
-    Place place = new Place(0, "Le bouche trou", new Address("Test", "Test", new Position(0.0, 20.0)), new Menu(), new Caracteristics(false, false, false, false, false, false, false, false));
+    Place place = new Place(0, "Le bouche trou", new Address("Test", "Test", new Position(0.0, 20.0)), new Menu(), new Caracteristics());
     try (Session session = driver.session()) {
       // To verrify the query
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r:AWAY]-(p:Place) RETURN min(r.distance) AS distance", user.getPseudo()));
