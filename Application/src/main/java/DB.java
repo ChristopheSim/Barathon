@@ -102,10 +102,11 @@ public final class DB {
     places.add(p9);
     places.add(p10);
 
+    JSONAccess.writeJSON("./../data/places.json", places);
+
     for (Place place : places) {
       DBAccess.matchPlace(place);
       DBAccess.createP2CRelationship(place, place.getCaracteristics());
-      // Method findPlaces not working
       List<Place> db_places = DBAccess.findPlaces();
       for (Place db_place : db_places) {
         DBAccess.createP2PRelationship(place, db_place);
@@ -118,6 +119,8 @@ public final class DB {
     User u2 = new User("user2", posu2, pref2);
     users.add(u1);
     users.add(u2);
+
+    JSONAccess.writeJSON("./../data/users.json", users);
 
     for (User user : users) {
       DBAccess.matchUser(user);
