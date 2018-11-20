@@ -116,11 +116,8 @@ public final class DBAccess {
     try (Session session = driver.session()) {
       StatementResult rs = session.run("MATCH (p:Place) RETURN p.id AS id");
       if (!rs.list().isEmpty()) {
-        while (rs.hasNext()) {
-          Record record = rs.next();
-          // To find the places in the JSON
-          places = JSONAccess.readPlacesJSON("./../data/places.json");
-        }
+        // To find the places in the JSON
+        places = JSONAccess.readPlacesJSON("./../data/places.json");
       }
       else {
         System.out.println("There is no place in the database !");

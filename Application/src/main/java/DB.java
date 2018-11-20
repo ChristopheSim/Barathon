@@ -109,7 +109,9 @@ public final class DB {
       DBAccess.createP2CRelationship(place, place.getCaracteristics());
       ArrayList<Place> db_places = DBAccess.findPlaces();
       for (Place db_place : db_places) {
-        DBAccess.createP2PRelationship(place, db_place);
+        if (place.getId() != db_place.getId()) {
+          DBAccess.createP2PRelationship(place, db_place);
+        }
       }
     }
 
@@ -141,15 +143,13 @@ public final class DB {
     ArrayList<Place> places = new ArrayList<Place>();
     Driver driver = DBAccess.connect();
     try (Session session = driver.session()) {
-      // To complete the query
       StatementResult rs = session.run("MATCH (p:Place)-[r:FOLLOWS]-(c:Caracteristic {name: 'food'}) WHERE r.status='true' RETURN p.id AS id");
-      if (!rs.list().isEmpty()) {
+      List<Record> ids = rs.list();
+      if (!ids.isEmpty()) {
         ArrayList<Place> db_places = JSONAccess.readPlacesJSON("./../data/places.json");
-        while (rs.hasNext()) {
+        for (Record i : ids) {
           // To find the places in the JSON with record.get("id")
-          Record record = rs.next();
-          System.out.println(record);
-          Place place = Place.findPlace(db_places, record.get("id").asInt());
+          Place place = Place.findPlace(db_places, i.get("id").asInt());
           places.add(place);
         }
       }
@@ -161,6 +161,7 @@ public final class DB {
       System.out.println("An error occured during the places where it is possible to eat searching !");
     }
     driver.close();
+    // To print for the test
     System.out.println(places);
     return places;
   }
@@ -177,12 +178,18 @@ public final class DB {
     try (Session session = driver.session()) {
       // To verrify the query
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r:AWAY]-(p:Place) RETURN min(r.distance) AS distance", user.getPseudo()));
-      if (!rs.list().isEmpty()) {
-        double distance = rs.list().get(0).get("distance").asDouble();
-        rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r:AWAY]-(p:Place) WHERE r.distance = %s RETURN p.id AS id", user.getPseudo(), distance));
-        // To find the places in the JSON with record.get("id")
-        ArrayList<Place> places = JSONAccess.readPlacesJSON("./../data/places.json");
-        place = Place.findPlace(places, rs.list().get(0).get("id").asInt());
+      List<Record> distances = rs.list();
+      if (!distances.isEmpty()) {
+        for (Record d : distances) {
+          double distance = d.get("distance").asDouble();
+          rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r:AWAY]-(p:Place) WHERE r.distance = %s RETURN p.id AS id", user.getPseudo(), distance));
+          List<Record> ids = rs.list();
+          ArrayList<Place> places = JSONAccess.readPlacesJSON("./../data/places.json");
+          for (Record i : ids) {
+            // To find the places in the JSON with record.get("id")
+            place = Place.findPlace(places, i.get("id").asInt());
+          }
+        }
       }
       else {
         System.out.println("Impossible to find the nearest bar.\nNo relationship AWAY in this graph.");
@@ -193,6 +200,8 @@ public final class DB {
       System.out.println(e.getMessage());
     }
     driver.close();
+    // To print for the test
+    System.out.println(place.getName());
     return place;
   }
 
@@ -209,12 +218,12 @@ public final class DB {
     try (Session session = driver.session()) {
       // To complete the query
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r:AWAY]-(p:Place) WHERE r.distance <= %d RETURN p.id AS id, r.distance AS distance ORDER BY r.distance LIMIT %d", user.getPseudo(), Y, X));
-      if (!rs.list().isEmpty()) {
+      List<Record> ids = rs.list();
+      if (!ids.isEmpty()) {
         ArrayList<Place> db_places = JSONAccess.readPlacesJSON("./../data/places.json");
-        while (rs.hasNext()) {
+        for (Record i : ids) {
           // To find the places in the JSON with record.get("id")
-          Record record = rs.next();
-          Place place = Place.findPlace(db_places, record.get("id").asInt());
+          Place place = Place.findPlace(db_places, i.get("id").asInt());
           places.add(place);
         }
       }
@@ -226,6 +235,8 @@ public final class DB {
       System.out.println("An error occured during the places where it is possible to eat searching !");
     }
     driver.close();
+    // To print for the test
+    System.out.println(places);
     return places;
   }
 }
