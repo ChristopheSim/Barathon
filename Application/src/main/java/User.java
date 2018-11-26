@@ -198,11 +198,13 @@ public class User {
         this.clearList();
         if (this.preferences.getTrip()) {
             StrategyTrip st = new StrategyTrip();
-            this.trips = st.solve(this.position, this.preferences.getCaracteristics().get(0)); //ERROR
+            this.trips = st.solve(this.position,
+                this.preferences.getCaracteristics().get(0)); //ERROR
         }
         else if (!this.preferences.getTrip()) {
             StrategyBars sb = new StrategyBars();
-            this.bars = sb.solve(this.position, this.preferences.getCaracteristics().get(0)); //ERROR
+            this.bars = sb.solve(this.position,
+                this.preferences.getCaracteristics().get(0)); //ERROR
         }
     }
 
@@ -226,7 +228,8 @@ public class User {
     public int chooseCaracterictics() {
         Console console = System.console();
 
-        String msg = String.format("Choose Caracteristic [0-%01d]", this.preferences.getNbCaracteristic());
+        String msg = String.format("Choose Caracteristic [0-%01d]",
+            this.preferences.getNbCaracteristic());
         System.out.println(msg);
         int input = Integer.parseInt(console.readLine());
         //TO REMOVE
@@ -242,7 +245,7 @@ public class User {
      * @return null
      */
 	public static User findUser(ArrayList<User> users, String pseudo) {
-		for(User u: users) {
+		for (User u: users) {
 			if (u.getPseudo().equals(pseudo)) {
 				return u;
 			}
