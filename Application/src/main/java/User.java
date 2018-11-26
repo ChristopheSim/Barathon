@@ -100,7 +100,7 @@ public class User {
     /**
      * Method to set a list of bars.
      *
-     * @param b list representing the bars to visit.
+     * @param t list representing the bars to visit.
      */
     public void setTrips(ArrayList<Place> t) {
         this.trips = t;
@@ -109,7 +109,7 @@ public class User {
     /**
      * Method to add a bar to the list of bars.
      *
-     * @param b place representing the bar to add.
+     * @param t place representing the bar to add.
      */
     public void addTrip(ArrayList<Place> t) {
       this.trips.addAll(t);
@@ -118,7 +118,7 @@ public class User {
     /**
      * Method to remove a bar of the list.
      *
-     * @param b place representing the bar to remove.
+     * @param t place representing the bar to remove.
      */
     public void removeTrip(ArrayList<Place> t) {
       if (this.trips.contains(t)) {
@@ -239,7 +239,7 @@ public class User {
      *
      * @param users a list of user representing all the users of the db.
      * @param pseudo a string representing the user's pseudo.
-     * @return null.
+     * @return null
      */
 	public static User findUser(ArrayList<User> users, String pseudo) {
 		for(User u: users) {
