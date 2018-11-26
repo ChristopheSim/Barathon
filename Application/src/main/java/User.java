@@ -19,7 +19,7 @@ public class User {
      * @param po user's position.
      * @param pr user's preferences.
      */
-    public User(String pseudo, Position po, Preferences pr) {
+    public User(final String pseudo, final Position po, final Preferences pr) {
         this.pseudo = pseudo;
         this.bars = new ArrayList<Place>();
         this.trips = new ArrayList<Place>();
@@ -185,7 +185,7 @@ public class User {
     /**
      *  Method to clear the lists bars and trips.
      */
-    private final void clearList() {
+    private void clearList() {
         this.bars = new ArrayList<Place>();
         this.trips = new ArrayList<Place>();
     }
