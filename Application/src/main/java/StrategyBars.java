@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-
 /**
  * Class to find the bars not ordered.
  */
