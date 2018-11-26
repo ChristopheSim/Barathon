@@ -29,36 +29,36 @@ public class User {
     }
 
     /**
-     * Method to get the user's pseudo
+     * Method to get the user's pseudo.
      *
-     * @return a string representing the user's pseudo
+     * @return a string representing the user's pseudo.
      */
     public String getPseudo() {
         return this.pseudo;
     }
 
     /**
-     * Method to set the user's pseudo
+     * Method to set the user's pseudo.
      *
-     * @param p a string representing the user's pseudo
+     * @param p a string representing the user's pseudo.
      */
     public void setPseudo(String p) {
         this.pseudo = p;
     }
 
     /**
-     * Method to get a list of bars
+     * Method to get a list of bars.
      *
-     * @return a list representing the bars to visit
+     * @return a list representing the bars to visit.
      */
     public ArrayList<Place> getBars() {
         return this.bars;
     }
 
     /**
-     * Method to set a list of bars
+     * Method to set a list of bars.
      *
-     * @param b list representing the bars to visit
+     * @param b list representing the bars to visit.
      */
     public void setBars(ArrayList<Place> b) {
         this.bars = b;
@@ -66,9 +66,9 @@ public class User {
     }
 
     /**
-     * Method to add a bar to the list of bars
+     * Method to add a bar to the list of bars.
      *
-     * @param b place representing the bar to add
+     * @param b place representing the bar to add.
      */
     public void addBar(Place b) {
         this.bars.add(b);
@@ -76,9 +76,9 @@ public class User {
     }
 
     /**
-     * Method to remove a bar of the list
+     * Method to remove a bar of the list.
      *
-     * @param b place representing the bar to remove
+     * @param b place representing the bar to remove.
      */
     public void removeBar(Place b) {
       if (this.bars.contains(b)) {
@@ -89,36 +89,36 @@ public class User {
     }
 
     /**
-     * Method to get a list of bars
+     * Method to get a list of bars.
      *
-     * @return a list representing the bars to visit
+     * @return a list representing the bars to visit.
      */
     public ArrayList<Place> getTrips() {
         return this.trips;
     }
 
     /**
-     * Method to set a list of bars
+     * Method to set a list of bars.
      *
-     * @param b list representing the bars to visit
+     * @param b list representing the bars to visit.
      */
     public void setTrips(ArrayList<Place> t) {
         this.trips = t;
     }
 
     /**
-     * Method to add a bar to the list of bars
+     * Method to add a bar to the list of bars.
      *
-     * @param b place representing the bar to add
+     * @param b place representing the bar to add.
      */
     public void addTrip(ArrayList<Place> t) {
       this.trips.addAll(t);
     }
 
     /**
-     * Method to remove a bar of the list
+     * Method to remove a bar of the list.
      *
-     * @param b place representing the bar to remove
+     * @param b place representing the bar to remove.
      */
     public void removeTrip(ArrayList<Place> t) {
       if (this.trips.contains(t)) {
@@ -129,61 +129,61 @@ public class User {
     }
 
     /**
-     *  Method to get the user's Position
+     *  Method to get the user's Position.
      *
-     * @return a position representing the user's position
+     * @return a position representing the user's position.
      */
     public Position getPosition() {
         return this.position;
     }
 
     /**
-     * Method to set the user's position
+     * Method to set the user's position.
      *
-     * @param p a position representing the user's position
+     * @param p a position representing the user's position.
      */
     public void setPosition(Position p) {
         this.position = p;
     }
 
     /**
-     * Method to get the user's preferences
+     * Method to get the user's preferences.
      *
-     * @return a preferences representing the user's preferences
+     * @return a preferences representing the user's preferences.
      */
     public Preferences getPreferences() {
         return this.preferences;
     }
 
     /**
-     * Method to set the user's preferences
+     * Method to set the user's preferences.
      *
-     * @param pr a preferences representing the user's preferences
+     * @param pr a preferences representing the user's preferences.
      */
     public void setPreferences(Preferences pr) {
       this.preferences = pr;
     }
 
     /**
-     *  Method to set the user's choice
+     *  Method to set the user's choice.
      *
-     * @param c a int representing the user's choice
+     * @param c a int representing the user's choice.
      */
     public void setChoice(int c) {
         this.choice = c;
     }
 
     /**
-     *  Method to get the user's choice
+     *  Method to get the user's choice.
      *
-     * @return a int representing the user's choice
+     * @return a int representing the user's choice.
      */
     public int getChoice() {
         return this.choice;
     }
 
     /**
-     *  Method to clear the lists bars and trips
+     *  Method to clear the lists bars and trips.
      */
     private void clearList() {
         this.bars = new ArrayList<Place>();
@@ -191,7 +191,7 @@ public class User {
     }
 
     /**
-     *  Method to generate the lists via the search algorithm
+     *  Method to generate the lists via the search algorithm.
      */
     public void generate() {
         //to implement
@@ -207,7 +207,7 @@ public class User {
     }
 
     /**
-     *  Method to show the lists
+     *  Method to show the lists.
      */
     public void show() {
         if (this.preferences.getTrip()) {
@@ -219,9 +219,9 @@ public class User {
     }
 
     /**
-     *  Method to choose the caracteristic
+     *  Method to choose the caracteristic.
      *
-     * @return a int representing the user's choice
+     * @return a int representing the user's choice.
      */
     public int chooseCaracterictics() {
         Console console = System.console();
@@ -235,10 +235,11 @@ public class User {
     }
 
     /**
-     *  Method to find the corresponding user in the db
+     *  Method to find the corresponding user in the db.
      *
-     * @param users a list of user representing all the users of the db
-     * @param pseudo a string representing the user's pseudo
+     * @param users a list of user representing all the users of the db.
+     * @param pseudo a string representing the user's pseudo.
+     * @return null.
      */
 	public static User findUser(ArrayList<User> users, String pseudo) {
 		for(User u: users) {
