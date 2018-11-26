@@ -5,11 +5,29 @@ import java.util.ArrayList;
  * Class to represent a user.
  */
 public class User {
+    /**
+     * user's pseudo
+     */
     private String pseudo;
+    /**
+     * list of bars
+     */
     private ArrayList<Place> bars;
+    /**
+     * list of bars
+     */
     private ArrayList<Place> trips;
+    /**
+     * user's position
+     */
     private Position position;
+    /**
+     * user's preferences
+     */
     private Preferences preferences;
+    /**
+     * user's choice
+     */
     private int choice;
 
     /**
@@ -198,10 +216,12 @@ public class User {
         this.clearList();
         if (this.preferences.getTrip()) {
             StrategyTrip st = new StrategyTrip();
-            this.trips = st.solve(this.position, this.preferences.getCaracteristics().get(0)); //ERROR
+            this.trips = st.solve(this.position,
+            this.preferences.getCaracteristics().get(0));
         } else if (!this.preferences.getTrip()) {
             StrategyBars sb = new StrategyBars();
-            this.bars = sb.solve(this.position, this.preferences.getCaracteristics().get(0)); //ERROR
+            this.bars = sb.solve(this.position,
+            this.preferences.getCaracteristics().get(0));
         }
     }
 
@@ -224,7 +244,8 @@ public class User {
     public final int chooseCaracterictics() {
         Console console = System.console();
 
-        String msg = String.format("Choose Caracteristic [0-%01d]", this.preferences.getNbCaracteristic());
+        String msg = String.format("Choose Caracteristic [0-%01d]",
+        this.preferences.getNbCaracteristic());
         System.out.println(msg);
         int input = Integer.parseInt(console.readLine());
         //TO REMOVE
