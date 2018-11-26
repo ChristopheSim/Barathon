@@ -81,11 +81,11 @@ public class User {
      * @param b place representing the bar to remove.
      */
     public void removeBar(Place b) {
-      if (this.bars.contains(b)) {
-        this.bars.remove(b);
-      } else {
-        System.out.println("Place not deleted (not found)");
-      }
+        if (this.bars.contains(b)) {
+            this.bars.remove(b);
+        } else {
+            System.out.println("Place not deleted (not found)");
+        }
     }
 
     /**
@@ -112,7 +112,7 @@ public class User {
      * @param t place representing the bar to add.
      */
     public void addTrip(ArrayList<Place> t) {
-      this.trips.addAll(t);
+        this.trips.addAll(t);
     }
 
     /**
@@ -121,11 +121,11 @@ public class User {
      * @param t place representing the bar to remove.
      */
     public void removeTrip(ArrayList<Place> t) {
-      if (this.trips.contains(t)) {
-        this.trips.remove(t);
-      } else {
-        System.out.println("Trip not deleted (not found)");
-      }
+        if (this.trips.contains(t)) {
+            this.trips.remove(t);
+        } else {
+            System.out.println("Trip not deleted (not found)");
+        }
     }
 
     /**
@@ -161,7 +161,7 @@ public class User {
      * @param pr a preferences representing the user's preferences.
      */
     public void setPreferences(Preferences pr) {
-      this.preferences = pr;
+        this.preferences = pr;
     }
 
     /**
@@ -198,13 +198,10 @@ public class User {
         this.clearList();
         if (this.preferences.getTrip()) {
             StrategyTrip st = new StrategyTrip();
-            this.trips = st.solve(this.position,
-                this.preferences.getCaracteristics().get(0)); //ERROR
-        }
-        else if (!this.preferences.getTrip()) {
+            this.trips = st.solve(this.position, this.preferences.getCaracteristics().get(0)); //ERROR
+        } else if (!this.preferences.getTrip()) {
             StrategyBars sb = new StrategyBars();
-            this.bars = sb.solve(this.position,
-                this.preferences.getCaracteristics().get(0)); //ERROR
+            this.bars = sb.solve(this.position, this.preferences.getCaracteristics().get(0)); //ERROR
         }
     }
 
@@ -214,8 +211,7 @@ public class User {
     public void show() {
         if (this.preferences.getTrip()) {
             System.out.println(this.trips);
-        }
-        else if (!this.preferences.getTrip()) {
+        } else if (!this.preferences.getTrip()) {
             System.out.println(this.bars);
         }
     }
@@ -228,8 +224,7 @@ public class User {
     public int chooseCaracterictics() {
         Console console = System.console();
 
-        String msg = String.format("Choose Caracteristic [0-%01d]",
-            this.preferences.getNbCaracteristic());
+        String msg = String.format("Choose Caracteristic [0-%01d]", this.preferences.getNbCaracteristic());
         System.out.println(msg);
         int input = Integer.parseInt(console.readLine());
         //TO REMOVE
