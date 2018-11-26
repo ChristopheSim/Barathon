@@ -2,7 +2,7 @@ import java.io.Console;
 import java.util.ArrayList;
 
 /**
- * Class to represent a user
+ * Class to represent a user.
  */
 public class User {
     private String pseudo;
@@ -13,11 +13,11 @@ public class User {
     private int choice;
 
     /**
-     * Method to generate a user
+     * Method to generate a user.
      *
-     * @param pseudo user's pseudo
-     * @param po user's position
-     * @param pr user's preferences
+     * @param pseudo user's pseudo.
+     * @param po user's position.
+     * @param pr user's preferences.
      */
     public User(String pseudo, Position po, Preferences pr) {
         this.pseudo = pseudo;
