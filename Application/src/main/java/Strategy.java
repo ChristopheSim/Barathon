@@ -11,5 +11,5 @@ interface Strategy {
      * @param c carcateristics of the user.
      * @return list of places.
      */
-    public ArrayList<Place> solve(Position p, Caracteristics c);
+    ArrayList<Place> solve(Position p, Caracteristics c);
 }
