@@ -260,14 +260,13 @@ public class User {
      * @param pseudo a string representing the user's pseudo.
      * @return null
      */
-	public static User findUser(final ArrayList<User> users,
+    public static User findUser(final ArrayList<User> users,
     final String pseudo) {
-		for (User u: users) {
-			if (u.getPseudo().equals(pseudo)) {
-				return u;
-			}
+        for (User u: users) {
+            if (u.getPseudo().equals(pseudo)) {
+                return u;
+            }
 		}
-
 		return null;
 	}
 }
