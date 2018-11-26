@@ -33,7 +33,7 @@ public class User {
      *
      * @return a string representing the user's pseudo.
      */
-    public String getPseudo() {
+    public final String getPseudo() {
         return this.pseudo;
     }
 
@@ -42,7 +42,7 @@ public class User {
      *
      * @param p a string representing the user's pseudo.
      */
-    public void setPseudo(String p) {
+    public final void setPseudo(final String p) {
         this.pseudo = p;
     }
 
@@ -51,7 +51,7 @@ public class User {
      *
      * @return a list representing the bars to visit.
      */
-    public ArrayList<Place> getBars() {
+    public final ArrayList<Place> getBars() {
         return this.bars;
     }
 
@@ -60,7 +60,7 @@ public class User {
      *
      * @param b list representing the bars to visit.
      */
-    public void setBars(ArrayList<Place> b) {
+    public final void setBars(final ArrayList<Place> b) {
         this.bars = b;
         return;
     }
@@ -70,17 +70,17 @@ public class User {
      *
      * @param b place representing the bar to add.
      */
-    public void addBar(Place b) {
+    public final void addBar(final Place b) {
         this.bars.add(b);
         return;
     }
 
-    /**
+    /**final
      * Method to remove a bar of the list.
      *
      * @param b place representing the bar to remove.
      */
-    public void removeBar(Place b) {
+    public final void removeBar(final Place b) {
         if (this.bars.contains(b)) {
             this.bars.remove(b);
         } else {
@@ -93,7 +93,7 @@ public class User {
      *
      * @return a list representing the bars to visit.
      */
-    public ArrayList<Place> getTrips() {
+    public final ArrayList<Place> getTrips() {
         return this.trips;
     }
 
@@ -102,7 +102,7 @@ public class User {
      *
      * @param t list representing the bars to visit.
      */
-    public void setTrips(ArrayList<Place> t) {
+    public final void setTrips(final ArrayList<Place> t) {
         this.trips = t;
     }
 
@@ -111,7 +111,7 @@ public class User {
      *
      * @param t place representing the bar to add.
      */
-    public void addTrip(ArrayList<Place> t) {
+    public final void addTrip(final ArrayList<Place> t) {
         this.trips.addAll(t);
     }
 
@@ -120,7 +120,7 @@ public class User {
      *
      * @param t place representing the bar to remove.
      */
-    public void removeTrip(ArrayList<Place> t) {
+    public final void removeTrip(final ArrayList<Place> t) {
         if (this.trips.contains(t)) {
             this.trips.remove(t);
         } else {
@@ -133,7 +133,7 @@ public class User {
      *
      * @return a position representing the user's position.
      */
-    public Position getPosition() {
+    public final Position getPosition() {
         return this.position;
     }
 
@@ -142,7 +142,7 @@ public class User {
      *
      * @param p a position representing the user's position.
      */
-    public void setPosition(Position p) {
+    public final void setPosition(final Position p) {
         this.position = p;
     }
 
@@ -151,7 +151,7 @@ public class User {
      *
      * @return a preferences representing the user's preferences.
      */
-    public Preferences getPreferences() {
+    public final Preferences getPreferences() {
         return this.preferences;
     }
 
@@ -160,7 +160,7 @@ public class User {
      *
      * @param pr a preferences representing the user's preferences.
      */
-    public void setPreferences(Preferences pr) {
+    public final void setPreferences(final Preferences pr) {
         this.preferences = pr;
     }
 
@@ -169,7 +169,7 @@ public class User {
      *
      * @param c a int representing the user's choice.
      */
-    public void setChoice(final int c) {
+    public final void setChoice(final int c) {
         this.choice = c;
     }
 
@@ -178,14 +178,14 @@ public class User {
      *
      * @return a int representing the user's choice.
      */
-    public int getChoice() {
+    public final int getChoice() {
         return this.choice;
     }
 
     /**
      *  Method to clear the lists bars and trips.
      */
-    private void clearList() {
+    private final void clearList() {
         this.bars = new ArrayList<Place>();
         this.trips = new ArrayList<Place>();
     }
@@ -193,7 +193,7 @@ public class User {
     /**
      *  Method to generate the lists via the search algorithm.
      */
-    public void generate() {
+    public final void generate() {
         //to implement
         this.clearList();
         if (this.preferences.getTrip()) {
@@ -208,7 +208,7 @@ public class User {
     /**
      *  Method to show the lists.
      */
-    public void show() {
+    public final void show() {
         if (this.preferences.getTrip()) {
             System.out.println(this.trips);
         } else if (!this.preferences.getTrip()) {
@@ -221,7 +221,7 @@ public class User {
      *
      * @return a int representing the user's choice.
      */
-    public int chooseCaracterictics() {
+    public final int chooseCaracterictics() {
         Console console = System.console();
 
         String msg = String.format("Choose Caracteristic [0-%01d]", this.preferences.getNbCaracteristic());
