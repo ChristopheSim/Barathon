@@ -94,7 +94,7 @@ public final class JSONAccess {
 	}
 
 	/**
-	* Write an object to a JSON file - can be used to write a List.
+	* Write Places to a JSON file - can be used to write a List.
 	*
 	* @param path Path of the file to be written
 	* @param obj This is the object to convert into JSON
@@ -110,6 +110,12 @@ public final class JSONAccess {
 		}
 	}
 
+	/**
+	* Write Users to a JSON file - can be used to write a List.
+	*
+	* @param path Path of the file to be written
+	* @param obj This is the object to convert into JSON
+	*/
 	public static void writeUsersJSON(final String path, final ArrayList<User> obj) {
 		Type t = new TypeToken<ArrayList<User>>(){}.getType();
 		//try-with-resources
