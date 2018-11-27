@@ -21,7 +21,7 @@ public final class DBAccess {
   /**
    * The factor to change the degrees in kilometers.
   */
-  private static final Double UNKNOWN_POSITION = 111.03;
+  private static final Double FACTOR = 111.03;
 
   /**
    * ip address.
