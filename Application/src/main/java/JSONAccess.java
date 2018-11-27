@@ -16,7 +16,9 @@ public final class JSONAccess {
 	private JSONAccess() {
 	}
 
-	// Instance of utility Gson
+	/**
+	* Instance of utility Gson
+	*/
 	private static Gson gson = new Gson();
 
 	/**
@@ -65,7 +67,7 @@ public final class JSONAccess {
 	* @return ArrayList<Place> List of places from the JSON file.
 	*/
 	public static ArrayList<Place> readPlacesJSON(final String path) {
-		Type t = new TypeToken<ArrayList<Place>>(){}.getType();
+		Type t = new TypeToken<ArrayList<Place>>() { }.getType();
 		try (FileReader file = new FileReader(path)) {
 			return JSONAccess.gson.fromJson(file, t);
 		} catch (Exception e) {
@@ -81,7 +83,7 @@ public final class JSONAccess {
 	* @return ArrayList<User> List of users from the JSON file.
 	*/
 	public static ArrayList<User> readUsersJSON(final String path) {
-		Type t = new TypeToken<ArrayList<User>>(){}.getType();
+		Type t = new TypeToken<ArrayList<User>>() { }.getType();
 		try (FileReader file = new FileReader(path)) {
 			return JSONAccess.gson.fromJson(file, t);
 		}
@@ -98,7 +100,7 @@ public final class JSONAccess {
 	* @param obj This is the object to convert into JSON.
 	*/
 	public static void writePlacesJSON(final String path, final ArrayList<Place> obj) {
-		Type t = new TypeToken<ArrayList<Place>>(){}.getType();
+		Type t = new TypeToken<ArrayList<Place>>() { }.getType();
 		//try-with-resources
 		try (FileWriter file = new FileWriter(path)) {
 			JSONAccess.gson.toJson(obj, t, file);
@@ -115,7 +117,7 @@ public final class JSONAccess {
 	* @param obj This is the object to convert into JSON.
 	*/
 	public static void writeUsersJSON(final String path, final ArrayList<User> obj) {
-		Type t = new TypeToken<ArrayList<User>>(){}.getType();
+		Type t = new TypeToken<ArrayList<User>>() { }.getType();
 		//try-with-resources
 		try (FileWriter file = new FileWriter(path)) {
 			JSONAccess.gson.toJson(obj, t, file);
