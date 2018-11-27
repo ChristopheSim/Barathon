@@ -31,9 +31,9 @@ public class Drink extends Component {
     *
     * @return double percent of alcohol.
     */
-	public final double getAlcohol() {
-		return this.alcohol;
-	}
+    public final double getAlcohol() {
+        return this.alcohol;
+    }
 
 	/**
     * Method to get the drink's sparkliung.
