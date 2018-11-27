@@ -1,7 +1,12 @@
 // imports
-import org.neo4j.driver.v1.*;
-import static java.lang.Math.*;
-import java.util.*;
+import org.neo4j.driver.v1.Driver;
+import org.neo4j.driver.v1.Session;
+import org.neo4j.driver.v1.StatementResult;
+import org.neo4j.driver.v1.Record;
+import java.util.List;
+import java.util.ArrayList;
+import static java.lang.Math.sqr;
+import static java.lang.Math.pow;
 
 /**
 * This class is used to connect the database neo4j w/ the application Barathon.
