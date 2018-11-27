@@ -52,7 +52,7 @@ public class Drink extends Component {
 	/**
 	 * Method to set the percent of alcohol.
 	 *
-	 * @param alcohol percent of alcohol.
+	 * @param a percent of alcohol.
 	 */
 	public final void setAlcohol(final double a) {
 		this.alcohol = a;
@@ -61,7 +61,7 @@ public class Drink extends Component {
 	/**
 	 * Method to set the sparkliung.
 	 *
-	 * @param sparkling boolean of sparkling.
+	 * @param s boolean of sparkling.
 	 */
 	public final void setSparkling(final boolean s) {
 		this.sparkling = s;
