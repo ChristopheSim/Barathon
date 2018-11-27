@@ -1,6 +1,7 @@
 // imports
 import org.neo4j.driver.v1.*;
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Class which contains the DB methods.
