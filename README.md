@@ -89,8 +89,13 @@ The class `Food` and class `Drink` are completing the class `Component` to have 
  * multiples methods to manipulate the objects.
 
 #### `Preferences` and `Caracteristics`
-The class `Preferences` use the class `Caracteristics`.
+The class `Preferences` use the class `Caracteristics`. The bars have caracteristics and the user has a preference. The preferences of the user is composed of caracteristic, it helps to match bars following them caracteristics.
+
+The choice of the user for a trip or not will appear in the preferences but will not help to see if the bar match with the wanted caracteristics.
 
 #### `Address` and `Position`
+the class `Address` us the class `Position`. The bars have an address and the user has a position. The address of the bars is composed of a position, it helps to match the bars following their geographical position.
+
+For the bars, we need more information to display than the latitude and the longitude of their position.
 
 #### `Strategy`, `StrategyBars` and `StrategyTrips`
