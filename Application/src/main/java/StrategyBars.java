@@ -14,8 +14,8 @@ public class StrategyBars implements Strategy {
     public final ArrayList<Place> solve(final Position p,
     final Caracteristics c) {
         ArrayList<Place> lst = new ArrayList<Place>();
-        // Takes the parameter position and returns all the bars that in 100km
-        // around the position
+        // Takes the parameter position and returns all the bars that in 100km.
+        // around the position.
         return lst;
     }
 }

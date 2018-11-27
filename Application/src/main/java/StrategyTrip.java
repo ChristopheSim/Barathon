@@ -13,8 +13,7 @@ import java.util.ArrayList;
    public final ArrayList<Place> solve(final Position p,
    final Caracteristics c) {
         ArrayList<Place> lst = new ArrayList<Place>();
-        // Takes the parameter position and return a trip
-        // Ordered list of places that matches with the caracteristics
+        // Ordered list of places that matches with the caracteristics.
         return lst;
     }
 }
