@@ -51,7 +51,18 @@ The metrics of the code are the followed:
 * the execution of the serch is lower than 30 sec.
 
 ## How it works
+### Use
+We run the application on a smartphone. We connect to the user in the neo4j database through the pseudo.
+
+the user set the desire caracteristics.
+We search bars who match the caracteristics through a query in the neo4j database.
+
+We search informations about the bars through the json database.
+
+We show all the selected bars with their information to the user.
+
+### classes
 The application is composed of 15 classes:
 
-##### DBAccess and JSONAccess
+#### DBAccess and JSONAccess
 These classes are used to connect to the differents DB (neo4j, json).
