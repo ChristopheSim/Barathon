@@ -19,6 +19,11 @@ public final class DBAccess {
   }
 
   /**
+   * The factor to change the degrees in kilometers.
+  */
+  private static final Double UNKNOWN_POSITION = 111.03;
+
+  /**
    * ip address.
    */
   private static String ip = "localhost:7687";
@@ -507,7 +512,7 @@ public final class DBAccess {
     This function creates a relationship AWAY between two places. This relationship contains one property, the distance.
     */
 
-    double distance = 111.03 * Math.sqrt(Math.pow(place1.getAddress().getPosition().getLongitude() - place2.getAddress().getPosition().getLongitude(), 2) + Math.pow(place1.getAddress().getPosition().getLatitude() - place2.getAddress().getPosition().getLatitude(), 2));
+    double distance = FACTOR * Math.sqrt(Math.pow(place1.getAddress().getPosition().getLongitude() - place2.getAddress().getPosition().getLongitude(), 2) + Math.pow(place1.getAddress().getPosition().getLatitude() - place2.getAddress().getPosition().getLatitude(), 2));
     Driver driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (p1:Place {id: %d})-[r]-(p2:Place {id: %d}) RETURN r", place1.getId(), place2.getId()));
@@ -534,7 +539,7 @@ public final class DBAccess {
     This function creates a relationship AWAY between two places. This relationship contains one property, the distance.
     */
 
-    double distance = Math.sqrt(Math.pow(user.getPosition().getLongitude() - place.getAddress().getPosition().getLongitude(), 2) + Math.pow(user.getPosition().getLatitude() - place.getAddress().getPosition().getLatitude(), 2));
+    double distance = FACTOR * Math.sqrt(Math.pow(user.getPosition().getLongitude() - place.getAddress().getPosition().getLongitude(), 2) + Math.pow(user.getPosition().getLatitude() - place.getAddress().getPosition().getLatitude(), 2));
     Driver driver = connect();
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r]-(p:Place {id: %d}) RETURN r", user.getPseudo(), place.getId()));
