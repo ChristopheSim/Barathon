@@ -1,51 +1,108 @@
 import java.util.*;
 
+/**
+ *  Class representing the user's preferences.
+ */
 public class Preferences {
+    /**
+     * @param caracteristics caracteristics's list.
+     */
     private ArrayList<Caracteristics> caracteristics;
+    /**
+     * @param radius max radius of deplacement.
+     */
     private int radius;
+    /**
+     * @param trip boolean true for a trip.
+     */
     private boolean trip;
 
+    /**
+     * Construstor.
+     */
     public Preferences() {
         this.caracteristics = new ArrayList<Caracteristics>();
         this.radius = 1000;
         this.trip = false;
     }
 
-    public ArrayList<Caracteristics> getCaracteristics() {
+    /**
+     * Method to get the caracteristics.
+     *
+     * @return List of caracteristics.
+     */
+    public final ArrayList<Caracteristics> getCaracteristics() {
       return this.caracteristics;
     }
 
-    public int getNbCaracteristic() {
+    /**
+     * Method to get the number of caracteristics.
+     *
+     * @return int representing the nulber of caracteristics.
+     */
+    public final int getNbCaracteristic() {
         return this.caracteristics.size();
     }
 
-    public void addCaracteristics(Caracteristics caracteristics) {
-        this.caracteristics.add(caracteristics);
+    /**
+     * Method to add a caracteristic.
+     *
+     * @param c caracteristic to add.
+     */
+    public final void addCaracteristics(final Caracteristics c) {
+        this.caracteristics.add(c);
     }
 
-    public void removeCaracteristics(Caracteristics caracteristics) {
-      if (this.caracteristics.contains(caracteristics)) {
-        this.caracteristics.remove(caracteristics);
+    /**
+     * Method to remove a caracteristic.
+     *
+     * @param c caracteristic to remove.
+     */
+    public final void removeCaracteristics(final Caracteristics c) {
+      if (this.caracteristics.contains(c)) {
+        this.caracteristics.remove(c);
       } else {
         System.out.println("Caracteristics not deleted (not found)");
       }
     }
 
-    public int getRadius() {
+    /**
+     * Method to get the radius.
+     *
+     * @return int representing the radius.
+     */
+    public final int getRadius() {
         return radius;
     }
 
-    public void setRadius(int radius) {
-        if (radius > 0) {
-            this.radius = radius;
+    /**
+     * Method to set radius.
+     *
+     * @param r representing the radius.
+     */
+    public final void setRadius(final int r) {
+        if (r > 0) {
+            this.radius = r;
+        } else {
+            this.radius = 0;
         }
     }
 
-    public boolean getTrip() {
+    /**
+     * Method to get trip.
+     *
+     * @return boolean true if trip.
+     */
+    public final boolean getTrip() {
         return this.trip;
     }
 
-    public void setTrip(boolean trip) {
-        this.trip = trip;
+    /**
+     * Method to set trip.
+     *
+     * @param t boolean trip.
+     */
+    public final void setTrip(final boolean t) {
+        this.trip = t;
     }
 }
