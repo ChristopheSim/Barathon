@@ -2,14 +2,14 @@
 * This class represents the drinks to be added to the menu of a place.
 */
 public class Drink extends Component {
-	/**
+    /**
 	 * @param alcohol degrees of alcohol.
 	 */
-	private double alcohol;
-	/**
-	 * @param sparkling boolean representing if the drink is sparkling
+     private double alcohol;
+     /**
+     * @param sparkling boolean representing if the drink is sparkling
 	 */
-	private boolean sparkling;
+     private boolean sparkling;
 
 	/**
 	 * Constructor.
