@@ -22,7 +22,7 @@ public class Menu {
     private int meanFoodPrice;
 
     /**
-    *	Constructor.
+    * Constructor.
     */
     public Menu() {
         this.foods = new ArrayList<Food>();
@@ -48,7 +48,7 @@ public class Menu {
     }
 
     /**
-    *	This method gets all the foods from the menu.
+    * This method gets all the foods from the menu.
     *
     * @return ArrayList<Food> Food from the menu.
     */
@@ -57,7 +57,7 @@ public class Menu {
     }
 
     /**
-    *	This method gets all the drinks from the menu.
+    * This method gets all the drinks from the menu.
     *
     * @return ArrayList<Drink> Drink from the menu.
     */
@@ -66,7 +66,7 @@ public class Menu {
     }
 
     /**
-    *	This method adds a food to the menu.
+    * This method adds a food to the menu.
     *
     * @param f Food to be added.
     */
@@ -76,7 +76,7 @@ public class Menu {
     }
 
     /**
-    *	This method removes a food from the menu.
+    * This method removes a food from the menu.
     *
     * @param f Food to be removed.
     */
@@ -86,7 +86,7 @@ public class Menu {
     }
 
     /**
-    *	This method adds a drink to the menu.
+    * This method adds a drink to the menu.
     *
     * @param d Drink to be added.
     */
@@ -96,7 +96,7 @@ public class Menu {
     }
 
     /**
-    *	This method removes a drink from the menu.
+    * This method removes a drink from the menu.
     *
     * @param d Drink to be removed.
     */
@@ -106,7 +106,7 @@ public class Menu {
     }
 
     /**
-    *	Compute the price of the foods.
+    * Compute the price of the foods.
     */
     public final void setMeanFoodPrice() {
         int sum = 0;
@@ -122,7 +122,7 @@ public class Menu {
     }
 
     /**
-    *	Compute the price of the drinks.
+    * Compute the price of the drinks.
     */
     public final void setMeanDrinkPrice() {
         int sum = 0;
