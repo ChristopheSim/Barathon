@@ -9,8 +9,10 @@ This `README.md` is the official information file for the comprehenssion of this
 You can find differents files generated during the developpement process. We keep them so we can find our reflexion during the developpement process.
 
 ## "Useless" parts
-Two projects were bound: the TDD and the NoSQL projects. Some classes/files are useless now. The DBAccess and DB classes are no more really usefull. The DBAccess contains all the methods to access to the neo4j database (connect, createCaracteristics, ...). The DB contains the methods to create the database and the querries needed for the NoSQL project.
+Two projects were bound: the TDD and the NoSQL projects. Some classes/files are useless now. The `DBAccess` and `DB` classes are no more really usefull. The DBAccess contains all the methods to access to the neo4j database (connect, createCaracteristics, ...). The DB contains the methods to create the database and the querries needed for the NoSQL project.
 In the directory rapport2, you may be find some answers to your questions in the NoSQL report.
+
+The `DB.java` is not a part of the project. We kept the file because it's an usefull works to generate the database and to learn some queries for the search strategies. The `DB.java` must not be considered for the metrics and the codage convention of the project.
 
 ## User manual
 In this section, there are usefull informations for the user on how to install and how to use this project.
@@ -50,6 +52,8 @@ The pseudo needs to be unique. With the position of the device, the user's posit
 
 
 ## Metrics
+We use the codage convention of sun.
+
 The metrics of the code are the followed:
 * the comment density between 30% and 40%.
 * 4the tests covers 40% of the code.
@@ -77,9 +81,7 @@ The `DBAcces` class has variables to connect to your neo4j database (There is in
 #### `App`
 This class is the acces's point of the program for the user.
 
-The GUI is in the command line.
-
-The class will generate the user with his caracteristics and will run the research. We can develop the project by mofifying the differents requests made by the GUI.
+The class will generate the user with his caracteristics and will run the research. We can develop the project by mofifying the differents requests made by the CLI.
 
 #### `Place`
 This class represents the bars. The place is link with the `Menu`, the `Address` and the `Caracteristics`. The places are identified by a id. The application will search the places in the database by his id.
@@ -113,7 +115,8 @@ The class `StrategyTrips` is used to finds differents across a place to travel a
 ## To Do
 The project is not finished. There is improvement to make and another functions to implements.
 This is a non exhaustive list of modifications possible:
- * create an GUI for a barman to create a bar in our system.
- * add choice in the user GUI.
+ * create a CLI for a barman to create a bar in our system (manipulate food, drinks, place);
+ * add choice in the user CLI;
  * develop the search strategies (we can find example in the `DB.java`).
- *
+
+We would like to respect the codage convention explained upper. We didn't have enough time to have a project respecting this conventions.
