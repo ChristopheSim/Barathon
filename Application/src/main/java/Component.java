@@ -3,8 +3,13 @@
  *	This is the super class of Food and Drink.
  */
 public abstract class Component {
-
+	/**
+	 * @param name Component's name
+	 */
 	private  String name;
+	/**
+	 * @param price Component's price
+	 */
 	private int price;
 
 	/**
