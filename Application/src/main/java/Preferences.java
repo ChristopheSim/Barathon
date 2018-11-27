@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.ArrayList;
 
 /**
  *  Class representing the user's preferences.
@@ -18,11 +18,16 @@ public class Preferences {
     private boolean trip;
 
     /**
-     * Construstor.
+     * When the user position is unknown, the coordinates are (666,666).
+    **/
+    private static final int UNKNOWN_RADIUS = 1000;
+
+    /**
+     * Constructor.
      */
     public Preferences() {
         this.caracteristics = new ArrayList<Caracteristics>();
-        this.radius = 1000;
+        this.radius = UNKNOWN_RADIUS;
         this.trip = false;
     }
 

@@ -66,13 +66,13 @@ public class Position {
      * @return a boolean (true if equals).
      */
     public final boolean isEqual(final Position p) {
-      try {
-        int result = Double.compare(this.longitude, p.longitude);
-        int result2 = Double.compare(this.latitude, p.latitude);
-        return result == 0 && result2 == 0;
-  		} catch (Exception e) {
-        System.out.println("Position Error: Double.compare exception");
-        return false;
-  		}
+        try {
+            int result = Double.compare(this.longitude, p.longitude);
+            int result2 = Double.compare(this.latitude, p.latitude);
+            return result == 0 && result2 == 0;
+        } catch (Exception e) {
+            System.out.println("Position Error: Double.compare exception");
+            return false;
+        }
     }
 }

@@ -9,12 +9,12 @@ public class StrategyTrip implements Strategy {
    *
    * @param p position of the user.
    * @param c carcateristics of the user.
-   * @return list of places.
+   * @return list of ordered places.
    */
-   public final ArrayList<Place> solve(final Position p, final Caracteristics c) {
-        ArrayList<Place> lst = new ArrayList<Place>();
-        // Takes the parameter position and return a trip
-        // Ordered list of places that matches with the caracteristics
-        return lst;
+    public final ArrayList<Place> solve(final Position p,
+    final Caracteristics c) {
+        ArrayList<Place> trip = new ArrayList<Place>();
+        // Take parameters position and carcateristics which match the places.
+        return trip;
     }
 }
