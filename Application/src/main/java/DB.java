@@ -211,11 +211,11 @@ public final class DB {
    *
    * @return an array list of places.
    */
-  public static ArrayList<Place> nearbyBars(final User user, final int X, final int Y) {
+  public static ArrayList<Place> nearbyBars(final User user, final int x, final int y) {
     ArrayList<Place> places = new ArrayList<Place>();
     Driver driver = DBAccess.connect();
     try (Session session = driver.session()) {
-      StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r:AWAY]-(p:Place) WHERE r.distance <= %d RETURN p.id AS id, r.distance AS distance ORDER BY r.distance LIMIT %d", user.getPseudo(), Y, X));
+      StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r:AWAY]-(p:Place) WHERE r.distance <= %d RETURN p.id AS id, r.distance AS distance ORDER BY r.distance LIMIT %d", user.getPseudo(), y, x));
       List<Record> ids = rs.list();
       if (!ids.isEmpty()) {
         ArrayList<Place> dbPlaces = JSONAccess.readPlacesJSON("./../data/places.json");

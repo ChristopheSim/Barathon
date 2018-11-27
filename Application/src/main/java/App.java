@@ -11,8 +11,6 @@ public final class App {
     private App() {
     }
 
-    private static final Double UNKNOWN_POSITION = 666.0;
-
     /**
      *  Method main.
      *
@@ -39,8 +37,8 @@ public final class App {
             System.out.print("  Position (y) : ");
             y = new Double(c.readLine());
         } else {
-            x = UNKNOWN_POSITION;
-            y = UNKNOWN_POSITION;
+            x = 666.0;
+            y = 666.0;
         }
         System.out.println(String.format("\n  Your position : %f %f \n", x, y));
         Position pos = new Position(x, y);
@@ -81,10 +79,10 @@ public final class App {
         // Create user
         User user = new User(pseudo, pos, pref);
 
-        //TODO: run Search
+        //To do: run Search
         user.generate();
 
-        //TODO: show result
+        //To do: show result
         user.show();
     }
 }

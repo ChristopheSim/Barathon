@@ -1,4 +1,3 @@
-import java.lang.*;
 import java.util.*;
 import java.io.*;
 import com.google.gson.*;
@@ -8,25 +7,26 @@ import org.json.*;
 import org.apache.commons.io.FileUtils;
 
 /**
-* Class used to save objects to JSON files and to extract objects from such files.
+* Class used to save objects in a JSON files and to extract objects from it.
 */
 public final class JSONAccess {
-
 	/**
 	* Private constructor.
 	**/
 	private JSONAccess() {
 	}
 
-	// Instance of utility Gson
+	/**
+	* Instance of utility Gson.
+	*/
 	private static Gson gson = new Gson();
 
 	/**
 	* This method is used to convert an object into a JSON string.
 	*
-	* @param obj This is the object to convert into JSON
-	* @param t This is the type of the object
-	* @return String This is the string containing the JSON formatted object
+	* @param obj This is the object to convert into JSON.
+	* @param t This is the type of the object.
+	* @return String This is the string containing the JSON formatted object.
 	*/
 	public static String serialize(final Object obj, final Type t) {
 		return JSONAccess.gson.toJson(obj, t);
@@ -35,9 +35,9 @@ public final class JSONAccess {
 	/**
 	* This method is used to parse an object from a JSON string.
 	*
-	* @param json This is the JSON string to be parsed
-	* @param t This is the type of the object
-	* @return Object This is the parsed object
+	* @param json This is the JSON string to be parsed.
+	* @param t This is the type of the object.
+	* @return Object This is the parsed object.
 	*/
 	public static Object deserialize(final String json, final Type t) {
 		return JSONAccess.gson.fromJson(json, t);
@@ -46,9 +46,9 @@ public final class JSONAccess {
 	/**
 	* Read a JSON file and return an object.
 	*
-	* @param path The path of the file to be read
-	* @param t This is the type of the object
-	* @return Object The object from the JSON file
+	* @param path The path of the file to be read.
+	* @param t This is the type of the object.
+	* @return Object The object from the JSON file.
 	*/
 	public static Object readJSON(final String path, final Type t) {
 		try {
@@ -63,11 +63,11 @@ public final class JSONAccess {
 	/**
 	* Read a list of Places from a JSON file.
 	*
-	* @param path The path of the fileto be read
-	* @return ArrayList<Place> List of places from the JSON file
+	* @param path The path of the fileto be read.
+	* @return ArrayList<Place> List of places from the JSON file.
 	*/
 	public static ArrayList<Place> readPlacesJSON(final String path) {
-		Type t = new TypeToken<ArrayList<Place>>(){}.getType();
+		Type t = new TypeToken<ArrayList<Place>>() { }.getType();
 		try (FileReader file = new FileReader(path)) {
 			return JSONAccess.gson.fromJson(file, t);
 		} catch (Exception e) {
@@ -79,11 +79,11 @@ public final class JSONAccess {
 	/**
 	* Read a list of Users from a JSON file.
 	*
-	* @param path The path of the fileto be read
-	* @return ArrayList<User> List of users from the JSON file
+	* @param path The path of the fileto be read.
+	* @return ArrayList<User> List of users from the JSON file.
 	*/
 	public static ArrayList<User> readUsersJSON(final String path) {
-		Type t = new TypeToken<ArrayList<User>>(){}.getType();
+		Type t = new TypeToken<ArrayList<User>>() { }.getType();
 		try (FileReader file = new FileReader(path)) {
 			return JSONAccess.gson.fromJson(file, t);
 		}
@@ -96,11 +96,12 @@ public final class JSONAccess {
 	/**
 	* Write Places to a JSON file - can be used to write a List.
 	*
-	* @param path Path of the file to be written
-	* @param obj This is the object to convert into JSON
+	* @param path Path of the file to be written.
+	* @param obj This is the object to convert into JSON.
 	*/
-	public static void writePlacesJSON(final String path, final ArrayList<Place> obj) {
-		Type t = new TypeToken<ArrayList<Place>>(){}.getType();
+	public static void writePlacesJSON(final String path,
+	final ArrayList<Place> obj) {
+		Type t = new TypeToken<ArrayList<Place>>() { }.getType();
 		//try-with-resources
 		try (FileWriter file = new FileWriter(path)) {
 			JSONAccess.gson.toJson(obj, t, file);
@@ -113,11 +114,12 @@ public final class JSONAccess {
 	/**
 	* Write Users to a JSON file - can be used to write a List.
 	*
-	* @param path Path of the file to be written
-	* @param obj This is the object to convert into JSON
+	* @param path Path of the file to be written.
+	* @param obj This is the object to convert into JSON.
 	*/
-	public static void writeUsersJSON(final String path, final ArrayList<User> obj) {
-		Type t = new TypeToken<ArrayList<User>>(){}.getType();
+	public static void writeUsersJSON(final String path,
+	final ArrayList<User> obj) {
+		Type t = new TypeToken<ArrayList<User>>() { }.getType();
 		//try-with-resources
 		try (FileWriter file = new FileWriter(path)) {
 			JSONAccess.gson.toJson(obj, t, file);
