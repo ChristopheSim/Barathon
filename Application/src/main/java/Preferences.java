@@ -18,7 +18,7 @@ public class Preferences {
     private boolean trip;
 
     /**
-     * Construstor.
+     * Constructor.
      */
     public Preferences() {
         this.caracteristics = new ArrayList<Caracteristics>();
