@@ -127,7 +127,7 @@
      *
      * @param c a boolean representing the cheap field.
      */
-    public final void setCheap(boolean c) {
+    public final void setCheap(final boolean c) {
         this.cheap = c;
     }
 
@@ -136,7 +136,7 @@
      *
      * @param m a boolean representing the music field.
      */
-    public final void setMusic(boolean m) {
+    public final void setMusic(final boolean m) {
         this.music = m;
     }
 
@@ -145,7 +145,7 @@
      *
      * @param fp a boolean representing the famousPlace field.
      */
-    public final void setFamousPlace(boolean fp) {
+    public final void setFamousPlace(final boolean fp) {
         this.famousPlace = fp;
     }
 
@@ -154,7 +154,7 @@
      *
      * @param f a boolean representing the food field.
      */
-    public final void setFood(boolean f) {
+    public final void setFood(final boolean f) {
         this.food = f;
     }
 
@@ -163,7 +163,7 @@
      *
      * @param vg a boolean representing the vegetarian field.
      */
-    public final void setVegetarian(boolean vg) {
+    public final void setVegetarian(final boolean vg) {
         this.vegetarian = vg;
     }
 
@@ -172,7 +172,7 @@
      *
      * @param h a boolean representing the halal field.
      */
-    public final void setHalal(boolean h) {
+    public final void setHalal(final boolean h) {
         this.halal = h;
     }
 
@@ -181,7 +181,7 @@
      *
      * @param vn a boolean representing the cheap field.
      */
-    public final void setVegan(boolean vn) {
+    public final void setVegan(final boolean vn) {
         this.vegan = vn;
     }
 
@@ -190,7 +190,7 @@
      *
      * @param a a boolean representing the alcohol field.
      */
-    public final void setAlcohol(boolean a) {
+    public final void setAlcohol(final boolean a) {
         this.alcohol = a;
     }
 
@@ -200,17 +200,18 @@
      * @param c a boolean representing the cheap field.
      * @param m a boolean representing the music field.
      * @param fp a boolean representing the famousPlace field.
-     * @param c a boolean representing the food field.
+     * @param f a boolean representing the food field.
      * @param vg a boolean representing the vegetarian field.
      * @param h a boolean representing the halal field.
      * @param vn a boolean representing the vegan field.
      * @param a a boolean representing the alcohol field.
      */
-    public final void set(boolean c, boolean m, boolean fP, boolean f,
-    boolean vg, boolean h, boolean vn, boolean a) {
+    public final void set(final boolean c, final boolean m, final boolean fp,
+    final boolean f, final boolean vg, final boolean h, final boolean vn,
+    final boolean a) {
         this.cheap = c;
         this.music = m;
-        this.famousPlace = fP;
+        this.famousPlace = fp;
         this.food = f;
         this.vegetarian = vg;
         this.halal = h;
