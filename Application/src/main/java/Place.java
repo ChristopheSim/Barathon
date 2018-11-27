@@ -113,40 +113,40 @@ public class Place {
      */
     public final void setMenu(final Menu m) {
         this.menu = m;
-  	}
-
-    /**
-     * Method to get the place's menu.
-     *
-     * @return a Menu representing the place's menu.
-     */
-    public final Caracteristics getCaracteristics() {
-      return this.caracteristics;
     }
 
     /**
-     * Method to set the place's carcateristics.
-     *
-     * @param c carcateristics representing the place's caracteristics.
-     */
-    public final void setCaracteristics(final Caracteristics c) {
-  		this.caracteristics = c;
-  	}
+    * Method to get the place's menu.
+    *
+    * @return a Menu representing the place's menu.
+    */
+    public final Caracteristics getCaracteristics() {
+        return this.caracteristics;
+    }
 
     /**
-     * Method to get a place from a list of places.
-     *
-     * @param places an array list of places.
-     * @param id an int representing a place's id.
-     * @return a Place object.
-     */
-	   public static Place findPlace(final ArrayList<Place> places,
-     final int id) {
-		     for (Place p: places) {
-			        if (p.getId() == id) {
-				            return p;
-			        }
-		     }
-         return null;
-	   }
+    * Method to set the place's carcateristics.
+    *
+    * @param c carcateristics representing the place's caracteristics.
+    */
+    public final void setCaracteristics(final Caracteristics c) {
+        this.caracteristics = c;
+    }
+
+    /**
+    * Method to get a place from a list of places.
+    *
+    * @param places an array list of places.
+    * @param id an int representing a place's id.
+    * @return a Place object.
+    */
+    public static Place findPlace(final ArrayList<Place> places,
+    final int id) {
+        for (Place p: places) {
+            if (p.getId() == id) {
+                return p;
+            }
+        }
+        return null;
+    }
 }
