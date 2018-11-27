@@ -29,7 +29,7 @@ public final class DB {
     // Create the menus
     Menu menu1 = new Menu();
     menu1.addDrink(coca);
-    menu1.addDrink(iceTtea);
+    menu1.addDrink(iceTea);
     Menu menu2 = new Menu();
     menu2.addDrink(iceTea);
     menu2.addDrink(duvel);
