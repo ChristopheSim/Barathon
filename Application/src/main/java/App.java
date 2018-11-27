@@ -6,11 +6,19 @@ import java.io.Console;
 public class App {
 
     /**
+    * Private constructor.
+    **/
+    private App() {
+    }
+    
+    /**
      *  Method main.
+     *
+     * @param args Args of main function
      */
     public static void main(String [] args) {
         Console c = System.console();
-        String intro = "\n=======================" 
+        String intro = "\n======================="
             + "\n| Welcome to Barathon |"
             + "\n======================= \n";
         System.out.println(intro);
