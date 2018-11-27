@@ -47,4 +47,6 @@ The application will show you a list of differents places which correspond to yo
 
 ## Metrics
 The metrics of the code are the followed:
-* comment density 
+* the comment density between 30% and 40%.
+* 4the tests covers 40% of the code.
+* the execution of the serch is lower than 30 sec.
