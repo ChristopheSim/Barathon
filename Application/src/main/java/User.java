@@ -33,12 +33,12 @@ public class User {
     /**
      * Method to generate a user.
      *
-     * @param pseudo user's pseudo.
+     * @param ps user's pseudo.
      * @param po user's position.
      * @param pr user's preferences.
      */
-    public User(final String pseudo, final Position po, final Preferences pr) {
-        this.pseudo = pseudo;
+    public User(final String ps, final Position po, final Preferences pr) {
+        this.pseudo = ps;
         this.bars = new ArrayList<Place>();
         this.trips = new ArrayList<Place>();
         this.position = po;
@@ -266,7 +266,7 @@ public class User {
             if (u.getPseudo().equals(pseudo)) {
                 return u;
             }
-		}
-		return null;
-	}
+        }
+        return null;
+	  }
 }
