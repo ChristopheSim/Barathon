@@ -7,13 +7,13 @@ import java.util.*;
 * This class is used to connect the database neo4j w/ the application Barathon.
 */
 public final class DBAccess {
-	
+
   /**
   * Private constructor.
   */
   private DBAccess() {
   }
-	
+
   private static String ip = "localhost:7687";
   private static String login = "neo4j";
   private static String password = "NEO4J";
@@ -36,7 +36,7 @@ public final class DBAccess {
     try (Session session = driver.session()) {
       StatementResult rs = session.run("CREATE CONSTRAINT ON (place:Place) ASSERT place.id IS UNIQUE");
       System.out.println("Unique id constraint creation: OK");
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the unique id constraint creation!");
       System.out.print(e);
     }
@@ -46,7 +46,7 @@ public final class DBAccess {
     try (Session session = driver.session()) {
       StatementResult rs = session.run("CREATE CONSTRAINT ON (user:User) ASSERT user.pseudo IS UNIQUE");
       System.out.println("Unique pseudo constraint creation: OK");
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the unique pseudo constraint creation!");
       System.out.print(e);
     }
@@ -56,7 +56,7 @@ public final class DBAccess {
     try (Session session = driver.session()) {
       StatementResult rs = session.run("CREATE CONSTRAINT ON (carac:Caracteristic) ASSERT carac.name IS UNIQUE");
       System.out.println("Unique name constraint creation: OK");
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the unique name constraint creation!");
       System.out.print(e);
     }
@@ -77,7 +77,7 @@ public final class DBAccess {
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("CREATE (:Place {id: %d, name: '%s', longitude: %s, latitude: %s})", place.getId(), place.getName(), place.getAddress().getPosition().getLongitude(), place.getAddress().getPosition().getLatitude()));
       System.out.println(String.format("Place %d creation: OK", place.getId()));
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the place creation !");
       System.out.print(e);
     }
@@ -99,7 +99,7 @@ public final class DBAccess {
       } else {
         System.out.println(String.format("Place %d matched: OK", place.getId()));
       }
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the place matching !");
       System.out.print(e);
     }
@@ -122,7 +122,7 @@ public final class DBAccess {
       } else {
         System.out.println("There is no place in the database !");
       }
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the places searching !");
       System.out.print(e);
     }
@@ -143,7 +143,7 @@ public final class DBAccess {
     try (Session session = driver.session()) {
       StatementResult rs = session.run(String.format("CREATE (:User {pseudo: '%s', longitude: %s, latitude: %s})", user.getPseudo(), user.getPosition().getLongitude(), user.getPosition().getLatitude()));
       System.out.println(String.format("User %s creation: OK", user.getPseudo()));
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the user creation !");
       System.out.print(e);
     }
@@ -166,7 +166,7 @@ public final class DBAccess {
         rs = session.run(String.format("MATCH (u:User {pseudo: '%s'}) SET u.longitude = %s, u.latitude = %s", user.getPseudo(), user.getPosition().getLongitude(), user.getPosition().getLatitude()));
         System.out.println(String.format("User's position of %s set: OK", user.getPseudo()));
       }
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the user matching !");
       System.out.print(e);
     }
@@ -197,7 +197,7 @@ public final class DBAccess {
           rs = session.run(String.format("CREATE (:Caracteristic {name: '%s'})", field));
           System.out.println(String.format("Caracteristic %s created: OK", field));
         }
-      } catch(Exception e) {
+      } catch (Exception e) {
         System.out.println("An error occured during the caracteristics creation !");
         System.out.println(e);
       }
@@ -219,7 +219,7 @@ public final class DBAccess {
       } else {
         rs = session.run(String.format("MATCH (p:Place {id: %d})-[r]-(c:Caracteristic {name: '%s'}) SET r.status = '%b'", place.getId(), "cheap", carac.getCheap()));
       }
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the Place-cheap relationship creation !");
       System.out.print(e);
     }
@@ -247,7 +247,7 @@ public final class DBAccess {
       } else {
         rs = session.run(String.format("MATCH (p:Place {id: %d})-[r]-(c:Caracteristic {name: '%s'}) SET r.status='%b'", place.getId(), "famousPlace", carac.getFamousPlace()));
       }
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the Place-famousPlace relationship creation !");
       System.out.print(e);
     }
@@ -261,7 +261,7 @@ public final class DBAccess {
       } else {
         rs = session.run(String.format("MATCH (p:Place {id: %d})-[r]-(c:Caracteristic {name: '%s'}) SET r.status='%b'", place.getId(), "food", carac.getFood()));
       }
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the Place-food relationship creation !");
       System.out.print(e);
     }
@@ -275,7 +275,7 @@ public final class DBAccess {
       } else {
         rs = session.run(String.format("MATCH (p:Place {id: %d})-[r]-(c:Caracteristic {name: '%s'}) SET r.status='%b'", place.getId(), "vegetarian", carac.getVegetarian()));
       }
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the Place-vegetarian relationship creation !");
       System.out.print(e);
     }
@@ -289,7 +289,7 @@ public final class DBAccess {
       } else {
         rs = session.run(String.format("MATCH (p:Place {id: %d})-[r]-(c:Caracteristic {name: '%s'}) SET r.status='%b'", place.getId(), "halal", carac.getHalal()));
       }
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the Place-halal relationship creation !");
       System.out.print(e);
     }
@@ -303,7 +303,7 @@ public final class DBAccess {
       } else {
         rs = session.run(String.format("MATCH (p:Place {id: %d})-[r]-(c:Caracteristic {name: '%s'}) SET r.status='%b'", place.getId(), "vegan", carac.getVegan()));
       }
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the Place-vegan relationship creation !");
       System.out.print(e);
     }
@@ -338,7 +338,7 @@ public final class DBAccess {
       } else {
         rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r]-(c:Caracteristic {name: '%s'}) SET r.status='%b'", user.getPseudo(), "cheap", carac.getCheap()));
       }
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the User-cheap relationship creation !");
       System.out.print(e);
     }
@@ -352,7 +352,7 @@ public final class DBAccess {
       } else {
         rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r]-(c:Caracteristic {name: '%s'}) SET r.status='%b'", user.getPseudo(), "music", carac.getMusic()));
       }
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the User-music relationship creation !");
       System.out.print(e);
     }
@@ -366,7 +366,7 @@ public final class DBAccess {
       } else {
         rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r]-(c:Caracteristic {name: '%s'}) SET r.status='%b'", user.getPseudo(), "famousPlace", carac.getFamousPlace()));
       }
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the User-famousPlace relationship creation !");
       System.out.print(e);
     }
@@ -380,7 +380,7 @@ public final class DBAccess {
       } else {
         rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r]-(c:Caracteristic {name: '%s'}) SET r.status='%b'", user.getPseudo(), "food", carac.getFood()));
       }
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the User-food relationship creation !");
       System.out.print(e);
     }
@@ -394,7 +394,7 @@ public final class DBAccess {
       } else {
         rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r]-(c:Caracteristic {name: '%s'}) SET r.status='%b'", user.getPseudo(), "vegetarian", carac.getVegetarian()));
       }
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the User-vegetarian relationship creation !");
       System.out.print(e);
     }
@@ -408,7 +408,7 @@ public final class DBAccess {
       } else {
         rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r]-(c:Caracteristic {name: '%s'}) SET r.status='%b'", user.getPseudo(), "halal", carac.getHalal()));
       }
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the User-halal relationship creation !");
       System.out.print(e);
     }
@@ -422,7 +422,7 @@ public final class DBAccess {
       } else {
         rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r]-(c:Caracteristic {name: '%s'}) SET r.status='%b'", user.getPseudo(), "vegan", carac.getVegan()));
       }
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the User-vegan relationship creation !");
       System.out.print(e);
     }
@@ -436,7 +436,7 @@ public final class DBAccess {
       } else {
         rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r]-(c:Caracteristic {name: '%s'}) SET r.status='%b'", user.getPseudo(), "alcohol", carac.getAlcohol()));
       }
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the User-alcohol relationship creation !");
       System.out.print(e);
     }
@@ -458,7 +458,7 @@ public final class DBAccess {
       } else {
         rs = session.run(String.format("MATCH (p1:Place {id: %d})-[r]-(p2:Place {id: %d}) SET r.distance=%s", place1.getId(), place2.getId(), distance));
       }
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the Place-Place relationship creation !");
       System.out.print(e);
     }
@@ -480,7 +480,7 @@ public final class DBAccess {
       } else {
         rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r]-(p:Place {id: %d}) SET r.distance=%s", user.getPseudo(), place.getId(), distance));
       }
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the User-Place relationship creation !");
       System.out.print(e);
     }
@@ -493,7 +493,7 @@ public final class DBAccess {
     try (Session session = driver.session()) {
       StatementResult rs = session.run("MATCH (n) DETACH DELETE n");
       System.out.println("Database dropped: OK");
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the database erasing");
       System.out.print(e);
     }
