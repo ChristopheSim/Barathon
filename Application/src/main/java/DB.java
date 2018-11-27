@@ -2,7 +2,14 @@
 import org.neo4j.driver.v1.*;
 import java.util.*;
 
+/**
+ * Class which contains the DB methods.
+ */
 public final class DB {
+  /**
+   * Method to create an example of the database.
+   *
+   */
   public static void createDB() {
     // Create the constraints of the graph
     DBAccess.createUniqueConstraints();
@@ -12,7 +19,7 @@ public final class DB {
 
     // Create the sample of drinks
     Drink coca = new Drink("Coca regular", 200, 0.0, true);
-    Drink ice_tea = new Drink("Ice tea green", 220, 0.0, false);
+    Drink iceTea = new Drink("Ice tea green", 220, 0.0, false);
     Drink duvel = new Drink("Duvel", 420, 8.5, true);
 
     // Create the sample of food
@@ -22,14 +29,14 @@ public final class DB {
     // Create the menus
     Menu menu1 = new Menu();
     menu1.addDrink(coca);
-    menu1.addDrink(ice_tea);
+    menu1.addDrink(iceTea);
     Menu menu2 = new Menu();
-    menu2.addDrink(ice_tea);
+    menu2.addDrink(iceTea);
     menu2.addDrink(duvel);
     menu2.addFood(wafel);
     Menu menu3 = new Menu();
     menu3.addDrink(coca);
-    menu3.addDrink(ice_tea);
+    menu3.addDrink(iceTea);
     menu3.addDrink(duvel);
     menu3.addFood(salad);
     menu3.addFood(wafel);
@@ -80,7 +87,7 @@ public final class DB {
     Address addp10 = new Address("Chaussée de Waterloo", "265", posp10);
 
     // Create some places in the graph
-    List<Place> places = new ArrayList<Place>();
+    ArrayList<Place> places = new ArrayList<Place>();
     Place p1 = new Place(1, "La soeur du patron", addp1, menu1, carac1);
     Place p2 = new Place(2, "Café de Paris", addp2, menu2, carac2);
     Place p3 = new Place(3, "Ballodrome", addp3, menu3, carac3);
@@ -102,25 +109,27 @@ public final class DB {
     places.add(p9);
     places.add(p10);
 
-    JSONAccess.writeJSON("./../data/places.json", places);
+    JSONAccess.writePlacesJSON("./../data/places.json", places);
 
     for (Place place : places) {
       DBAccess.matchPlace(place);
       DBAccess.createP2CRelationship(place, place.getCaracteristics());
-      List<Place> db_places = DBAccess.findPlaces();
-      for (Place db_place : db_places) {
-        DBAccess.createP2PRelationship(place, db_place);
+      ArrayList<Place> dbPlaces = DBAccess.findPlaces();
+      for (Place dbPlace : dbPlaces) {
+        if (place.getId() != dbPlace.getId()) {
+          DBAccess.createP2PRelationship(place, dbPlace);
+        }
       }
     }
 
     // Create some users in the graph
-    List<User> users = new ArrayList<User>();
+    ArrayList<User> users = new ArrayList<User>();
     User u1 = new User("user1", posu1, pref1);
     User u2 = new User("user2", posu2, pref2);
     users.add(u1);
     users.add(u2);
 
-    JSONAccess.writeJSON("./../data/users.json", users);
+    JSONAccess.writeUsersJSON("./../data/users.json", users);
 
     for (User user : users) {
       DBAccess.matchUser(user);
@@ -131,98 +140,99 @@ public final class DB {
     }
   }
 
-
-  public static ArrayList<Place> BarsToEat() {
-    /*
-    This function returns a list of places where it's possible to eat.
-    Difficulty: easy query.
-    */
-
+  /**
+   * Method to get the bars where it is possible to eat (easy query).
+   *
+   * @return an array list of places.
+   */
+  public static ArrayList<Place> barsToEat() {
     ArrayList<Place> places = new ArrayList<Place>();
     Driver driver = DBAccess.connect();
     try (Session session = driver.session()) {
-      // To complete the query
       StatementResult rs = session.run("MATCH (p:Place)-[r:FOLLOWS]-(c:Caracteristic {name: 'food'}) WHERE r.status='true' RETURN p.id AS id");
-      if (!rs.list().isEmpty()) {
-        ArrayList<Place> db_places = JSONAccess.readPlacesJSON("./../data/places.json");
-        while (rs.hasNext()) {
+      List<Record> ids = rs.list();
+      if (!ids.isEmpty()) {
+        ArrayList<Place> dbPlaces = JSONAccess.readPlacesJSON("./../data/places.json");
+        for (Record i : ids) {
           // To find the places in the JSON with record.get("id")
-          Record record = rs.next();
-          Place place = Place.findPlace(db_places, record.get("id").asInt());
+          Place place = Place.findPlace(dbPlaces, i.get("id").asInt());
           places.add(place);
         }
-      }
-      else {
+      } else {
         System.out.println("There is no place where it is possible to eat in the database !");
       }
-    }
-    catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the places where it is possible to eat searching !");
     }
     driver.close();
+    // To print for the test
+    System.out.println(places);
     return places;
   }
 
-
-  public static Place NearestBar(User user) {
-    /*
-    This function takes a parameter of type User and finds the nearest bar around him.
-    Difficulty: medium query.
-    */
-
+  /**
+   * Method to get the nearest place of a user(medium query).
+   *
+   * @param user object user.
+   * @return the nearest place.
+   */
+  public static Place nearestBar(final User user) {
     Driver driver = DBAccess.connect();
     Place place = new Place(0, "Le bouche trou", new Address("Test", "Test", new Position(0.0, 20.0)), new Menu(), new Caracteristics());
     try (Session session = driver.session()) {
-      // To verrify the query
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r:AWAY]-(p:Place) RETURN min(r.distance) AS distance", user.getPseudo()));
-      if (!rs.list().isEmpty()) {
-        double distance = rs.list().get(0).get("distance").asDouble();
-        rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r:AWAY]-(p:Place) WHERE r.distance = %s RETURN p.id AS id", user.getPseudo(), distance));
-        // To find the places in the JSON with record.get("id")
-        ArrayList<Place> places = JSONAccess.readPlacesJSON("./../data/places.json");
-        place = Place.findPlace(places, rs.list().get(0).get("id").asInt());
-      }
-      else {
+      List<Record> distances = rs.list();
+      if (!distances.isEmpty()) {
+        for (Record d : distances) {
+          double distance = d.get("distance").asDouble();
+          rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r:AWAY]-(p:Place) WHERE r.distance = %s RETURN p.id AS id", user.getPseudo(), distance));
+          List<Record> ids = rs.list();
+          ArrayList<Place> places = JSONAccess.readPlacesJSON("./../data/places.json");
+          for (Record i : ids) {
+            // To find the places in the JSON with record.get("id")
+            place = Place.findPlace(places, i.get("id").asInt());
+          }
+        }
+      } else {
         System.out.println("Impossible to find the nearest bar.\nNo relationship AWAY in this graph.");
       }
-    }
-    catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the search of the nearest bar !");
+      System.out.println(e.getMessage());
     }
     driver.close();
+    // To print for the test
+    System.out.println(place.getName());
     return place;
   }
 
-
-  public static ArrayList<Place> NearbyBars(User user, int X, int Y) {
-    /*
-    This function takes three parameters and returns an ordered list of X
-    places in a radius Y. This list is ordered by the proximity of the user.
-    Difficulty: complex query.
-    */
-
+  /**
+   * Method to get an array list of x bars in a radius y of the user (complex).
+   *
+   * @return an array list of places.
+   */
+  public static ArrayList<Place> nearbyBars(final User user, final int X, final int Y) {
     ArrayList<Place> places = new ArrayList<Place>();
     Driver driver = DBAccess.connect();
     try (Session session = driver.session()) {
-      // To complete the query
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r:AWAY]-(p:Place) WHERE r.distance <= %d RETURN p.id AS id, r.distance AS distance ORDER BY r.distance LIMIT %d", user.getPseudo(), Y, X));
-      if (!rs.list().isEmpty()) {
-        ArrayList<Place> db_places = JSONAccess.readPlacesJSON("./../data/places.json");
-        while (rs.hasNext()) {
+      List<Record> ids = rs.list();
+      if (!ids.isEmpty()) {
+        ArrayList<Place> dbPlaces = JSONAccess.readPlacesJSON("./../data/places.json");
+        for (Record i : ids) {
           // To find the places in the JSON with record.get("id")
-          Record record = rs.next();
-          Place place = Place.findPlace(db_places, record.get("id").asInt());
+          Place place = Place.findPlace(dbPlaces, i.get("id").asInt());
           places.add(place);
         }
-      }
-      else {
+      } else {
         System.out.println("There is no place where it is possible to eat in the database !");
       }
-    }
-    catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the places where it is possible to eat searching !");
     }
     driver.close();
+    // To print for the test
+    System.out.println(places);
     return places;
   }
 }

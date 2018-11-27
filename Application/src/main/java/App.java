@@ -1,10 +1,26 @@
 import java.io.Console;
 
-public class App {
+/**
+ *  Class to have an inteface between the application and the user.
+ */
+public final class App {
 
-    public static void main(String [] args) {
+    /**
+    * Private constructor.
+    **/
+    private App() {
+    }
+
+    /**
+     *  Method main.
+     *
+     * @param args Args of main function
+     */
+    public static void main(final String[] args) {
         Console c = System.console();
-        String intro = "\n======================= \n| Welcome to Barathon |\n======================= \n";
+        String intro = "\n======================="
+            + "\n| Welcome to Barathon |"
+            + "\n======================= \n";
         System.out.println(intro);
 
         System.out.print("  user pseudo : ");
@@ -20,8 +36,7 @@ public class App {
             x = new Double(c.readLine());
             System.out.print("  Position (y) : ");
             y = new Double(c.readLine());
-        }
-        else {
+        } else {
             x = 666.0;
             y = 666.0;
         }
@@ -39,7 +54,8 @@ public class App {
         //String alcohol = c.readLine();
         boolean alcohol = "Yy ".indexOf(c.readLine()) >= 0;
 
-        System.out.println(String.format("\n  You choosed : %s %s %s \n", cheap, music, alcohol));
+        System.out.println(String.format("\n  You choosed : %s %s %s \n",
+         cheap, music, alcohol));
         Caracteristics car = new Caracteristics();
         car.setCheap(cheap);
         car.setMusic(music);
@@ -53,7 +69,8 @@ public class App {
         //String trip = c.readLine();
         int radius = Integer.parseInt(c.readLine());
 
-        System.out.println(String.format("\n  You choosed : %s %d\n", trip, radius));
+        System.out.println(String.format("\n  You choosed : %s %d\n",
+         trip, radius));
         Preferences pref = new Preferences();
         pref.addCaracteristics(car);
         pref.setTrip(trip);

@@ -1,39 +1,77 @@
-import java.lang.*;
-
+/**
+ * Class to represent the position.
+ */
 public class Position {
-
+    /**
+     * longitude.
+     */
     private Double longitude;
+    /**
+     * latitude.
+     */
     private Double latitude;
 
-    public Position(Double lo, Double la) {
+    /**
+     * Method to generate a position.
+     *
+     * @param lo longitude.
+     * @param la latitude.
+     */
+    public Position(final Double lo, final Double la) {
         this.longitude = lo;
         this.latitude = la;
     }
 
-    public Double getLongitude() {
+    /**
+     * Method to get the longitude.
+     *
+     * @return a double representing the longitude.
+     */
+    public final Double getLongitude() {
         return this.longitude;
     }
 
-    public void setLongitude(Double lo) {
+    /**
+     * Method to set the longitude.
+     *
+     * @param lo a double representing the longitude.
+     */
+    public final void setLongitude(final Double lo) {
         this.longitude  = lo;
     }
 
-    public Double getLatitude() {
+    /**
+     * Method to get the latitude.
+     *
+     * @return a double representing the latitude.
+     */
+    public final Double getLatitude() {
         return this.latitude;
     }
 
-    public void setLatitude(Double la) {
+    /**
+     * Method to set the latitude.
+     *
+     * @param la a double representing the latitude.
+     */
+    public final void setLatitude(final Double la) {
         this.latitude = la;
     }
 
-    public boolean isEqual(Position p) {
+    /**
+     * Method to check the equality.
+     *
+     * @param p a position.
+     *
+     * @return a boolean (true if equals).
+     */
+    public final boolean isEqual(final Position p) {
       try {
-  			int result = Double.compare(this.longitude, p.longitude);
+        int result = Double.compare(this.longitude, p.longitude);
         int result2 = Double.compare(this.latitude, p.latitude);
         return result == 0 && result2 == 0;
-  		}
-  		catch (Exception e) {
-  			System.out.println("Position Comparison Error: Double.compare exception");
+  		} catch (Exception e) {
+        System.out.println("Position Error: Double.compare exception");
         return false;
   		}
     }
