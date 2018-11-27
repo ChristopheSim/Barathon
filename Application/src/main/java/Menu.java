@@ -19,7 +19,7 @@ public class Menu {
     /**
     * @param meanFoodPrice mean price of food.
     */
-	private int meanFoodPrice;
+    private int meanFoodPrice;
 
     /**
     *	Constructor.
