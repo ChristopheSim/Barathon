@@ -3,7 +3,7 @@ import java.util.ArrayList;
 /**
  * Class to find the trip of bars.
  */
-public class StrategyBars implements Strategy {
+public class StrategyTrip implements Strategy {
   /**
    *  Method solve.
    *
