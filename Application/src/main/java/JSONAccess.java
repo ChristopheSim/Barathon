@@ -17,7 +17,7 @@ public final class JSONAccess {
 	}
 
 	/**
-	* Instance of utility Gson
+	* Instance of utility Gson.
 	*/
 	private static Gson gson = new Gson();
 
@@ -99,7 +99,8 @@ public final class JSONAccess {
 	* @param path Path of the file to be written.
 	* @param obj This is the object to convert into JSON.
 	*/
-	public static void writePlacesJSON(final String path, final ArrayList<Place> obj) {
+	public static void writePlacesJSON(final String path,
+	final ArrayList<Place> obj) {
 		Type t = new TypeToken<ArrayList<Place>>() { }.getType();
 		//try-with-resources
 		try (FileWriter file = new FileWriter(path)) {
@@ -116,7 +117,8 @@ public final class JSONAccess {
 	* @param path Path of the file to be written.
 	* @param obj This is the object to convert into JSON.
 	*/
-	public static void writeUsersJSON(final String path, final ArrayList<User> obj) {
+	public static void writeUsersJSON(final String path,
+	final ArrayList<User> obj) {
 		Type t = new TypeToken<ArrayList<User>>() { }.getType();
 		//try-with-resources
 		try (FileWriter file = new FileWriter(path)) {
