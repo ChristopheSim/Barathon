@@ -34,7 +34,7 @@ public class Address {
      *
      * @return a string representing the street.
      */
-    public String getStreet() {
+    public final String getStreet() {
         return this.street;
     }
 
@@ -43,7 +43,7 @@ public class Address {
      *
      * @param s a string representing the street.
      */
-    public void setStreet(final String s) {
+    public final void setStreet(final String s) {
         this.street = s;
     }
 
@@ -52,7 +52,7 @@ public class Address {
      *
      * @return a object position.
      */
-    public Position getPosition() {
+    public final Position getPosition() {
         return this.position;
     }
 
@@ -61,7 +61,7 @@ public class Address {
      *
      * @param p a object position.
      */
-    public void setPosition(final Position p) {
+    public final void setPosition(final Position p) {
         this.position = p;
     }
 
@@ -70,7 +70,7 @@ public class Address {
      *
      * @return a string representing the number.
      */
-    public String getNumber() {
+    public final String getNumber() {
         return this.number;
     }
 
@@ -79,7 +79,7 @@ public class Address {
      *
      * @param n a string representing the number.
      */
-    public void setNumber(final String n) {
+    public final void setNumber(final String n) {
         this.number = n;
     }
 }
