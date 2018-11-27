@@ -1,13 +1,44 @@
-public class Caracteristics {
+/**
+ * Class to represent the caracteristics.
+ */
+ public class Caracteristics {
+   /**
+    * carcateristic cheap.
+    */
     private boolean cheap;
+    /**
+     * carcateristic music.
+     */
     private boolean music;
+    /**
+     * carcateristic famousPlace.
+     */
     private boolean famousPlace;
+    /**
+     * carcateristic food.
+     */
     private boolean food;
+    /**
+     * carcateristic vegetarian.
+     */
     private boolean vegetarian;
+    /**
+     * carcateristic halal.
+     */
     private boolean halal;
+    /**
+     * carcateristic vegan.
+     */
     private boolean vegan;
+    /**
+     * carcateristic alcohol.
+     */
     private boolean alcohol;
 
+    /**
+     * Method to generate the caracteristics.
+     *
+     */
     public Caracteristics() {
         this.cheap = false;
         this.music = false;
@@ -19,71 +50,164 @@ public class Caracteristics {
         this.alcohol = false;
     }
 
-    public boolean getCheap() {
+    /**
+     * Method to get the cheap field.
+     *
+     * @return a boolean representing the cheap field.
+     */
+    public final boolean getCheap() {
         return this.cheap;
     }
 
-    public boolean getMusic() {
+    /**
+     * Method to get the music field.
+     *
+     * @return a boolean representing the music field.
+     */
+    public final boolean getMusic() {
         return this.music;
     }
 
-    public boolean getFamousPlace() {
+    /**
+     * Method to get the famousPlace field.
+     *
+     * @return a boolean representing the famousPlace field.
+     */
+    public final boolean getFamousPlace() {
         return this.famousPlace;
     }
 
-    public boolean getFood() {
+    /**
+     * Method to get the food field.
+     *
+     * @return a boolean representing the food field.
+     */
+    public final boolean getFood() {
         return this.food;
     }
 
-    public boolean getVegetarian() {
+    /**
+     * Method to get the vegetarian field.
+     *
+     * @return a boolean representing the vegetarian field.
+     */
+    public final boolean getVegetarian() {
         return this.vegetarian;
     }
 
-    public boolean getHalal() {
+    /**
+     * Method to get the halal field.
+     *
+     * @return a boolean representing the halal field.
+     */
+    public final boolean getHalal() {
         return this.halal;
     }
 
-    public boolean getVegan() {
+    /**
+     * Method to get the vegan field.
+     *
+     * @return a boolean representing the vegan field.
+     */
+    public final boolean getVegan() {
         return this.vegan;
     }
 
-    public boolean getAlcohol() {
+    /**
+     * Method to get the alcohol field.
+     *
+     * @return a boolean representing the alcohol field.
+     */
+    public final boolean getAlcohol() {
         return this.alcohol;
     }
 
-    public void setCheap(boolean cheap) {
-        this.cheap = cheap;
+    /**
+     * Method to set the cheap field.
+     *
+     * @param c a boolean representing the cheap field.
+     */
+    public final void setCheap(boolean c) {
+        this.cheap = c;
     }
 
-    public void setMusic(boolean music) {
-        this.music = music;
+    /**
+     * Method to set the music field.
+     *
+     * @param m a boolean representing the music field.
+     */
+    public final void setMusic(boolean m) {
+        this.music = m;
     }
 
-    public void setFamousPlace(boolean fp) {
+    /**
+     * Method to set the famousPlace field.
+     *
+     * @param fp a boolean representing the famousPlace field.
+     */
+    public final void setFamousPlace(boolean fp) {
         this.famousPlace = fp;
     }
 
-    public void setFood(boolean food) {
-        this.food = food;
+    /**
+     * Method to set the food field.
+     *
+     * @param f a boolean representing the food field.
+     */
+    public final void setFood(boolean f) {
+        this.food = f;
     }
 
-    public void setVegetarian(boolean vegetarian) {
-        this.vegetarian = vegetarian;
+    /**
+     * Method to set the vegetarian field.
+     *
+     * @param vg a boolean representing the vegetarian field.
+     */
+    public final void setVegetarian(boolean vg) {
+        this.vegetarian = vg;
     }
 
-    public void setHalal(boolean halal) {
-        this.halal = halal;
+    /**
+     * Method to set the halal field.
+     *
+     * @param h a boolean representing the halal field.
+     */
+    public final void setHalal(boolean h) {
+        this.halal = h;
     }
 
-    public void setVegan(boolean vegan) {
-        this.vegan = vegan;
+    /**
+     * Method to set the vegan field.
+     *
+     * @param vn a boolean representing the cheap field.
+     */
+    public final void setVegan(boolean vn) {
+        this.vegan = vn;
     }
 
-    public void setAlcohol(boolean alcohol) {
-        this.alcohol = alcohol;
+    /**
+     * Method to set the alcohol field.
+     *
+     * @param a a boolean representing the alcohol field.
+     */
+    public final void setAlcohol(boolean a) {
+        this.alcohol = a;
     }
 
-    public void set(boolean c, boolean m, boolean fP, boolean f, boolean vg, boolean h, boolean vn, boolean a) {
+    /**
+     * Method to set the all fields.
+     *
+     * @param c a boolean representing the cheap field.
+     * @param m a boolean representing the music field.
+     * @param fp a boolean representing the famousPlace field.
+     * @param c a boolean representing the food field.
+     * @param vg a boolean representing the vegetarian field.
+     * @param h a boolean representing the halal field.
+     * @param vn a boolean representing the vegan field.
+     * @param a a boolean representing the alcohol field.
+     */
+    public final void set(boolean c, boolean m, boolean fP, boolean f,
+    boolean vg, boolean h, boolean vn, boolean a) {
         this.cheap = c;
         this.music = m;
         this.famousPlace = fP;
