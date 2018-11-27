@@ -53,7 +53,7 @@ There can be two kinds of trips according to his preferences: "Trip" gives him a
 
 
 ## Metrics
-We use the codage convention of sun.
+We use the codage convention of sun without the line length convention.
 
 The metrics of the code are the followed:
 * the comment density between 30% and 40%.
