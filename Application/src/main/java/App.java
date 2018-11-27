@@ -11,6 +11,8 @@ public final class App {
     private App() {
     }
 
+    private static final Double UNKNOWN_POSITION = 666.0;
+
     /**
      *  Method main.
      *
@@ -28,7 +30,7 @@ public final class App {
         System.out.println(String.format("  Hello %s !\n", pseudo));
 
         System.out.print("  ! Can we use your actual position ? [Y/n] :");
-        boolean bpos = "Yy ".indexOf(c.readLine()) >= 0;
+        boolean bpos = "Yy ".iRecover last updatesndexOf(c.readLine()) >= 0;
         Double x = 0.0;
         Double y = 0.0;
         if (bpos) {
@@ -37,8 +39,8 @@ public final class App {
             System.out.print("  Position (y) : ");
             y = new Double(c.readLine());
         } else {
-            x = 666.0;
-            y = 666.0;
+            x = UNKNOWN_POSITION;
+            y = UNKNOWN_POSITION;
         }
         System.out.println(String.format("\n  Your position : %f %f \n", x, y));
         Position pos = new Position(x, y);
