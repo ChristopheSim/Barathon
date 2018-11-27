@@ -6,7 +6,7 @@ public abstract class Component {
 	/**
 	 * @param name Component's name
 	 */
-	private  String name;
+	private String name;
 	/**
 	 * @param price Component's price
 	 */
@@ -18,7 +18,7 @@ public abstract class Component {
 	 * @param n The name of the component.
 	 * @param p The price of the component.
 	 */
-	public Component(String n, int p) {
+	public final Component(final String n,final int p) {
 
 		this.name = n;
 		this.price = p;
@@ -31,7 +31,7 @@ public abstract class Component {
 	 * @param c Component.
 	 * @return boolean TRUE if the 2 Components are equals.
 	 */
-	public boolean isEqual(Component c) {
+	public final boolean isEqual(final Component c) {
 		//Need further implementation
 		return this.name == c.getName();
 
@@ -42,7 +42,7 @@ public abstract class Component {
 	 *
 	 * @return string representing the component's name.
 	 */
-	public String getName() {
+	public final String getName() {
 		return this.name;
 	}
 
@@ -51,7 +51,7 @@ public abstract class Component {
 	 *
 	 * @return int representing the component's price.price
 	 */
-	public int getPrice() {
+	public final int getPrice() {
 		return this.price;
 	}
 
@@ -60,7 +60,7 @@ public abstract class Component {
 	 *
 	 * @param name string representing the component's name.
 	 */
-	public void setName(String name) {
+	public final void setName(final String name) {
 		this.name = name;
 	}
 
@@ -69,7 +69,7 @@ public abstract class Component {
 	 *
 	 * @param price int representing the component's price.
 	 */
-	public void setPrice(int price) {
+	public final void setPrice(final int price) {
 		this.price = price;
 	}
 }
