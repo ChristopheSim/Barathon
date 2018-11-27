@@ -19,11 +19,9 @@ public abstract class Component {
      * @param p The price of the component.
      */
     public Component(final String n, final int p) {
-
         this.name = n;
         this.price = p;
-
-	}
+    }
 
     /**
      *	This method checks if 2 Components are equals.
