@@ -24,7 +24,7 @@ public class Drink extends Component {
         super(n, p);
         this.alcohol = a;
         this.sparkling = s;
-	}
+    }
 
     /**
     * Method to get the drink's alcohol percent.
