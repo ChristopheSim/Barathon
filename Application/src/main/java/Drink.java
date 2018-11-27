@@ -21,9 +21,9 @@ public class Drink extends Component {
     */
     public Drink(final String n, final  int p, final double a,
     final boolean s) {
-		super(n, p);
-		this.alcohol = a;
-		this.sparkling = s;
+        super(n, p);
+        this.alcohol = a;
+        this.sparkling = s;
 	}
 
     /**
