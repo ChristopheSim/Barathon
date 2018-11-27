@@ -4,8 +4,8 @@
  */
 public abstract class Component {
 
-	protected private  String name;
-	protected private int price;
+	private  String name;
+	private int price;
 
 	/**
 	 * Constructor
