@@ -70,15 +70,27 @@ These classes are used to connect to the differents DB (neo4j, json).
 The `DBAcces` class has variables to connect to your neo4j database (There is information above).
 
 #### `App`
+This class is the acces's point of the program for the user.
+
+The GUI is in the command line.
+
+The class will generate the user with his caracteristics and will run the research. We can develop the project by mofifying the differents requests made by the GUI.
 
 #### `Place`
+This class represents the bars. The place is link with the `Menu`, the `Address` and the `Caracteristics`. The places are identified by a id. The application will search the places in the database by his id.
 
 #### `Menu`
+This class is composed of food and drink.
 
 #### `Food`, `Drink` and `Component`
+The class `Food` and class `Drink` are completing the class `Component` to have an homogeneity. The food and the drink have similarities:
+ * a name
+ * a price
+ * multiples methods to manipulate the objects.
 
 #### `Preferences` and `Caracteristics`
+The class `Preferences` use the class `Caracteristics`.
 
-#### `Position` and `Address`
+#### `Address` and `Position`
 
 #### `Strategy`, `StrategyBars` and `StrategyTrips`
