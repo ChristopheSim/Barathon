@@ -94,7 +94,7 @@ public class Place {
      * @param a an address representing the place's address.
      */
     public final void setAddress(final Address a) {
-  		this.address = a;
+      this.address = a;
   	}
 
     /**
@@ -142,7 +142,7 @@ public class Place {
      */
 	   public static Place findPlace(final ArrayList<Place> places,
      final int id) {
-		     for(Place p: places) {
+		     for (Place p: places) {
 			        if (p.getId() == id) {
 				            return p;
 			        }
