@@ -1,5 +1,5 @@
 /**
-*	This class represents the drinks to be added to the menu of a place.
+* This class represents the drinks to be added to the menu of a place.
 */
 public class Drink extends Component {
 	/**

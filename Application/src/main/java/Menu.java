@@ -1,7 +1,7 @@
 import java.util.*;
 
 /**
-*	This class represents the menu of a place.
+* This class represents the menu of a place.
 */
 public class Menu {
 	/**
