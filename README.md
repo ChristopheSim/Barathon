@@ -25,6 +25,7 @@ A user runs the app on his smartphone and the database (users, bars, caracterist
 The pseudo needs to be unique. With the position of the device, the user's position is updated in the database and the property distance of the AWAY relation too.
 
 * He logs in to his account and can use the application to find his trip.
+
 There can be two kinds of trips according to his preferences: "Trip" gives him a real bar trip whereas "Bars" gives him a selection of bars he can choose among. 
 
 ## User manual
