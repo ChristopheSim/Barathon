@@ -1,5 +1,3 @@
-import java.lang.*;
-
 /**
  * Class to represent the position.
  */
@@ -29,7 +27,7 @@ public class Position {
      *
      * @return a double representing the longitude.
      */
-    public Double getLongitude() {
+    public final Double getLongitude() {
         return this.longitude;
     }
 
@@ -38,7 +36,7 @@ public class Position {
      *
      * @param lo a double representing the longitude.
      */
-    public void setLongitude(Double lo) {
+    public final void setLongitude(final Double lo) {
         this.longitude  = lo;
     }
 
@@ -47,7 +45,7 @@ public class Position {
      *
      * @return a double representing the latitude.
      */
-    public Double getLatitude() {
+    public final Double getLatitude() {
         return this.latitude;
     }
 
@@ -56,7 +54,7 @@ public class Position {
      *
      * @param la a double representing the latitude.
      */
-    public void setLatitude(Double la) {
+    public final void setLatitude(final Double la) {
         this.latitude = la;
     }
 
@@ -67,7 +65,7 @@ public class Position {
      *
      * @return a boolean (true if equals).
      */
-    public boolean isEqual(Position p) {
+    public final boolean isEqual(Position p) {
       try {
   			int result = Double.compare(this.longitude, p.longitude);
         int result2 = Double.compare(this.latitude, p.latitude);
