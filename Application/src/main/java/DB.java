@@ -2,7 +2,14 @@
 import org.neo4j.driver.v1.*;
 import java.util.*;
 
+/**
+ * Class which contains the DB methods.
+ */
 public final class DB {
+  /**
+   * Method to create an example of the database.
+   *
+   */
   public static void createDB() {
     // Create the constraints of the graph
     DBAccess.createUniqueConstraints();
@@ -133,13 +140,12 @@ public final class DB {
     }
   }
 
-
+  /**
+   * Method to get the bars where it is possible to eat (easy query).
+   *
+   * @return an array list of places.
+   */
   public static ArrayList<Place> BarsToEat() {
-    /*
-    This function returns a list of places where it's possible to eat.
-    Difficulty: easy query.
-    */
-
     ArrayList<Place> places = new ArrayList<Place>();
     Driver driver = DBAccess.connect();
     try (Session session = driver.session()) {
@@ -166,17 +172,16 @@ public final class DB {
     return places;
   }
 
-
+  /**
+   * Method to get the nearest place of a user(medium query).
+   *
+   * @param user object user.
+   * @return the nearest place.
+   */
   public static Place NearestBar(User user) {
-    /*
-    This function takes a parameter of type User and finds the nearest bar around him.
-    Difficulty: medium query.
-    */
-
     Driver driver = DBAccess.connect();
     Place place = new Place(0, "Le bouche trou", new Address("Test", "Test", new Position(0.0, 20.0)), new Menu(), new Caracteristics());
     try (Session session = driver.session()) {
-      // To verrify the query
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r:AWAY]-(p:Place) RETURN min(r.distance) AS distance", user.getPseudo()));
       List<Record> distances = rs.list();
       if (!distances.isEmpty()) {
@@ -205,18 +210,15 @@ public final class DB {
     return place;
   }
 
-
+  /**
+   * Method to get an array list of x bars in a radius y of the user (complex).
+   *
+   * @return an array list of places.
+   */
   public static ArrayList<Place> NearbyBars(User user, int X, int Y) {
-    /*
-    This function takes three parameters and returns an ordered list of X
-    places in a radius Y. This list is ordered by the proximity of the user.
-    Difficulty: complex query.
-    */
-
     ArrayList<Place> places = new ArrayList<Place>();
     Driver driver = DBAccess.connect();
     try (Session session = driver.session()) {
-      // To complete the query
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r:AWAY]-(p:Place) WHERE r.distance <= %d RETURN p.id AS id, r.distance AS distance ORDER BY r.distance LIMIT %d", user.getPseudo(), Y, X));
       List<Record> ids = rs.list();
       if (!ids.isEmpty()) {
