@@ -3,6 +3,11 @@
 Barathon was originally designed by a Linux users team. Some details maybe change for other operating systems. This file can be usefull to continue the project.
 It contains yet the maven architecture.
 
+## Read Me
+This `README.md` is the official information file for the comprehenssion of this project.
+
+You can find differents files generated during the developpement process. We keep them so we can find our reflexion during the developpement process.
+
 ## "Useless" parts
 Two projects were bound: the TDD and the NoSQL projects. Some classes/files are useless now. The DBAccess and DB classes are no more really usefull. The DBAccess contains all the methods to access to the neo4j database (connect, createCaracteristics, ...). The DB contains the methods to create the database and the querries needed for the NoSQL project.
 In the directory rapport2, you may be find some answers to your questions in the NoSQL report.
@@ -94,8 +99,15 @@ The class `Preferences` use the class `Caracteristics`. The bars have caracteris
 The choice of the user for a trip or not will appear in the preferences but will not help to see if the bar match with the wanted caracteristics.
 
 #### `Address` and `Position`
-the class `Address` us the class `Position`. The bars have an address and the user has a position. The address of the bars is composed of a position, it helps to match the bars following their geographical position.
+The class `Address` us the class `Position`. The bars have an address and the user has a position. The address of the bars is composed of a position, it helps to match the bars following their geographical position.
 
 For the bars, we need more information to display than the latitude and the longitude of their position.
 
 #### `Strategy`, `StrategyBars` and `StrategyTrips`
+We have here a design pattern stratgegy. We implement different search following the choice of the user. It's a good idea to encapsulate this and use a design pattern strategy.
+
+The class `StrategyBars` to finds bars around and near a point depending on a radius given by the user.
+
+The class `StrategyTrips` to finds differents across a place to travel and discover the city.
+
+## To Do
