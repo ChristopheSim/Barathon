@@ -64,5 +64,21 @@ We show all the selected bars with their information to the user.
 ### classes
 The application is composed of 15 classes:
 
-#### DBAccess and JSONAccess
+#### `DBAccess` and `JSONAccess`
 These classes are used to connect to the differents DB (neo4j, json).
+
+The `DBAcces` class has variables to connect to your neo4j database (There is information above).
+
+#### `App`
+
+#### `Place`
+
+#### `Menu`
+
+#### `Food`, `Drink` and `Component`
+
+#### `Preferences` and `Caracteristics`
+
+#### `Position` and `Address`
+
+#### `Strategy`, `StrategyBars` and `StrategyTrips`
