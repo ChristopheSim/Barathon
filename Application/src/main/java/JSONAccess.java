@@ -4,7 +4,6 @@ import java.io.*;
 import com.google.gson.*;
 import com.google.gson.reflect.*;
 import java.lang.reflect.*;
-import java.io.*;
 import org.json.*;
 import org.apache.commons.io.FileUtils;
 
@@ -13,7 +12,10 @@ import org.apache.commons.io.FileUtils;
 */
 public final class JSONAccess {
 
-	private JSONAccess () {
+	/**
+	* Private constructor
+	**/
+	private JSONAccess() {
 	}
 
 	// Instance of utility Gson
@@ -52,8 +54,7 @@ public final class JSONAccess {
 		try {
 			String str = FileUtils.readFileToString(new File(path), "utf-8");
 			return JSONAccess.deserialize(str, t);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			System.out.println(e);
 			return null;
 		}
@@ -69,8 +70,7 @@ public final class JSONAccess {
 		Type t = new TypeToken<ArrayList<Place>>(){}.getType();
 		try (FileReader file = new FileReader(path)) {
 			return JSONAccess.gson.fromJson(file, t);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			System.out.println(e);
 			return new ArrayList<Place>();
 		}
