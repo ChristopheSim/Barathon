@@ -26,8 +26,8 @@ public class Menu {
 	 */
 	public Menu() {
 
-		this.foods = new ArrayList<Food> ();
-		this.drinks = new ArrayList<Drink> ();
+		this.foods = new ArrayList<Food>();
+		this.drinks = new ArrayList<Drink>();
 
 	}
 
@@ -119,7 +119,7 @@ public class Menu {
 			sum += f.getPrice();
 		}
 		if (this.foods.size() > 0) {
-			this.meanFoodPrice = sum/this.foods.size();
+			this.meanFoodPrice = sum / this.foods.size();
 		} else {
 			this.meanFoodPrice = 0;
 		}
@@ -137,7 +137,7 @@ public class Menu {
 			sum += d.getPrice();
 		}
 		if (this.drinks.size() > 0) {
-			this.meanDrinkPrice = sum/this.drinks.size();
+			this.meanDrinkPrice = sum / this.drinks.size();
 		} else {
 			this.meanDrinkPrice = 0;
 		}
@@ -150,13 +150,13 @@ public class Menu {
 	 *
 	 * @return int mean price of the components.
 	 */
-	private final int computeMeanPrice(final ArrayList<Component> components) {
+	private final int computeMeanPrice( ArrayList<Component> components) {
 		int sum = 0;
 
 		// Adds the price of each element in the list
 		for (Component c : components) {
 			sum += c.getPrice();
 		}
-		return sum/components.size();
+		return sum / components.size();
 	}
 }
