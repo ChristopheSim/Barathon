@@ -1,22 +1,27 @@
 import java.lang.*;
 
 /**
-*	This class represents the drinks to be added to the menu of a place
+*	This class represents the drinks to be added to the menu of a place.
 */
 public class Drink extends Component {
-
+	/**
+	 * @param alcohol degrees of alcohol.
+	 */
 	private double alcohol;
+	/**
+	 * @param sparkling boolean representing if the drink is sparkling
+	 */
 	private boolean sparkling;
 
 	/**
-	* Constructor
-	*
-	* @param n The name of the food
-	* @param p The price of the food
-	* @param a The alcochol % of the drink
-	* @param s If the drink is sparkling : true
-	*/
-	public Drink (String n, int p, double a, boolean s) {
+	 * Constructor.
+	 *
+	 * @param n The name of the drink.
+	 * @param p The price of the drink.
+	 * @param a The alcochol % of the drink.
+	 * @param s If the drink is sparkling : true.
+	 */
+	public Drink (final String n, final  int p, final double a, final boolean s) {
 
 		super(n, p);
 
@@ -25,30 +30,48 @@ public class Drink extends Component {
 
 	}
 
-	//GETTERS
-	public double getAlcohol () {
+	/**
+	 * Method to get the drink's alcohol percent.
+	 *
+	 * @return double percent of alcohol.
+	 */
+	public final double getAlcohol () {
 		return this.alcohol;
 	}
 
-	public boolean getSparkling () {
+	/**
+	 * Method to get the drink's sparkliung.
+	 *
+	 * @return boolean true if sparkling.
+	 */
+	public final boolean getSparkling () {
 		return this.sparkling;
 	}
 
-	//SETTERS
-	public void setAlcohol(double alcohol) {
+	/**
+	 * Method to set the percent of alcohol.
+	 *
+	 * @param alcohol percent of alcohol.
+	 */
+	public final void setAlcohol(final double alcohol) {
 		this.alcohol = alcohol;
 	}
 
-	public void setSparkling (boolean sparkling) {
+	/**
+	 * Method to set the sparkliung.
+	 *
+	 * @param sparkling boolean of sparkling.
+	 */
+	public final void setSparkling (final boolean sparkling) {
 		this.sparkling = sparkling;
 	}
 
 	/**
-	* This method checks if the drink is alcohol-free
-	*
-	* @return boolean TRUE if there is no alcohol
-	*/
-	public boolean getSoft () {
+	 * This method checks if the drink is alcohol-free.
+	 *
+	 * @return boolean TRUE if there is no alcohol.
+	 */
+	public final boolean getSoft () {
 		// A drink is soft if it contains no alcohol
 		try {
 			double zero = 0.0;
@@ -57,8 +80,7 @@ public class Drink extends Component {
 				return true;
 			}
 			return false;
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			System.out.println("Alcohol Comparison Error: Double.compare exception");
 			return false;
 		}
