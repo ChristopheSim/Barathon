@@ -6,7 +6,6 @@ import org.neo4j.driver.v1.Session;
 import org.neo4j.driver.v1.StatementResult;
 import java.util.List;
 import java.util.ArrayList;
-import java.lang.Math;
 
 /**
 * This class is used to connect the database neo4j w/ the application Barathon.
@@ -19,16 +18,32 @@ public final class DBAccess {
   private DBAccess() {
   }
 
+  /**
+   * ip address.
+   */
   private static String ip = "localhost:7687";
+  /**
+   * login.
+   */
   private static String login = "neo4j";
+  /**
+   * password.
+   */
   private static String password = "NEO4J";
 
-
+  /**
+   * Method to connect to the database.
+   *
+   * @return Driver object.
+   */
   public static Driver connect() {
     return GraphDatabase.driver(String.format("bolt://%s", ip), AuthTokens.basic(login, password));
   }
 
-
+  /**
+   * Method to create the unique constraints in the database.
+   *
+   */
   public static void createUniqueConstraints() {
     /*
     This function creates the unique constraints on the following nodes:
@@ -68,7 +83,11 @@ public final class DBAccess {
     driver.close();
     }
 
-
+    /**
+     * Method to create a place in the database.
+     *
+     * @param place a place to create.
+     */
   public static void createPlace(final Place place) {
     /*
     This function takes a parameter of type Place and creates a node of this type in the graph.
@@ -89,7 +108,11 @@ public final class DBAccess {
     driver.close();
 	}
 
-
+    /**
+     * Method to match a place in the database.
+     *
+     * @param place a place to match.
+     */
   public static void matchPlace(final Place place) {
     /*
     This function takes a parameter of type Place and searches a node of this type in the graph.
@@ -111,7 +134,11 @@ public final class DBAccess {
     driver.close();
 	}
 
-
+    /**
+     * Method to find the places in the database.
+     *
+     * @return a list of places.
+     */
   public static ArrayList<Place> findPlaces() {
     /*
     This function searches all places in the graph.
@@ -135,7 +162,11 @@ public final class DBAccess {
     return places;
 	}
 
-
+    /**
+     * Method to create an user in the database.
+     *
+     * @param user an user to create.
+     */
   public static void createUser(final User user) {
     /*
     This function takes a parameter of type User and creates a node of this type in the graph.
@@ -155,7 +186,11 @@ public final class DBAccess {
     driver.close();
 	}
 
-
+    /**
+     * Method to match an user in the database.
+     *
+     * @param user an user to match.
+     */
   public static void matchUser(final User user) {
     /*
     This function takes a parameter of type User and searches a node of this type in the graph.
@@ -178,7 +213,10 @@ public final class DBAccess {
     driver.close();
 	}
 
-
+    /**
+     * Method to create the caracteristics in the database.
+     *
+     */
   public static void createCaracteristics() {
     /*
     This function creates one node for each caracteristics (cheap, music, famousPlace, food, vegetarian, halal, vegan, alcohol).
@@ -210,7 +248,12 @@ public final class DBAccess {
     }
 	}
 
-
+    /**
+     * Method to create relationship between a place and the caracteristics.
+     *
+     * @param place a place to link.
+     * @param carac caracteristics to link.
+     */
   public static void createP2CRelationship(final Place place, final Caracteristics carac) {
     /*
     This function creates a relationship between a place and the caracteristics.
@@ -329,7 +372,12 @@ public final class DBAccess {
     driver.close();
 	}
 
-
+    /**
+     * Method to create relationship between an user and the caracteristics.
+     *
+     * @param user an user to link.
+     * @param carac caracteristics to link.
+     */
   public static void createU2CRelationship(final User user, final Caracteristics carac) {
     /*
     This function creates a relationship between a place and the caracteristics.
@@ -448,7 +496,12 @@ public final class DBAccess {
     driver.close();
 	}
 
-
+    /**
+     * Method to create relationship between two places.
+     *
+     * @param place1 a place to link.
+     * @param place2 a place to link.
+     */
   public static void createP2PRelationship(final Place place1, final Place place2) {
     /*
     This function creates a relationship AWAY between two places. This relationship contains one property, the distance.
@@ -470,7 +523,12 @@ public final class DBAccess {
     driver.close();
 	}
 
-
+    /**
+     * Method to create relationship between an user and a place.
+     *
+     * @param user an user to link.
+     * @param place a place to link.
+     */
   public static void createU2PRelationship(final User user, final Place place) {
     /*
     This function creates a relationship AWAY between two places. This relationship contains one property, the distance.
