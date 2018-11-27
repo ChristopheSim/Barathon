@@ -5,7 +5,7 @@ import org.neo4j.driver.v1.StatementResult;
 import org.neo4j.driver.v1.Record;
 import java.util.List;
 import java.util.ArrayList;
-import static java.lang.Math.sqr;
+import static java.lang.Math.sqrt;
 import static java.lang.Math.pow;
 
 /**
