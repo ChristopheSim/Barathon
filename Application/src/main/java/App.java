@@ -10,7 +10,9 @@ public class App {
      */
     public static void main(String [] args) {
         Console c = System.console();
-        String intro = "\n======================= \n| Welcome to Barathon |\n======================= \n";
+        String intro = "\n=======================" 
+            + "\n| Welcome to Barathon |"
+            + "\n======================= \n";
         System.out.println(intro);
 
         System.out.print("  user pseudo : ");
