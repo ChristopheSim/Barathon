@@ -19,7 +19,7 @@ public final class DB {
 
     // Create the sample of drinks
     Drink coca = new Drink("Coca regular", 200, 0.0, true);
-    Drink ice_tea = new Drink("Ice tea green", 220, 0.0, false);
+    Drink iceTea = new Drink("Ice tea green", 220, 0.0, false);
     Drink duvel = new Drink("Duvel", 420, 8.5, true);
 
     // Create the sample of food
@@ -29,14 +29,14 @@ public final class DB {
     // Create the menus
     Menu menu1 = new Menu();
     menu1.addDrink(coca);
-    menu1.addDrink(ice_tea);
+    menu1.addDrink(iceTtea);
     Menu menu2 = new Menu();
-    menu2.addDrink(ice_tea);
+    menu2.addDrink(iceTea);
     menu2.addDrink(duvel);
     menu2.addFood(wafel);
     Menu menu3 = new Menu();
     menu3.addDrink(coca);
-    menu3.addDrink(ice_tea);
+    menu3.addDrink(iceTea);
     menu3.addDrink(duvel);
     menu3.addFood(salad);
     menu3.addFood(wafel);
@@ -114,10 +114,10 @@ public final class DB {
     for (Place place : places) {
       DBAccess.matchPlace(place);
       DBAccess.createP2CRelationship(place, place.getCaracteristics());
-      ArrayList<Place> db_places = DBAccess.findPlaces();
-      for (Place db_place : db_places) {
-        if (place.getId() != db_place.getId()) {
-          DBAccess.createP2PRelationship(place, db_place);
+      ArrayList<Place> dbPlaces = DBAccess.findPlaces();
+      for (Place dbPlace : dbPlaces) {
+        if (place.getId() != dbPlace.getId()) {
+          DBAccess.createP2PRelationship(place, dbPlace);
         }
       }
     }
@@ -152,10 +152,10 @@ public final class DB {
       StatementResult rs = session.run("MATCH (p:Place)-[r:FOLLOWS]-(c:Caracteristic {name: 'food'}) WHERE r.status='true' RETURN p.id AS id");
       List<Record> ids = rs.list();
       if (!ids.isEmpty()) {
-        ArrayList<Place> db_places = JSONAccess.readPlacesJSON("./../data/places.json");
+        ArrayList<Place> dbPlaces = JSONAccess.readPlacesJSON("./../data/places.json");
         for (Record i : ids) {
           // To find the places in the JSON with record.get("id")
-          Place place = Place.findPlace(db_places, i.get("id").asInt());
+          Place place = Place.findPlace(dbPlaces, i.get("id").asInt());
           places.add(place);
         }
       } else {
@@ -218,10 +218,10 @@ public final class DB {
       StatementResult rs = session.run(String.format("MATCH (u:User {pseudo: '%s'})-[r:AWAY]-(p:Place) WHERE r.distance <= %d RETURN p.id AS id, r.distance AS distance ORDER BY r.distance LIMIT %d", user.getPseudo(), Y, X));
       List<Record> ids = rs.list();
       if (!ids.isEmpty()) {
-        ArrayList<Place> db_places = JSONAccess.readPlacesJSON("./../data/places.json");
+        ArrayList<Place> dbPlaces = JSONAccess.readPlacesJSON("./../data/places.json");
         for (Record i : ids) {
           // To find the places in the JSON with record.get("id")
-          Place place = Place.findPlace(db_places, i.get("id").asInt());
+          Place place = Place.findPlace(dbPlaces, i.get("id").asInt());
           places.add(place);
         }
       } else {
