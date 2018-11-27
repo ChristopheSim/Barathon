@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.ArrayList;
 
 /**
  * Class to represent a Place.
@@ -112,7 +112,7 @@ public class Place {
      * @param m a manu representing the place's menu.
      */
     public final void setMenu(final Menu m) {
-  		this.menu = m;
+        this.menu = m;
   	}
 
     /**
