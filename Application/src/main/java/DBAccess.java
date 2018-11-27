@@ -4,11 +4,9 @@ import org.neo4j.driver.v1.GraphDatabase;
 import org.neo4j.driver.v1.AuthTokens;
 import org.neo4j.driver.v1.Session;
 import org.neo4j.driver.v1.StatementResult;
-import org.neo4j.driver.v1.Record;
 import java.util.List;
 import java.util.ArrayList;
-import static java.lang.Math.sqrt;
-import static java.lang.Math.pow;
+import static java.lang.Math;
 
 /**
 * This class is used to connect the database neo4j w/ the application Barathon.
