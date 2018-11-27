@@ -2,7 +2,7 @@ import java.io.Console;
 import java.util.ArrayList;
 
 /**
- * Class to represent a user.
+ * Class to represent an user.
  */
 public class User {
     /**
@@ -31,7 +31,7 @@ public class User {
     private int choice;
 
     /**
-     * Method to generate a user.
+     * Method to generate an user.
      *
      * @param ps user's pseudo.
      * @param po user's position.
