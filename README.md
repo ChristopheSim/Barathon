@@ -34,6 +34,16 @@ It also ask your preferences to help you to search the perfects bars *(this meth
 
 The application will show you a list of differents places which correspond to your wishes *(this method needs to be implemented)*.
 
+---
+
+When a user runs the app on his smartphone and the database (users, bars,carcateristics and relation) is on a server away. Two actions are possible:
+* He chooses a pseudo and answers the questions to get his caracteristics.
+
+The pseudo needs to be unique. With the position of the device, the user's position is updated in the database and the property distance of the AWAY relation too.
+
+* He logs in to his account and can use the applicationto find his trip.
+
+
 ## Metrics
 The metrics of the code are the followed:
 * the comment density between 30% and 40%.
@@ -41,9 +51,7 @@ The metrics of the code are the followed:
 * the execution of the serch is lower than 30 sec.
 
 ## How it works
-A user runs the app on his smartphone and the database (users, bars,carcateristics and relation) is on a server away. Two actions are possible:
-* He chooses a pseudo and answers the questions to get his caracteristics.
+The application is composed of 15 classes:
 
-The pseudo needs to be unique. With the position of the device, the user's position is updated in the database and the property distance of the AWAY relation too.
-
-* He logs in to his account and can use the applicationto find his trip.
+##### DBAccess and JSONAccess
+These classes are used to connect to the differents DB (neo4j, json).
