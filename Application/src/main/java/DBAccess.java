@@ -106,7 +106,7 @@ public final class DBAccess {
       System.out.print(e);
     }
     driver.close();
-	}
+    }
 
     /**
      * Method to match a place in the database.
@@ -281,7 +281,7 @@ public final class DBAccess {
       } else {
         rs = session.run(String.format("MATCH (p:Place {id: %d})-[r]-(c:Caracteristic {name: '%s'}) SET r.status='%b'", place.getId(), "music", carac.getMusic()));
       }
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the Place-music relationship creation !");
       System.out.print(e);
     }
@@ -365,7 +365,7 @@ public final class DBAccess {
       } else {
         rs = session.run(String.format("MATCH (p:Place {id: %d})-[r]-(c:Caracteristic {name: '%s'}) SET r.status='%b'", place.getId(), "alcohol", carac.getAlcohol()));
       }
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("An error occured during the Place-alcohol relationship creation !");
       System.out.print(e);
     }
@@ -550,7 +550,10 @@ public final class DBAccess {
     driver.close();
   }
 
-
+  /**
+   * Method to drop the database.
+   *
+   */
   public static void dropDatabase() {
     Driver driver = connect();
     try (Session session = driver.session()) {
