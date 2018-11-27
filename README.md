@@ -6,13 +6,17 @@ It contains yet the maven architecture.
 https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html
 
 ## External libraries
-*GSON: a high-level library to read or write JSON files ;
+* (old) JSON: a library to read or write JSON files ;
+
+* GSON: a high-level library to read or write JSON files ;
 
 https://github.com/google/gson/blob/master/UserGuide.md
 
-*Junit: a test module ;
+* Apache Commons-IO: a library to proceed operations on files ;
 
-*Neo4j: a library to access Neo4j, a database working with graphs.
+* Junit: a test module ;
+
+* Neo4j: a library to access Neo4j, a database working with graphs.
 
 ## "Useless" parts
 Two projects were bound: the TDD and the NoSQL projects. Some classes/files are useless now. The DBAccess and DB classes are no more really useful. The DBAccess contains all the methods to access to the neo4j database (connect, createCaracteristics, ...). The DB contains the methods to create the database and the queries needed for the NoSQL project.
