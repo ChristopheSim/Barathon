@@ -16,7 +16,7 @@ public final class App {
      *
      * @param args Args of main function
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         Console c = System.console();
         String intro = "\n======================="
             + "\n| Welcome to Barathon |"
