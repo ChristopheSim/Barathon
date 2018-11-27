@@ -18,7 +18,7 @@ public abstract class Component {
 	 * @param n The name of the component.
 	 * @param p The price of the component.
 	 */
-	public final Component(final String n,final int p) {
+	public Component(final String n,final int p) {
 
 		this.name = n;
 		this.price = p;
