@@ -24,7 +24,7 @@ public abstract class Component {
     }
 
     /**
-     *	This method checks if 2 Components are equals.
+     * This method checks if 2 Components are equals.
      *
      * @param c Component.
      * @return boolean TRUE if the 2 Components are equals.
@@ -32,7 +32,6 @@ public abstract class Component {
     public final boolean isEqual(final Component c) {
         //Need further implementation
         return this.name == c.getName();
-
     }
 
     /**
