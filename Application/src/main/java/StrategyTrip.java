@@ -13,8 +13,8 @@ public class StrategyTrip implements Strategy {
    */
     public final ArrayList<Place> solve(final Position p,
     final Caracteristics c) {
-        ArrayList<Place> lst = new ArrayList<Place>();
+        ArrayList<Place> trip = new ArrayList<Place>();
         // Take parameters position and carcateristics which match the places.
-        return lst;
+        return trip;
     }
 }
