@@ -11,6 +11,9 @@ public final class App {
     private App() {
     }
 
+    /**
+     * When the user position is unknown, the coordinates are (666,666)
+    **/
     private static final Double UNKNOWN_POSITION = 666.0;
 
     /**
