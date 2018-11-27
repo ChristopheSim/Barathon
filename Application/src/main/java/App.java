@@ -28,7 +28,7 @@ public final class App {
         System.out.println(String.format("  Hello %s !\n", pseudo));
 
         System.out.print("  ! Can we use your actual position ? [Y/n] :");
-        boolean bpos = "Yy ".iRecover last updatesndexOf(c.readLine()) >= 0;
+        boolean bpos = "Yy ".indexOf(c.readLine()) >= 0;
         Double x = 0.0;
         Double y = 0.0;
         if (bpos) {
