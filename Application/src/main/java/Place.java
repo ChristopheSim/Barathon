@@ -1,68 +1,151 @@
 import java.util.*;
 
+/**
+ * Class to represent a Place.
+ */
 public class Place {
+    /**
+     * place's id (unique).
+     */
     private int id;
+    /**
+     * place's name.
+     */
     private String name;
+    /**
+     * place's address.
+     */
     private Address address;
+    /**
+     * place's menu.
+     */
     private Menu menu;
+    /**
+     * place's caracteristics.
+     */
     private Caracteristics caracteristics;
 
-    public Place(int id, String name, Address address, Menu menu,
-        Caracteristics caracteristics)
-    {
-        this.id = id;
-        this.name = name;
-        this.address = address;
-        this.menu = menu;
-        this.caracteristics = caracteristics;
+    /**
+     * Method to generate a place.
+     *
+     * @param i place's id.
+     * @param n place's name.
+     * @param a place's address.
+     * @param m place's menu.
+     * @param c place's caracteristics.
+     */
+    public Place(final int i, final String n, final Address a, final Menu m,
+    final Caracteristics c) {
+        this.id = i;
+        this.name = n;
+        this.address = a;
+        this.menu = m;
+        this.caracteristics = c;
     }
 
+    /**
+     * Method to get the place's id.
+     *
+     * @return an int representing the place's id.
+     */
     public int getId(){
         return this.id;
     }
 
-    public void setId(int id){
-        this.id = id;
+    /**
+     * Method to set the place's id.
+     *
+     * @param i an int representing the place's id.
+     */
+    public void setId(final int i){
+        this.id = i;
     }
 
+    /**
+     * Method to get the place's name.
+     *
+     * @return a string representing the place's name.
+     */
     public String getName(){
         return this.name;
     }
-    public void setName(String name){
-        this.name = name;
+
+    /**
+     * Method to set the place's name.
+     *
+     * @param n a string representing the place's name.
+     */
+    public void setName(final String n){
+        this.name = n;
     }
 
+    /**
+     * Method to get the place's address.
+     *
+     * @return an Address representing the place's address.
+     */
     public Address getAddress(){
         return this.address;
     }
 
-    public void setAddress(Address address) {
-  		this.address = address;
+    /**
+     * Method to set the place's address.
+     *
+     * @param a an address representing the place's address.
+     */
+    public void setAddress(final Address a) {
+  		this.address = a;
   	}
 
+    /**
+     * Method to get the place's menu.
+     *
+     * @return a Menu representing the place's menu.
+     */
     public Menu getMenu() {
       return this.menu;
     }
 
-    public void setMenu(Menu menu) {
-  		this.menu = menu;
+    /**
+     * Method to set the place's menu.
+     *
+     * @param m a manu representing the place's menu.
+     */
+    public void setMenu(final Menu m) {
+  		this.menu = m;
   	}
 
+    /**
+     * Method to get the place's menu.
+     *
+     * @return a Menu representing the place's menu.
+     */
     public Caracteristics getCaracteristics() {
       return this.caracteristics;
     }
 
-    public void setCaracteristics(Caracteristics carac) {
-  		this.caracteristics = carac;
+    /**
+     * Method to set the place's carcateristics.
+     *
+     * @param c carcateristics representing the place's caracteristics.
+     */
+    public void setCaracteristics(final Caracteristics c) {
+  		this.caracteristics = c;
   	}
 
-	public static Place findPlace(ArrayList<Place> places, int id) {
-		for(Place p: places) {
-			if (p.getId() == id) {
-				return p;
-			}
-		}
-
-		return null;
-	}
+    /**
+     * Method to get a place from a list of places.
+     *
+     * @param places an array list of places.
+     * @param id an int representing a place's id.
+     * @return a Place object.
+     */
+	   public static Place findPlace(ArrayList<Place> places, int id) {
+		     for(Place p: places) {
+			        if (p.getId() == id) {
+				            return p;
+			        }
+		     }
+         return null;
+	   }
 }
