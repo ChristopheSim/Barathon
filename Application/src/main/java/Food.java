@@ -24,8 +24,8 @@ public class Food extends Component {
 	* @param h If the food is halal : true.
 	* @param vg If the food is vegetarian : true.
 	*/
-	public Food(final String n, final int p, final boolean vn, final boolean h,
-	final boolean vg) {
+	public Food(final String n, final int p, final boolean vn,
+	final boolean h, final boolean vg) {
 		super(n, p);
 
 		this.vegan = vn;
