@@ -64,7 +64,7 @@ public final class DBAccess {
 	}
 
 
-  public static void createPlace(Place place) {
+  public static void createPlace(final Place place) {
     /*
     This function takes a parameter of type Place and creates a node of this type in the graph.
     The parameters are:
@@ -85,7 +85,7 @@ public final class DBAccess {
 	}
 
 
-  public static void matchPlace(Place place) {
+  public static void matchPlace(final Place place) {
     /*
     This function takes a parameter of type Place and searches a node of this type in the graph.
     If no node is found, it will be created.
@@ -131,7 +131,7 @@ public final class DBAccess {
 	}
 
 
-  public static void createUser(User user) {
+  public static void createUser(final User user) {
     /*
     This function takes a parameter of type User and creates a node of this type in the graph.
     The parameters are:
@@ -151,7 +151,7 @@ public final class DBAccess {
 	}
 
 
-  public static void matchUser(User user) {
+  public static void matchUser(final User user) {
     /*
     This function takes a parameter of type User and searches a node of this type in the graph.
     If no node is found, it will be created.
@@ -206,7 +206,7 @@ public final class DBAccess {
 	}
 
 
-  public static void createP2CRelationship(Place place, Caracteristics carac) {
+  public static void createP2CRelationship(final Place place, final Caracteristics carac) {
     /*
     This function creates a relationship between a place and the caracteristics.
     */
@@ -325,7 +325,7 @@ public final class DBAccess {
 	}
 
 
-  public static void createU2CRelationship(User user, Caracteristics carac) {
+  public static void createU2CRelationship(final User user, final Caracteristics carac) {
     /*
     This function creates a relationship between a place and the caracteristics.
     */
@@ -444,7 +444,7 @@ public final class DBAccess {
 	}
 
 
-  public static void createP2PRelationship(Place place1, Place place2) {
+  public static void createP2PRelationship(final Place place1, final Place place2) {
     /*
     This function creates a relationship AWAY between two places. This relationship contains one property, the distance.
     */
@@ -466,7 +466,7 @@ public final class DBAccess {
 	}
 
 
-  public static void createU2PRelationship(User user, Place place) {
+  public static void createU2PRelationship(final User user, final Place place) {
     /*
     This function creates a relationship AWAY between two places. This relationship contains one property, the distance.
     */
