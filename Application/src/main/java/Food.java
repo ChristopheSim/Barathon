@@ -1,5 +1,5 @@
 /**
-*	Class to represent the food.
+* Class to represent the food.
 */
 public class Food extends Component {
 	/**

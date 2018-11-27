@@ -94,8 +94,8 @@ public class Place {
      * @param a an address representing the place's address.
      */
     public final void setAddress(final Address a) {
-      this.address = a;
-  	}
+        this.address = a;
+    }
 
     /**
      * Method to get the place's menu.
