@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 /**
- * Class to find the bars not ordered.
+ * Class to find the bars.
  */
 public class StrategyBars implements Strategy {
   /**
