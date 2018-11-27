@@ -3,20 +3,20 @@ import java.io.Console;
 /**
  *  Class to have an inteface between the application and the user.
  */
-public class App {
+public final class App {
 
     /**
     * Private constructor.
     **/
     private App() {
     }
-    
+
     /**
      *  Method main.
      *
      * @param args Args of main function
      */
-    public static void main(String [] args) {
+    public static void main(String[] args) {
         Console c = System.console();
         String intro = "\n======================="
             + "\n| Welcome to Barathon |"
