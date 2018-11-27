@@ -150,7 +150,7 @@ public class Menu {
 	 *
 	 * @return int mean price of the components.
 	 */
-	private final int computeMeanPrice(
+	private int computeMeanPrice(
 	final ArrayList<Component> components) {
 		int sum = 0;
 
