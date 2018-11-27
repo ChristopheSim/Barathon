@@ -1,5 +1,5 @@
 /**
-*	This class represents the foods to be added to the menu of a place.
+*	Class to represent the food.
 */
 public class Food extends Component {
 	/**
@@ -20,12 +20,12 @@ public class Food extends Component {
 	*
 	* @param n The name of the food.
 	* @param p The price of the food.
-	* @param vgn If the food is vegan : true.
+	* @param vn If the food is vegan : true.
 	* @param h If the food is halal : true.
-	* @param vgt If the food is vegetarian : true.
+	* @param vg If the food is vegetarian : true.
 	*/
-	public Food (final String n, final int p, final boolean vn, final boolean h,
-	final boolean vg) {
+	public Food(final String n, final int p, final boolean vn,
+	final boolean h, final boolean vg) {
 		super(n, p);
 
 		this.vegan = vn;
@@ -39,7 +39,7 @@ public class Food extends Component {
 	 *
 	 * @return a boolean vegan field.
 	 */
-	public final boolean getVegan () {
+	public final boolean getVegan() {
 		return this.vegan;
 	}
 
@@ -48,7 +48,7 @@ public class Food extends Component {
 	 *
 	 * @return a boolean halal field.
 	 */
-	public final boolean getHalal () {
+	public final boolean getHalal() {
 		return this.halal;
 	}
 
@@ -57,7 +57,7 @@ public class Food extends Component {
 	 *
 	 * @return a boolean vegetarian field.
 	 */
-	public final boolean getVegetarian () {
+	public final boolean getVegetarian() {
 		return this.vegetarian;
 	}
 
@@ -66,7 +66,7 @@ public class Food extends Component {
 	 *
 	 * @param vn a boolean representing the vegan field.
 	 */
-	public final void setVegan (boolean vn) {
+	public final void setVegan(final boolean vn) {
 		this.vegan = vn;
 	}
 
@@ -75,7 +75,7 @@ public class Food extends Component {
 	 *
 	 * @param h a boolean representing the halal field.
 	 */
-	public final void setHalal (boolean h) {
+	public final void setHalal(final boolean h) {
 		this.halal = h;
 	}
 
@@ -84,7 +84,7 @@ public class Food extends Component {
 	 *
 	 * @param vg a boolean representing the vegetarian field.
 	 */
-	public final void setVegetarian (boolean vg) {
+	public final void setVegetarian(final boolean vg) {
 		this.vegetarian = vg;
 	}
 }
