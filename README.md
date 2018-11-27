@@ -25,3 +25,5 @@ Some ".jar" are needed to compile and to execute the project. They are in the re
 
 ### How to use
 For now, the app is not complete and some checkstyles are not validated so, let's work.
+
+## Metric
