@@ -1,5 +1,5 @@
 // imports
-import org.neo4j.driver.v1.*;
+import org.neo4j.driver.v1.Driver;
 import java.util.List;
 import java.util.ArrayList;
 
