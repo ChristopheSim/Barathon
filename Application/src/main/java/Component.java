@@ -1,19 +1,19 @@
 /**
-*	This class represents the components to be added to a menu
-*	This is the super class of Food and Drink
-*/
+ *	This class represents the components to be added to a menu
+ *	This is the super class of Food and Drink
+ */
 public abstract class Component {
 
-	protected String name;
-	protected int price;
+	protected private  String name;
+	protected private int price;
 
 	/**
-	* Constructor
-	*
-	* @param n The name of the food
-	* @param p The price of the food
-	*/
-	public Component (String n, int p) {
+	 * Constructor
+	 *
+	 * @param n The name of the component
+	 * @param p The price of the component
+	 */
+	public Component(String n, int p) {
 
 		this.name = n;
 		this.price = p;
@@ -21,30 +21,49 @@ public abstract class Component {
 	}
 
 	/**
-	*	This method checks if 2 Components are equals
-	*
-	* @return boolean TRUE if the 2 Components are equals
-	*/
-	public boolean isEqual (Component c) {
+	 *	This method checks if 2 Components are equals
+	 *
+	 * @param c Component
+	 * @return boolean TRUE if the 2 Components are equals
+	 */
+	public boolean isEqual(Component c) {
 		//Need further implementation
 		return this.name == c.getName();
 
 	}
-	
-	//GETTERS
-	public String getName () {
+
+	/**
+	 * Method to get the component's name
+	 *
+	 * @return string representing the component's name
+	 */
+	public String getName() {
 		return this.name;
 	}
 
-	public int getPrice () {
+	/**
+	 * Method to get the component's price
+	 *
+	 * @return int representing the component's price
+	 */
+	public int getPrice() {
 		return this.price;
 	}
-	
-	//SETTERS
+
+	/**
+	 * Method to set the component's name
+	 *
+	 * @param name string representing the component's name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * Method to set the component's price
+	 *
+	 * @param price int representing the component's price
+	 */
 	public void setPrice(int price) {
 		this.price = price;
 	}
