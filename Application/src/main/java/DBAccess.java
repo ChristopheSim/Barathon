@@ -132,7 +132,7 @@ public final class DBAccess {
       System.out.print(e);
     }
     driver.close();
-	}
+    }
 
     /**
      * Method to find the places in the database.
@@ -160,7 +160,7 @@ public final class DBAccess {
     }
     driver.close();
     return places;
-	}
+    }
 
     /**
      * Method to create an user in the database.
@@ -184,7 +184,7 @@ public final class DBAccess {
       System.out.print(e);
     }
     driver.close();
-	}
+    }
 
     /**
      * Method to match an user in the database.
@@ -211,7 +211,7 @@ public final class DBAccess {
       System.out.print(e);
     }
     driver.close();
-	}
+    }
 
     /**
      * Method to create the caracteristics in the database.
@@ -246,7 +246,7 @@ public final class DBAccess {
       }
       driver.close();
     }
-	}
+  }
 
     /**
      * Method to create relationship between a place and the caracteristics.
