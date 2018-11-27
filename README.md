@@ -7,8 +7,11 @@ https://maven.apache.org/guides/introduction/introduction-to-the-standard-direct
 
 ## External libraries
 *GSON: a high-level library to read or write JSON files ;
+
 https://github.com/google/gson/blob/master/UserGuide.md
+
 *Junit: a test module ;
+
 *Neo4j: a library to access Neo4j, a database working with graphs.
 
 ## "Useless" parts
