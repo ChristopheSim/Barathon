@@ -79,10 +79,10 @@ public final class App {
         // Create user
         User user = new User(pseudo, pos, pref);
 
-        //TODO: run Search
+        //To do: run Search
         user.generate();
 
-        //TODO: show result
+        //To do: show result
         user.show();
     }
 }
