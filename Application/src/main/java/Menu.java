@@ -7,19 +7,19 @@ public class Menu {
 	/**
 	 * @param foods List of menu's food.
 	 */
-	private final ArrayList<Food> foods;
+	private ArrayList<Food> foods;
 	/**
 	 * @param drinks List of menu's drink.
 	 */
-	private final ArrayList<Drink> drinks;
+	private ArrayList<Drink> drinks;
 	/**
 	 * @param meanDrinkPrice mean price of drinks.
 	 */
-	private final int meanDrinkPrice;
+	private int meanDrinkPrice;
 	/**
 	 * @param meanFoodPrice mean price of food.
 	 */
-	private final int meanFoodPrice;
+	private int meanFoodPrice;
 
 	/**
 	 *	Constructor.
