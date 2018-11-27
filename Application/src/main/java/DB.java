@@ -158,12 +158,10 @@ public final class DB {
           Place place = Place.findPlace(db_places, i.get("id").asInt());
           places.add(place);
         }
-      }
-      else {
+      } else {
         System.out.println("There is no place where it is possible to eat in the database !");
       }
-    }
-    catch(Exception e) {
+    } catch(Exception e) {
       System.out.println("An error occured during the places where it is possible to eat searching !");
     }
     driver.close();
@@ -195,12 +193,10 @@ public final class DB {
             place = Place.findPlace(places, i.get("id").asInt());
           }
         }
-      }
-      else {
+      } else {
         System.out.println("Impossible to find the nearest bar.\nNo relationship AWAY in this graph.");
       }
-    }
-    catch(Exception e) {
+    } catch(Exception e) {
       System.out.println("An error occured during the search of the nearest bar !");
       System.out.println(e.getMessage());
     }
@@ -228,12 +224,10 @@ public final class DB {
           Place place = Place.findPlace(db_places, i.get("id").asInt());
           places.add(place);
         }
-      }
-      else {
+      } else {
         System.out.println("There is no place where it is possible to eat in the database !");
       }
-    }
-    catch(Exception e) {
+    } catch(Exception e) {
       System.out.println("An error occured during the places where it is possible to eat searching !");
     }
     driver.close();
