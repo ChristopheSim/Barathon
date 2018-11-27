@@ -58,7 +58,7 @@ We use the codage convention of sun without the line length convention.
 The metrics of the code are the followed:
 * the comment density between 30% and 40%.
 * 4the tests covers 40% of the code.
-* the execution of the serch is lower than 30 sec.
+* the execution of the search is lower than 30 sec.
 
 ## How it works
 ### Use
@@ -77,10 +77,10 @@ The application is composed of 15 classes:
 #### `DBAccess` and `JSONAccess`
 These classes are used to connect to the differents DB (neo4j, json).
 
-The `DBAcces` class has variables to connect to your neo4j database (There is information above).
+The `DBAccess` class has variables to connect to your neo4j database (There is information above).
 
 #### `App`
-This class is the acces's point of the program for the user.
+This class is the access' point of the program for the user.
 
 The class will generate the user with his caracteristics and will run the research. We can develop the project by mofifying the differents requests made by the CLI.
 
