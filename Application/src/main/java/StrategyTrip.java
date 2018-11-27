@@ -9,7 +9,7 @@ public class StrategyTrip implements Strategy {
    *
    * @param p position of the user.
    * @param c carcateristics of the user.
-   * @return ordered list of places.
+   * @return list of ordered places.
    */
     public final ArrayList<Place> solve(final Position p,
     final Caracteristics c) {
