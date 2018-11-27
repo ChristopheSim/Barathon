@@ -13,7 +13,7 @@ import org.apache.commons.io.FileUtils;
 public final class JSONAccess {
 
 	/**
-	* Private constructor
+	* Private constructor.
 	**/
 	private JSONAccess() {
 	}
@@ -28,7 +28,7 @@ public final class JSONAccess {
 	* @param t This is the type of the object
 	* @return String This is the string containing the JSON formatted object
 	*/
-	public static String serialize(Object obj, Type t) {
+	public static String serialize(final Object obj, final Type t) {
 		return JSONAccess.gson.toJson(obj, t);
 	}
 
@@ -39,7 +39,7 @@ public final class JSONAccess {
 	* @param t This is the type of the object
 	* @return Object This is the parsed object
 	*/
-	public static Object deserialize(String json, Type t) {
+	public static Object deserialize(final String json, final Type t) {
 		return JSONAccess.gson.fromJson(json, t);
 	}
 
@@ -50,7 +50,7 @@ public final class JSONAccess {
 	* @param t This is the type of the object
 	* @return Object The object from the JSON file
 	*/
-	public static Object readJSON(String path, Type t) {
+	public static Object readJSON(final String path, final Type t) {
 		try {
 			String str = FileUtils.readFileToString(new File(path), "utf-8");
 			return JSONAccess.deserialize(str, t);
@@ -66,7 +66,7 @@ public final class JSONAccess {
 	* @param path The path of the fileto be read
 	* @return ArrayList<Place> List of places from the JSON file
 	*/
-	public static ArrayList<Place> readPlacesJSON(String path) {
+	public static ArrayList<Place> readPlacesJSON(final String path) {
 		Type t = new TypeToken<ArrayList<Place>>(){}.getType();
 		try (FileReader file = new FileReader(path)) {
 			return JSONAccess.gson.fromJson(file, t);
@@ -82,7 +82,7 @@ public final class JSONAccess {
 	* @param path The path of the fileto be read
 	* @return ArrayList<User> List of users from the JSON file
 	*/
-	public static ArrayList<User> readUsersJSON(String path) {
+	public static ArrayList<User> readUsersJSON(final String path) {
 		Type t = new TypeToken<ArrayList<User>>(){}.getType();
 		try (FileReader file = new FileReader(path)) {
 			return JSONAccess.gson.fromJson(file, t);
@@ -99,7 +99,7 @@ public final class JSONAccess {
 	* @param path Path of the file to be written
 	* @param obj This is the object to convert into JSON
 	*/
-	public static void writePlacesJSON(String path, ArrayList<Place> obj) {
+	public static void writePlacesJSON(final String path, final ArrayList<Place> obj) {
 		Type t = new TypeToken<ArrayList<Place>>(){}.getType();
 		//try-with-resources
 		try (FileWriter file = new FileWriter(path)) {
@@ -110,7 +110,7 @@ public final class JSONAccess {
 		}
 	}
 
-	public static void writeUsersJSON(String path, ArrayList<User> obj) {
+	public static void writeUsersJSON(final String path, final ArrayList<User> obj) {
 		Type t = new TypeToken<ArrayList<User>>(){}.getType();
 		//try-with-resources
 		try (FileWriter file = new FileWriter(path)) {
