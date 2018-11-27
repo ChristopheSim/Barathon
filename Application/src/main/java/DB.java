@@ -219,6 +219,9 @@ public final class DB {
     /**
     * Method to get an array list of x bars in a radius y of the user (complex).
     *
+    * @param user object user.
+    * @param x size of list.
+    * @param y radius around the user.
     * @return an array list of places.
     */
     public static ArrayList<Place> nearbyBars(final User user, final int x, final int y) {
