@@ -16,14 +16,14 @@ public class Food extends Component {
 	private boolean vegetarian;
 
 	/**
-	* Method to generate the food.
-	*
-	* @param n The name of the food.
-	* @param p The price of the food.
-	* @param vn If the food is vegan : true.
-	* @param h If the food is halal : true.
-	* @param vg If the food is vegetarian : true.
-	*/
+	 * Method to generate the food.
+	 *
+	 * @param n The name of the food.
+	 * @param p The price of the food.
+	 * @param vn If the food is vegan : true.
+	 * @param h If the food is halal : true.
+	 * @param vg If the food is vegetarian : true.
+	 */
 	public Food(final String n, final int p, final boolean vn,
 	final boolean h, final boolean vg) {
 		super(n, p);
