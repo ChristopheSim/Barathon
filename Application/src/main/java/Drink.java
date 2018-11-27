@@ -4,9 +4,9 @@
 public class Drink extends Component {
     /**
      * @param alcohol degrees of alcohol.
-	 */
-    private double alcohol;
-    /**
+     */
+     private double alcohol;
+     /**
      * @param sparkling boolean representing if the drink is sparkling
      */
     private boolean sparkling;
