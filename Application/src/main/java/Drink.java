@@ -1,5 +1,3 @@
-import java.lang.*;
-
 /**
 *	This class represents the drinks to be added to the menu of a place.
 */
@@ -59,7 +57,7 @@ public class Drink extends Component {
 	}
 
 	/**
-	 * Method to set the sparkliung.
+	 * Method to set the sparkling.
 	 *
 	 * @param s boolean of sparkling.
 	 */
