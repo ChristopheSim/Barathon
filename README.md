@@ -18,10 +18,11 @@ In this section, there are usefull informations for the user on how to install a
 ### How to install
 Some `.jar`are needed to compile and to execute the project. They are automatically loaded with maven. Do not forget to install and to include them in the classpath to run the application on your computer.
 These are the following library needed:
-* commons-io
-* google.gson
-* neo4j driver
-* org.json
+* (old) JSON: a library to read or write JSON files ;
+* GSON: a high-level library to read or write JSON files ;
+* Apache Commons-IO: a library to proceed operations on files ;
+* Junit: a test module ;
+* Neo4j: a library to access Neo4j, a database working with graphs.
 
 You need to run a neo4j server on your computer to run the application and set the variables to connect to your databse in the `DBAcces.java` file:
 ```
@@ -33,9 +34,8 @@ private static String password = "NEO4J";
 ### How to use
 After compiled the project, you must run `App.class`.
 
-The GUI is in command line.
-It's ask your pseudo ansd your position to build the user.
-It also ask your preferences to help you to search the perfects bars *(this methodes needs to be improved)*.
+The app is currently a CLI (command line interface). At the beginning, the CLI prompts you to select your preferences and your pseudo, then it displays the appropriate list of bars.
+ *(this methodes needs to be improved)*.
 
 The application will show you a list of differents places which correspond to your wishes *(this method needs to be implemented)*.
 
@@ -106,8 +106,14 @@ For the bars, we need more information to display than the latitude and the long
 #### `Strategy`, `StrategyBars` and `StrategyTrips`
 We have here a design pattern stratgegy. We implement different search following the choice of the user. It's a good idea to encapsulate this and use a design pattern strategy.
 
-The class `StrategyBars` to finds bars around and near a point depending on a radius given by the user.
+The class `StrategyBars` is used to finds bars around and near a point depending on a radius given by the user.
 
-The class `StrategyTrips` to finds differents across a place to travel and discover the city.
+The class `StrategyTrips` is used to finds differents across a place to travel and discover the city.
 
 ## To Do
+The project is not finished. There is improvement to make and another functions to implements.
+This is a non exhaustive list of modifications possible:
+ * create an GUI for a barman to create a bar in our system.
+ * add choice in the user GUI.
+ * develop the search strategies (we can find example in the `DB.java`).
+ *
