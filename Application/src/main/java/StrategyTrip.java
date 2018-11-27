@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+
 /**
  * Class to find the trip of bars.
  */
