@@ -178,7 +178,7 @@ public final class DB {
    * @param user object user.
    * @return the nearest place.
    */
-  public static Place NearestBar(User user) {
+  public static Place NearestBar(final User user) {
     Driver driver = DBAccess.connect();
     Place place = new Place(0, "Le bouche trou", new Address("Test", "Test", new Position(0.0, 20.0)), new Menu(), new Caracteristics());
     try (Session session = driver.session()) {
@@ -215,7 +215,7 @@ public final class DB {
    *
    * @return an array list of places.
    */
-  public static ArrayList<Place> NearbyBars(User user, int X, int Y) {
+  public static ArrayList<Place> NearbyBars(final User user, final int X, final int Y) {
     ArrayList<Place> places = new ArrayList<Place>();
     Driver driver = DBAccess.connect();
     try (Session session = driver.session()) {
