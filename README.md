@@ -40,3 +40,7 @@ Some ".jar" are needed to compile and to execute the project. They are in the re
 
 ### How to use
 For now, the app is not complete and some checkstyles are not validated so, let's work.
+
+The app is currently a CLI (command line interface). At the beginning, the CLI prompts you to select your preferences, then it displays the appropriate list of bars.
+
+
