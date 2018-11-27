@@ -48,7 +48,7 @@ public class Place {
      *
      * @return an int representing the place's id.
      */
-    public int getId(){
+    public final int getId() {
         return this.id;
     }
 
@@ -57,7 +57,7 @@ public class Place {
      *
      * @param i an int representing the place's id.
      */
-    public void setId(final int i){
+    public final void setId(final int i) {
         this.id = i;
     }
 
@@ -66,7 +66,7 @@ public class Place {
      *
      * @return a string representing the place's name.
      */
-    public String getName(){
+    public final String getName() {
         return this.name;
     }
 
@@ -75,7 +75,7 @@ public class Place {
      *
      * @param n a string representing the place's name.
      */
-    public void setName(final String n){
+    public final void setName(final String n) {
         this.name = n;
     }
 
@@ -84,7 +84,7 @@ public class Place {
      *
      * @return an Address representing the place's address.
      */
-    public Address getAddress(){
+    public final Address getAddress() {
         return this.address;
     }
 
@@ -93,7 +93,7 @@ public class Place {
      *
      * @param a an address representing the place's address.
      */
-    public void setAddress(final Address a) {
+    public final void setAddress(final Address a) {
   		this.address = a;
   	}
 
@@ -102,7 +102,7 @@ public class Place {
      *
      * @return a Menu representing the place's menu.
      */
-    public Menu getMenu() {
+    public final Menu getMenu() {
       return this.menu;
     }
 
@@ -111,7 +111,7 @@ public class Place {
      *
      * @param m a manu representing the place's menu.
      */
-    public void setMenu(final Menu m) {
+    public final void setMenu(final Menu m) {
   		this.menu = m;
   	}
 
@@ -120,7 +120,7 @@ public class Place {
      *
      * @return a Menu representing the place's menu.
      */
-    public Caracteristics getCaracteristics() {
+    public final Caracteristics getCaracteristics() {
       return this.caracteristics;
     }
 
@@ -129,7 +129,7 @@ public class Place {
      *
      * @param c carcateristics representing the place's caracteristics.
      */
-    public void setCaracteristics(final Caracteristics c) {
+    public final void setCaracteristics(final Caracteristics c) {
   		this.caracteristics = c;
   	}
 
@@ -140,7 +140,8 @@ public class Place {
      * @param id an int representing a place's id.
      * @return a Place object.
      */
-	   public static Place findPlace(ArrayList<Place> places, int id) {
+	   public static Place findPlace(final ArrayList<Place> places,
+     final int id) {
 		     for(Place p: places) {
 			        if (p.getId() == id) {
 				            return p;
