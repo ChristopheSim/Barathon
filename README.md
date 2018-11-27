@@ -1,4 +1,4 @@
-# TDD and CI in Java: Roleplay
+# TDD and CI in Java
 Barathon was originally designed by a Linux users team. Some details may change on other operating systems. This file can be useful to continue the project.
 It contains yet the maven architecture.
 
