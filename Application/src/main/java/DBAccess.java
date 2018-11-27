@@ -370,7 +370,7 @@ public final class DBAccess {
       System.out.print(e);
     }
     driver.close();
-	}
+    }
 
     /**
      * Method to create relationship between an user and the caracteristics.
@@ -494,7 +494,7 @@ public final class DBAccess {
       System.out.print(e);
     }
     driver.close();
-	}
+    }
 
     /**
      * Method to create relationship between two places.
@@ -521,7 +521,7 @@ public final class DBAccess {
       System.out.print(e);
     }
     driver.close();
-	}
+    }
 
     /**
      * Method to create relationship between an user and a place.
@@ -548,7 +548,7 @@ public final class DBAccess {
       System.out.print(e);
     }
     driver.close();
-  }
+    }
 
   /**
    * Method to drop the database.
@@ -564,5 +564,5 @@ public final class DBAccess {
       System.out.print(e);
     }
     driver.close();
-  }
+    }
 }
